@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image" href="logo3.png" />
+    <title>Portfolio</title>
+  </head>
+
+  <body>
+    <header class="container">
+      <div class="page-header">
+        <div class="logo">
+          <a href="./index.html"
+            ><img id="logo" class="logo-dark" src="logo3.png" alt=""
+          /></a>
+        </div>
+        <input type="checkbox" id="click" />
+
+        <label for="click" class="mainicon">
+          <div class="menu">
+            <i class="bx bx-menu"></i>
+          </div>
+        </label>
+        <ul>
+          <li>
+            <a href="./index.html" style="--navAni: 1">Home</a>
+          </li>
+          <li><a href="./skills.html" style="--navAni: 3">Skills</a></li>
+          <li>
+            <a href="./project.html" class="active" style="--navAni: 4"
+              >Projects</a
+            >
+          </li>
+          <li><a href="./about.html" style="--navAni: 2">About</a></li>
+        </ul>
+        <label class="mode">
+          <input type="checkbox" id="darkModeToggle" />
+          <i class="bx bxs-sun" id="changer"></i>
+        </label>
+      </div>
+    </header>
+
+    <section class="projects">
+      <h1>Projects</h1>
+      <div class="project-container">
+        <a href="https://celadon-rabanadas-201a5b.netlify.app" target="_blank">
+          <div class="project-card">
+            <img
+              src="https://res.cloudinary.com/dbvwq05ob/image/upload/Sure-To-Shop.jpg"
+              alt="error"
+            />
+            <div class="project-card-details">
+              <h1>Sure To Shop</h1>
+              <h5>HTML</h5>
+              <h5>CSS</h5>
+              <h5>Javascript</h5>
+              <p>A Shopping website for daily needs</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://cheerful-cocada-b234c6.netlify.app/" target="_blank">
+          <div class="project-card">
+            <img
+              src="https://res.cloudinary.com/dbvwq05ob/image/upload/Bite%20Buzz.jpg"
+              alt="error"
+            />
+            <div class="project-card-details">
+              <h1>Bite Buzz</h1>
+              <h5>HTML</h5>
+              <h5>CSS</h5>
+              <h5>Javascript</h5>
+              <p>A Website for ordering food</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://govenment-site.netlify.app" target="_blank">
+          <div class="project-card">
+            <img
+              src="https://res.cloudinary.com/dbvwq05ob/image/upload/v1715577295/Tax_Image.jpg"
+              alt="error"
+            />
+            <div class="project-card-details">
+              <h1>Govenrment Tax Site</h1>
+              <h5>Javascript</h5>
+              <h5>Html</h5>
+              <h5>CSS</h5>
+              <p>A government site for tax paying and other informations</p>
+            </div>
+          </div>
+        </a>
+        
+      </div>
+    </section>
+
+    <footer>
+      <div class="social">
+        <a
+          href="https://github.com/shasanksingh"
+          target="_blank"
+          style="--socialAni: 3"
+          ><i class="bx bxl-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/shashank-singh2003/"
+          target="_blank"
+          style="--socialAni: 1"
+          ><i class="bx bxl-linkedin"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/singh.shasank.1/"
+          target="_blank"
+          style="--socialAni: 2"
+          ><i class="bx bxl-instagram"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
