@@ -1,0 +1,22 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mini-body" x1="22" y1="18" x2="72" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#C7D8E4"/>
+    </linearGradient>
+    <linearGradient id="mini-face" x1="28" y1="34" x2="68" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17202A"/>
+      <stop offset="1" stop-color="#315F9E"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="48" cy="82" rx="26" ry="7" fill="#17202A" fill-opacity="0.16"/>
+  <rect x="20" y="25" width="56" height="46" rx="18" fill="url(#mini-body)" stroke="#FFFFFF" stroke-width="4"/>
+  <rect x="28" y="38" width="40" height="20" rx="10" fill="url(#mini-face)"/>
+  <circle cx="40" cy="48" r="4" fill="#7ED6D3"/>
+  <circle cx="56" cy="48" r="4" fill="#7ED6D3"/>
+  <path d="M42 63C46 66 51 66 55 63" stroke="#E94F37" stroke-width="4" stroke-linecap="round"/>
+  <path d="M48 25V14" stroke="#C7D8E4" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="48" cy="11" r="6" fill="#167A7F"/>
+  <path d="M20 51C10 54 8 62 13 70" stroke="#C7D8E4" stroke-width="7" stroke-linecap="round"/>
+  <path d="M76 51C86 54 88 62 83 70" stroke="#C7D8E4" stroke-width="7" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg width="720" height="560" viewBox="0 0 720 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="86" y1="58" x2="650" y2="514" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDF7F2"/>
+      <stop offset="0.52" stop-color="#EAF7F8"/>
+      <stop offset="1" stop-color="#EEF3FF"/>
+    </linearGradient>
+    <linearGradient id="bot" x1="226" y1="138" x2="486" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#C8D7E4"/>
+    </linearGradient>
+    <linearGradient id="bubble" x1="472" y1="98" x2="618" y2="237" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E94F37"/>
+      <stop offset="1" stop-color="#167A7F"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="560" rx="36" fill="url(#bg)"/>
+  <ellipse cx="344" cy="448" rx="164" ry="36" fill="#17202A" fill-opacity="0.1"/>
+  <rect x="190" y="170" width="300" height="232" rx="62" fill="url(#bot)" stroke="#FFFFFF" stroke-width="6"/>
+  <rect x="244" y="218" width="192" height="80" rx="34" fill="#17202A"/>
+  <circle cx="298" cy="258" r="15" fill="#7ED6D3"/>
+  <circle cx="382" cy="258" r="15" fill="#7ED6D3"/>
+  <path d="M304 334C326 350 356 350 378 334" stroke="#E94F37" stroke-width="9" stroke-linecap="round"/>
+  <rect x="284" y="130" width="112" height="56" rx="28" fill="#EAF0F4" stroke="#FFFFFF" stroke-width="6"/>
+  <path d="M340 130V92" stroke="#D8E4EC" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="340" cy="84" r="18" fill="#167A7F"/>
+  <path d="M190 286C139 304 115 340 123 393" stroke="#D8E4EC" stroke-width="22" stroke-linecap="round"/>
+  <path d="M490 286C544 300 573 338 568 392" stroke="#D8E4EC" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="123" cy="393" r="28" fill="#FFFFFF" stroke="#D8E4EC" stroke-width="9"/>
+  <circle cx="568" cy="392" r="28" fill="#FFFFFF" stroke="#D8E4EC" stroke-width="9"/>
+  <path d="M470 104H602C630 104 648 122 648 149V187C648 214 630 232 602 232H535L493 267V232H470C442 232 424 214 424 187V149C424 122 442 104 470 104Z" fill="url(#bubble)"/>
+  <rect x="466" y="143" width="126" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.76"/>
+  <rect x="466" y="171" width="94" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.6"/>
+  <g stroke="#315F9E" stroke-width="5" stroke-linecap="round" opacity="0.72">
+    <path d="M90 178C126 140 162 134 204 160" stroke-dasharray="9 14"/>
+    <path d="M100 250C136 237 166 244 190 272" stroke-dasharray="9 14"/>
+    <path d="M505 420C562 430 600 404 620 342" stroke-dasharray="9 14"/>
+  </g>
+</svg>
