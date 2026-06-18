@@ -13,9 +13,9 @@ export default function CaseStudiesPage() {
   return (
     <main>
       <PageIntro
-        eyebrow="Case Studies"
-        title="Six production-style AI engineering narratives."
-        description="Each case study covers the problem, solution, architecture, tech stack, challenges, impact, screenshot placeholder, and GitHub link."
+        eyebrow="Research Notes"
+        title="Project research written like applied engineering papers."
+        description="Each note includes an abstract, research question, methodology, architecture, evaluation plan, limitations, future work, and GitHub evidence."
       />
       <section className="container grid gap-6 pb-20">
         {caseStudies.map((study, index) => (

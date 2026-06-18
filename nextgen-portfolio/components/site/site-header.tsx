@@ -1,6 +1,7 @@
 "use client";
 
-import { BrainCircuit, Github, Linkedin, Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -16,13 +17,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/82 backdrop-blur-xl">
       <nav className="container flex min-h-[76px] items-center justify-between gap-4" aria-label="Main navigation">
-        <Link href="/" className="flex items-center gap-3 focus-ring" onClick={() => setIsOpen(false)}>
-          <span className="inline-grid h-11 w-11 place-items-center rounded-ui bg-foreground text-white shadow-glow">
-            <BrainCircuit className="h-6 w-6 text-cyan" aria-hidden="true" />
-          </span>
-          <span className="hidden leading-tight sm:block">
-            <strong className="block font-display text-base">Shashank Singh</strong>
-            <small className="font-bold text-muted">AI/ML Developer</small>
+        <Link href="/" className="flex items-center focus-ring" onClick={() => setIsOpen(false)} aria-label="Home">
+          <span className="inline-grid h-12 w-12 place-items-center rounded-ui bg-white shadow-glow">
+            <Image src="/logo-mark.svg" alt="Shashank Singh logo" width={42} height={42} priority />
           </span>
         </Link>
 

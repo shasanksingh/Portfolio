@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Brain, Database, Layers3, ServerCog } from "lucide-react";
 
 import { PageIntro } from "@/components/layout/page-intro";
-import { Badge } from "@/components/ui/badge";
 import { profile } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -45,7 +44,9 @@ export default function AboutPage() {
       <section className="container pb-20">
         <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div className="scan-mask rounded-ui border border-line bg-white p-8 shadow-panel ai-grid" data-gsap>
-            <Badge>Profile</Badge>
+            <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+              Profile
+            </p>
             <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight">
               I build intelligent systems that connect models, retrieval, APIs, and clean user workflows.
             </h2>

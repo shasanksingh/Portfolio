@@ -1,7 +1,7 @@
 import { Github, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 
-import { navItems, profile } from "@/lib/content";
+import { profile } from "@/lib/content";
 
 export function SiteFooter() {
   return (
@@ -43,12 +43,8 @@ export function SiteFooter() {
           </a>
         </div>
       </div>
-      <div className="container mt-8 flex flex-wrap gap-3 border-t border-line pt-6">
-        {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="text-sm font-bold text-muted transition hover:text-electric">
-            {item.label}
-          </Link>
-        ))}
+      <div className="container mt-8 border-t border-line pt-6 text-sm font-semibold text-muted">
+        Built as a standalone Next.js portfolio. No deployment push was made from this workspace.
       </div>
     </footer>
   );

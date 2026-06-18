@@ -57,6 +57,77 @@ function NeuralNetwork() {
   );
 }
 
+function ParticleCloud() {
+  const group = useRef<THREE.Group>(null);
+  const particles = useMemo(() => {
+    return Array.from({ length: 72 }, (_, index) => {
+      const radius = 1.8 + Math.random() * 1.25;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      return {
+        position: new THREE.Vector3(
+          radius * Math.sin(phi) * Math.cos(theta),
+          radius * Math.sin(phi) * Math.sin(theta) * 0.72,
+          radius * Math.cos(phi),
+        ),
+        size: index % 7 === 0 ? 0.035 : 0.018,
+        color: index % 3 === 0 ? "#16d6d9" : index % 3 === 1 ? "#0867e8" : "#7b3ff2",
+      };
+    });
+  }, []);
+
+  useFrame(({ clock, pointer }) => {
+    if (!group.current) return;
+    group.current.rotation.y = clock.elapsedTime * 0.06 + pointer.x * 0.08;
+    group.current.rotation.x = pointer.y * 0.05;
+  });
+
+  return (
+    <group ref={group}>
+      {particles.map((particle, index) => (
+        <mesh key={`${particle.color}-${index}`} position={particle.position}>
+          <sphereGeometry args={[particle.size, 10, 10]} />
+          <meshStandardMaterial color={particle.color} emissive={particle.color} emissiveIntensity={0.4} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function FloatingPanels() {
+  const group = useRef<THREE.Group>(null);
+  const panels = [
+    { position: [-1.9, 0.88, -0.2], color: "#0867e8" },
+    { position: [1.78, 0.76, 0.24], color: "#16d6d9" },
+    { position: [-1.62, -0.78, 0.16], color: "#7b3ff2" },
+    { position: [1.45, -0.9, -0.18], color: "#0f172a" },
+  ] as const;
+
+  useFrame(({ clock }) => {
+    if (!group.current) return;
+    group.current.rotation.y = Math.sin(clock.elapsedTime * 0.45) * 0.12;
+  });
+
+  return (
+    <group ref={group}>
+      {panels.map((panel, index) => (
+        <Float key={panel.color} speed={1.2 + index * 0.2} rotationIntensity={0.24} floatIntensity={0.35}>
+          <mesh position={panel.position} rotation={[0.25, index * 0.62, -0.08]}>
+            <boxGeometry args={[0.54, 0.34, 0.045]} />
+            <meshStandardMaterial
+              color={panel.color}
+              emissive={panel.color}
+              emissiveIntensity={0.18}
+              roughness={0.28}
+              metalness={0.18}
+            />
+          </mesh>
+        </Float>
+      ))}
+    </group>
+  );
+}
+
 function CoreSphere() {
   const mesh = useRef<THREE.Mesh>(null);
 
@@ -102,6 +173,10 @@ function OrbitingRings() {
         <torusGeometry args={[1.52, 0.006, 12, 160]} />
         <meshStandardMaterial color="#7b3ff2" emissive="#7b3ff2" emissiveIntensity={0.45} />
       </mesh>
+      <mesh rotation={[Math.PI / 3.2, -0.6, 1.35]}>
+        <torusGeometry args={[1.86, 0.004, 12, 180]} />
+        <meshStandardMaterial color="#0867e8" emissive="#0867e8" emissiveIntensity={0.35} />
+      </mesh>
     </group>
   );
 }
@@ -114,6 +189,8 @@ export function AiCoreScene() {
       <pointLight position={[3, 3, 4]} intensity={3.8} color="#16d6d9" />
       <pointLight position={[-3, -1, 2]} intensity={2.2} color="#7b3ff2" />
       <group position={[0, 0.1, 0]}>
+        <ParticleCloud />
+        <FloatingPanels />
         <CoreSphere />
         <OrbitingRings />
         <NeuralNetwork />

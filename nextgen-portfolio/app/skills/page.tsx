@@ -13,8 +13,8 @@ export default function SkillsPage() {
     <main>
       <PageIntro
         eyebrow="Skills"
-        title="Technology orbit for modern AI systems."
-        description="An interactive map of the skills behind RAG applications, agents, FastAPI AI backends, and polished product frontends."
+        title="A skill map that reads like hiring evidence."
+        description="Capabilities are grouped by the systems they help ship: retrieval, agents, backend AI services, and product interfaces."
       />
       <SkillGalaxy />
     </main>

@@ -4,9 +4,8 @@ import Link from "next/link";
 import { AiCore } from "@/components/three/ai-core";
 import { CaseStudyPanel } from "@/components/work/case-study-panel";
 import { ButtonLink } from "@/components/ui/button-link";
-import { Badge } from "@/components/ui/badge";
 import { ArchitecturePreview } from "@/components/work/architecture-preview";
-import { homeSignals, caseStudies, profile } from "@/lib/content";
+import { homeSignals, caseStudies, profile, projects } from "@/lib/content";
 
 export default function HomePage() {
   const featured = caseStudies.slice(0, 3);
@@ -15,12 +14,15 @@ export default function HomePage() {
     <main>
       <section className="container grid items-center gap-10 py-12 md:py-16 lg:min-h-[760px] lg:grid-cols-[1.02fr_0.98fr]">
         <div className="max-w-3xl">
-          <Badge className="mb-5">AI Engineer | Production AI Systems</Badge>
+          <p className="mb-5 border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+            AI Engineer | Research-backed product systems
+          </p>
           <h1 className="text-balance font-display text-5xl font-extrabold leading-[1.02] tracking-normal text-foreground md:text-6xl lg:text-7xl">
             Building Production AI Systems
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
-            AI Engineer specializing in Agentic AI, RAG Pipelines, FastAPI, LLM Applications and Intelligent Automation.
+            RAG pipelines, agent workflows, FastAPI backends, LLM applications, and automation platforms presented with
+            implementation evidence, not empty buzzwords.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/projects" icon={ArrowRight}>
@@ -76,9 +78,11 @@ export default function HomePage() {
       <section className="container py-20">
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <Badge>Selected AI Builds</Badge>
+            <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+              Research notes
+            </p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-5xl">
-              Case studies that read like product systems, not code snippets.
+              Each featured project is written like an engineering paper.
             </h2>
           </div>
           <Link
@@ -99,12 +103,43 @@ export default function HomePage() {
       <section className="bg-[#f7fbff] py-20">
         <div className="container">
           <div className="mb-10 max-w-3xl">
-            <Badge>System Thinking</Badge>
+            <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+              System thinking
+            </p>
             <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
               Built around retrieval, agents, and backend contracts.
             </h2>
           </div>
           <ArchitecturePreview />
+        </div>
+      </section>
+
+      <section className="container py-20">
+        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div>
+            <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+              GitHub corpus
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
+              18 repositories, filtered into a portfolio narrative.
+            </h2>
+            <p className="mt-5 leading-7 text-muted">
+              The Projects page now uses the current public GitHub repository list, including newer AI systems and the
+              earlier frontend work that shows progression.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { label: "Repositories", value: projects.length },
+              { label: "AI-focused builds", value: projects.filter((item) => item.category.includes("AI") || item.category.includes("RAG")).length },
+              { label: "Live demos", value: projects.filter((item) => item.links.live).length },
+            ].map((item) => (
+              <div key={item.label} className="rounded-ui border border-line bg-white p-5 shadow-sm">
+                <strong className="block font-display text-4xl">{item.value}</strong>
+                <span className="mt-2 block text-sm font-bold text-muted">{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -16,10 +16,28 @@ export type Project = {
   subtitle: string;
   summary: string;
   stack: string[];
+  category: string;
+  language: string;
+  updatedAt: string;
+  imageUrl: string;
+  sizeKb: number;
+  stars: number;
+  forks: number;
   links: {
     github: string;
     live?: string;
   };
+};
+
+export type ResearchNote = {
+  abstract: string;
+  researchQuestion: string;
+  methodology: string[];
+  systemModel: string[];
+  evaluation: string[];
+  limitations: string[];
+  futureWork: string[];
+  keywords: string[];
 };
 
 export type CaseStudy = {
@@ -27,6 +45,9 @@ export type CaseStudy = {
   slug: string;
   eyebrow: string;
   summary: string;
+  repositoryUrl: string;
+  liveUrl?: string;
+  imageUrl: string;
   problem: string;
   solution: string;
   architecture: string[];
@@ -35,12 +56,14 @@ export type CaseStudy = {
   impact: string[];
   metrics: Metric[];
   githubUrl: string;
+  research: ResearchNote;
 };
 
 export type SkillCluster = {
   title: string;
   description: string;
   skills: string[];
+  proof: string;
   accent: "electric" | "cyan" | "purple" | "violet";
 };
 
