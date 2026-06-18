@@ -32,6 +32,11 @@ The original static portfolio at the repository root is intentionally untouched 
 
 ## Install
 
+Recommended local runtime:
+
+- Node.js 22.13 or newer
+- npm 10.5 or newer
+
 ```bash
 npm install
 ```
@@ -47,8 +52,20 @@ Then open `http://localhost:3000`.
 ## Production Build
 
 ```bash
+npm run lint
+npm run typecheck
 npm run build
 npm run start
+```
+
+## Verification
+
+This project is designed to be checked with:
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
 ```
 
 ## Deploy
