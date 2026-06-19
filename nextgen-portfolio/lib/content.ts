@@ -210,41 +210,6 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Portfolio",
-    slug: "portfolio",
-    subtitle: "Legacy HTML portfolio",
-    summary:
-      "The earlier static HTML/CSS/JavaScript portfolio that established the visual identity now carried into the new build.",
-    category: "Portfolio",
-    language: "HTML",
-    updatedAt: "2026-05-27",
-    imageUrl: ogImage("Portfolio"),
-    sizeKb: 889,
-    stars: 0,
-    forks: 0,
-    stack: ["HTML", "CSS", "JavaScript"],
-    links: {
-      github: "https://github.com/shasanksingh/Portfolio",
-    },
-  },
-  {
-    title: "Profile Repository",
-    slug: "shasanksingh",
-    subtitle: "Developer identity repository",
-    summary: "GitHub profile repository used for developer identity, profile README, and public profile content.",
-    category: "Developer Profile",
-    language: "Markdown",
-    updatedAt: "2026-06-17",
-    imageUrl: ogImage("shasanksingh"),
-    sizeKb: 7,
-    stars: 0,
-    forks: 0,
-    stack: ["Markdown", "GitHub Profile"],
-    links: {
-      github: "https://github.com/shasanksingh/shasanksingh",
-    },
-  },
-  {
     title: "Saros SDK",
     slug: "saros-sdk",
     subtitle: "SDK exploration",
@@ -399,7 +364,9 @@ export const projects: Project[] = [
   },
 ];
 
-export const caseStudies: CaseStudy[] = [
+export const portfolioProjects = projects.filter((project) => !["portfolio", "shasanksingh"].includes(project.slug));
+
+const allCaseStudies: CaseStudy[] = [
   {
     title: "ATS Resume AI",
     slug: "ats-resume-ai",
@@ -758,6 +725,8 @@ export const caseStudies: CaseStudy[] = [
     },
   },
 ];
+
+export const caseStudies = allCaseStudies.filter((study) => ["ats-resume-ai", "sql-copilot"].includes(study.slug));
 
 export const experience: ExperienceItem[] = [
   {

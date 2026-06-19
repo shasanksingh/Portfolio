@@ -5,54 +5,56 @@ import { AiCore } from "@/components/three/ai-core";
 import { CaseStudyPanel } from "@/components/work/case-study-panel";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ArchitecturePreview } from "@/components/work/architecture-preview";
-import { homeSignals, caseStudies, profile, projects } from "@/lib/content";
+import { caseStudies, homeSignals, portfolioProjects, profile } from "@/lib/content";
 
 export default function HomePage() {
-  const featured = caseStudies.slice(0, 3);
+  const featured = caseStudies;
 
   return (
     <main>
-      <section className="container grid items-center gap-10 py-12 md:py-16 lg:min-h-[760px] lg:grid-cols-[1.02fr_0.98fr]">
-        <div className="max-w-3xl">
-          <p className="mb-5 border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
-            AI Engineer | Research-backed product systems
-          </p>
-          <h1 className="text-balance font-display text-5xl font-extrabold leading-[1.02] tracking-normal text-foreground md:text-6xl lg:text-7xl">
-            Building Production AI Systems
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
-            RAG pipelines, agent workflows, FastAPI backends, LLM applications, and automation platforms presented with
-            implementation evidence, not empty buzzwords.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/projects" icon={ArrowRight}>
-              View Projects
-            </ButtonLink>
-            <ButtonLink href={profile.resume} icon={FileText} variant="secondary" target="_blank">
-              Download Resume
-            </ButtonLink>
-            <ButtonLink href="/contact" icon={Mail} variant="ghost">
-              Contact Me
-            </ButtonLink>
+      <section className="hero-section relative overflow-hidden">
+        <div className="container relative grid items-center gap-12 py-12 md:py-16 lg:min-h-[760px] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="max-w-3xl">
+            <p className="mb-5 border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+              AI Engineer | Research-backed product systems
+            </p>
+            <h1 className="text-balance font-display text-5xl font-extrabold leading-[1.02] tracking-normal text-foreground md:text-6xl lg:text-7xl">
+              Building Production AI Systems
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
+              RAG pipelines, agent workflows, FastAPI backends, LLM applications, and automation platforms presented with
+              implementation evidence, not empty buzzwords.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="/projects" icon={ArrowRight}>
+                View Projects
+              </ButtonLink>
+              <ButtonLink href={profile.resume} icon={FileText} variant="secondary" target="_blank">
+                Download Resume
+              </ButtonLink>
+              <ButtonLink href="/contact" icon={Mail} variant="ghost">
+                Contact Me
+              </ButtonLink>
+            </div>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {homeSignals.slice(0, 3).map((signal) => {
+                const Icon = signal.icon;
+                return (
+                  <div
+                    key={signal.label}
+                    className="rounded-ui border border-line bg-white/78 p-4 shadow-sm backdrop-blur"
+                  >
+                    <Icon className="h-5 w-5 text-electric" aria-hidden="true" />
+                    <strong className="mt-3 block font-display text-lg">{signal.label}</strong>
+                    <span className="text-sm text-muted">{signal.value}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {homeSignals.slice(0, 3).map((signal) => {
-              const Icon = signal.icon;
-              return (
-                <div
-                  key={signal.label}
-                  className="rounded-ui border border-line bg-white/78 p-4 shadow-sm backdrop-blur"
-                >
-                  <Icon className="h-5 w-5 text-electric" aria-hidden="true" />
-                  <strong className="mt-3 block font-display text-lg">{signal.label}</strong>
-                  <span className="text-sm text-muted">{signal.value}</span>
-                </div>
-              );
-            })}
+          <div className="relative min-h-[380px] md:min-h-[520px] lg:-mr-8">
+            <AiCore />
           </div>
-        </div>
-        <div className="relative min-h-[520px]">
-          <AiCore />
         </div>
       </section>
 
@@ -75,7 +77,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container py-20">
+      <section id="research-notes" className="container py-20">
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
@@ -121,18 +123,21 @@ export default function HomePage() {
               GitHub corpus
             </p>
             <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
-              18 repositories, filtered into a portfolio narrative.
+              {portfolioProjects.length} repositories, curated into a portfolio narrative.
             </h2>
             <p className="mt-5 leading-7 text-muted">
-              The Projects page now uses the current public GitHub repository list, including newer AI systems and the
-              earlier frontend work that shows progression.
+              The Projects page focuses on public work that supports the AI engineer story, with legacy profile-only
+              repositories removed from the surface.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
             {[
-              { label: "Repositories", value: projects.length },
-              { label: "AI-focused builds", value: projects.filter((item) => item.category.includes("AI") || item.category.includes("RAG")).length },
-              { label: "Live demos", value: projects.filter((item) => item.links.live).length },
+              { label: "Curated repos", value: portfolioProjects.length },
+              {
+                label: "AI-focused builds",
+                value: portfolioProjects.filter((item) => item.category.includes("AI") || item.category.includes("RAG")).length,
+              },
+              { label: "Live demos", value: portfolioProjects.filter((item) => item.links.live).length },
             ].map((item) => (
               <div key={item.label} className="rounded-ui border border-line bg-white p-5 shadow-sm">
                 <strong className="block font-display text-4xl">{item.value}</strong>

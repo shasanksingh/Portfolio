@@ -14,8 +14,8 @@ export default function CaseStudiesPage() {
     <main>
       <PageIntro
         eyebrow="Research Notes"
-        title="Project research written like applied engineering papers."
-        description="Each note includes an abstract, research question, methodology, architecture, evaluation plan, limitations, future work, and GitHub evidence."
+        title="Focused research notes for the strongest AI systems."
+        description="ATS Resume AI and SQL Copilot are documented with abstract, research question, methodology, architecture, evaluation plan, limitations, future work, and GitHub evidence."
       />
       <section className="container grid gap-6 pb-20">
         {caseStudies.map((study, index) => (

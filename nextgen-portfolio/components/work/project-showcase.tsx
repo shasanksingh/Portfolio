@@ -1,24 +1,28 @@
 import { ArrowRight, ExternalLink, Github, Star } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button-link";
-import { caseStudies, projects } from "@/lib/content";
+import { caseStudies, portfolioProjects } from "@/lib/content";
 import { ProjectArtwork } from "@/components/work/project-artwork";
 
 export function ProjectShowcase() {
   const featuredSlugs = new Set(caseStudies.map((study) => study.slug));
-  const featuredProjects = projects.filter((project) => featuredSlugs.has(project.slug));
-  const otherProjects = projects.filter((project) => !featuredSlugs.has(project.slug));
+  const featuredProjects = portfolioProjects.filter((project) => featuredSlugs.has(project.slug));
+  const otherProjects = portfolioProjects.filter((project) => !featuredSlugs.has(project.slug));
 
   return (
     <section className="container grid gap-14 pb-20">
       <div className="grid gap-6">
         {featuredProjects.map((project) => (
-          <article key={project.slug} className="rounded-ui border border-line bg-white p-4 shadow-panel" data-gsap>
+          <article
+            key={project.slug}
+            className="project-card overflow-hidden rounded-ui border border-line bg-white/86 p-4 shadow-panel backdrop-blur"
+            data-gsap
+          >
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
-              <div className="overflow-hidden rounded-ui border border-line bg-surface-strong">
+              <div className="project-card-visual overflow-hidden rounded-ui border border-line bg-surface-strong shadow-[0_24px_70px_rgba(8,103,232,0.16)]">
                 <ProjectArtwork project={project} />
               </div>
-              <div className="flex flex-col rounded-ui border border-line bg-[#f8fbff] p-6">
+              <div className="flex flex-col rounded-ui border border-line bg-white/72 p-6 backdrop-blur">
                 <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
                   {project.category}
                 </p>
@@ -66,12 +70,12 @@ export function ProjectShowcase() {
 
       <section className="grid gap-6">
         <div className="max-w-3xl">
-          <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
-            Complete GitHub index
-          </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight">
-            All public repositories, including earlier web projects.
-          </h2>
+            <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+              Selected repository index
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight">
+              Supporting builds, prototypes, and engineering history.
+            </h2>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((project) => (
@@ -80,10 +84,12 @@ export function ProjectShowcase() {
               href={project.links.github}
               target="_blank"
               rel="noreferrer"
-              className="group overflow-hidden rounded-ui border border-line bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-panel"
+              className="project-card group overflow-hidden rounded-ui border border-line bg-white/86 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-panel"
               data-gsap
             >
-              <ProjectArtwork project={project} compact />
+              <div className="project-card-visual">
+                <ProjectArtwork project={project} compact />
+              </div>
               <div className="p-5">
                 <div className="flex items-start justify-between gap-4">
                   <span className="text-xs font-extrabold uppercase text-electric">{project.category}</span>

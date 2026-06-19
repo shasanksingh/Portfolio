@@ -59,8 +59,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('nextgen-theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var n=t||p;document.documentElement.classList.toggle('dark',n==='dark');document.documentElement.dataset.theme=n;}catch(e){}",
+          }}
+        />
         <SmoothScroll />
         <GsapReveal />
         <SiteHeader />

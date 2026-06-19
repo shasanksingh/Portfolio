@@ -13,8 +13,8 @@ export default function ProjectsPage() {
     <main>
       <PageIntro
         eyebrow="Projects"
-        title="A complete GitHub-backed project index."
-        description="All public repositories are represented, with newer AI systems elevated into research notes and older frontend work kept as progression evidence."
+        title="A curated GitHub-backed project index."
+        description="AI systems, product prototypes, and selected engineering projects presented with visuals, stack context, and implementation links."
       />
       <ProjectShowcase />
     </main>

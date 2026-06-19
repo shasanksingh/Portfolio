@@ -10,7 +10,7 @@ function NeuralNetwork() {
   const points = useMemo(() => {
     return Array.from({ length: 26 }, (_, index) => {
       const angle = (index / 26) * Math.PI * 2;
-      const radius = 1.35 + (index % 4) * 0.22;
+      const radius = 1.45 + (index % 4) * 0.2;
       const y = ((index % 7) - 3) * 0.18;
       return new THREE.Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
     });
@@ -38,7 +38,7 @@ function NeuralNetwork() {
           key={`${connection[0].x}-${index}`}
           points={connection}
           color={index % 3 === 0 ? "#16d6d9" : "#7b3ff2"}
-          lineWidth={0.7}
+        lineWidth={0.85}
           transparent
           opacity={0.22}
         />
@@ -61,7 +61,7 @@ function ParticleCloud() {
   const group = useRef<THREE.Group>(null);
   const particles = useMemo(() => {
     return Array.from({ length: 72 }, (_, index) => {
-      const radius = 1.8 + Math.random() * 1.25;
+      const radius = 1.65 + Math.random() * 1.18;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
       return {
@@ -139,7 +139,7 @@ function CoreSphere() {
 
   return (
     <Float speed={1.7} rotationIntensity={0.35} floatIntensity={0.42}>
-      <Sphere ref={mesh} args={[0.78, 64, 64]}>
+      <Sphere ref={mesh} args={[0.62, 64, 64]}>
         <MeshDistortMaterial
           color="#0867e8"
           emissive="#16d6d9"
@@ -148,6 +148,8 @@ function CoreSphere() {
           metalness={0.34}
           distort={0.22}
           speed={1.6}
+          transparent
+          opacity={0.88}
         />
       </Sphere>
     </Float>
@@ -166,15 +168,15 @@ function OrbitingRings() {
   return (
     <group ref={ring}>
       <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[1.18, 0.008, 12, 160]} />
+        <torusGeometry args={[1.08, 0.008, 12, 160]} />
         <meshStandardMaterial color="#16d6d9" emissive="#16d6d9" emissiveIntensity={0.6} />
       </mesh>
       <mesh rotation={[Math.PI / 2.7, 0.35, 0.7]}>
-        <torusGeometry args={[1.52, 0.006, 12, 160]} />
+        <torusGeometry args={[1.42, 0.006, 12, 160]} />
         <meshStandardMaterial color="#7b3ff2" emissive="#7b3ff2" emissiveIntensity={0.45} />
       </mesh>
       <mesh rotation={[Math.PI / 3.2, -0.6, 1.35]}>
-        <torusGeometry args={[1.86, 0.004, 12, 180]} />
+        <torusGeometry args={[1.74, 0.004, 12, 180]} />
         <meshStandardMaterial color="#0867e8" emissive="#0867e8" emissiveIntensity={0.35} />
       </mesh>
     </group>
@@ -183,8 +185,12 @@ function OrbitingRings() {
 
 export function AiCoreScene() {
   return (
-    <Canvas className="!h-[520px]" camera={{ position: [0, 0.35, 4.1], fov: 42 }} dpr={[1, 1.65]}>
-      <color attach="background" args={["#f8fbff"]} />
+    <Canvas
+      className="!h-[380px] !bg-transparent md:!h-[540px]"
+      camera={{ position: [0, 0.35, 4.75], fov: 40 }}
+      dpr={[1, 1.65]}
+      gl={{ alpha: true, antialias: true }}
+    >
       <ambientLight intensity={1.4} />
       <pointLight position={[3, 3, 4]} intensity={3.8} color="#16d6d9" />
       <pointLight position={[-3, -1, 2]} intensity={2.2} color="#7b3ff2" />

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { navItems, profile } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/site/theme-toggle";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -18,8 +19,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-line bg-white/82 backdrop-blur-xl">
       <nav className="container flex min-h-[76px] items-center justify-between gap-4" aria-label="Main navigation">
         <Link href="/" className="flex items-center focus-ring" onClick={() => setIsOpen(false)} aria-label="Home">
-          <span className="inline-grid h-12 w-12 place-items-center rounded-ui bg-white shadow-glow">
-            <Image src="/logo-mark.svg" alt="Shashank Singh logo" width={42} height={42} priority />
+          <span className="inline-grid h-12 w-12 place-items-center transition hover:-translate-y-0.5">
+            <Image src="/logo-mark.svg" alt="Shashank Singh logo" width={48} height={48} priority />
           </span>
         </Link>
 
@@ -42,6 +43,7 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle />
           <a
             href={profile.github}
             target="_blank"
@@ -65,15 +67,18 @@ export function SiteHeader() {
           </ButtonLink>
         </div>
 
-        <button
-          type="button"
-          className="inline-grid h-11 w-11 place-items-center rounded-ui border border-line bg-white lg:hidden"
-          onClick={() => setIsOpen((current) => !current)}
-          aria-label="Toggle navigation"
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="inline-grid h-11 w-11 place-items-center rounded-ui border border-line bg-white"
+            onClick={() => setIsOpen((current) => !current)}
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </button>
+        </div>
       </nav>
 
       {isOpen ? (

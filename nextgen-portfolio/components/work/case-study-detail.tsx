@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArchitectureFlow } from "@/components/work/architecture-flow";
 import { ProjectArtwork } from "@/components/work/project-artwork";
 import { ButtonLink } from "@/components/ui/button-link";
-import { projects } from "@/lib/content";
+import { portfolioProjects } from "@/lib/content";
 import type { CaseStudy } from "@/types/content";
 
 type CaseStudyDetailProps = {
@@ -12,7 +12,7 @@ type CaseStudyDetailProps = {
 };
 
 export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
-  const project = projects.find((item) => item.slug === study.slug);
+  const project = portfolioProjects.find((item) => item.slug === study.slug);
 
   return (
     <>
@@ -44,7 +44,7 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
 
       <section className="container grid gap-8 pb-20 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="grid gap-5">
-          <div className="overflow-hidden rounded-ui border border-line bg-white shadow-panel" data-gsap>
+          <div className="project-card project-card-visual overflow-hidden rounded-ui border border-line bg-white shadow-panel" data-gsap>
             {project ? <ProjectArtwork project={project} /> : null}
           </div>
           <section className="rounded-ui border border-line bg-white p-6 shadow-sm" data-gsap>

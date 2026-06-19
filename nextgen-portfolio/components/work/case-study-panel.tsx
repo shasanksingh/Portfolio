@@ -1,10 +1,9 @@
 import { ArrowRight, Github } from "lucide-react";
-import Link from "next/link";
 
 import { ArchitectureFlow } from "@/components/work/architecture-flow";
 import { ProjectArtwork } from "@/components/work/project-artwork";
 import { ButtonLink } from "@/components/ui/button-link";
-import { projects } from "@/lib/content";
+import { portfolioProjects } from "@/lib/content";
 import type { CaseStudy } from "@/types/content";
 
 type CaseStudyPanelProps = {
@@ -15,20 +14,24 @@ type CaseStudyPanelProps = {
 
 export function CaseStudyPanel({ study, index, compact = false }: CaseStudyPanelProps) {
   const reversed = index % 2 === 1;
-  const project = projects.find((item) => item.slug === study.slug);
+  const project = portfolioProjects.find((item) => item.slug === study.slug);
+  const textOrder = compact ? "order-2 lg:order-none" : "";
+  const visualOrder = compact ? "order-1 lg:order-none" : "";
 
   return (
     <article
-      className="rounded-ui border border-line bg-white p-4 shadow-panel transition hover:-translate-y-1 md:p-5"
+      className="project-card rounded-ui border border-line bg-white/86 p-4 shadow-panel backdrop-blur transition hover:-translate-y-1 md:p-5"
       data-gsap
     >
       <div className={`grid gap-6 lg:grid-cols-[1.02fr_0.98fr] ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}>
-        <div className="rounded-ui border border-line bg-[#f7fbff] p-6">
+        <div className={`rounded-ui border border-line bg-[#f7fbff] p-5 md:p-6 ${textOrder}`}>
           <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
             {study.eyebrow}
           </p>
           <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight md:text-4xl">{study.title}</h2>
-          <p className="mt-4 text-base leading-7 text-muted">{study.summary}</p>
+          <p className={`${compact ? "mt-3 text-sm leading-6" : "mt-4 text-base leading-7"} text-muted`}>
+            {study.summary}
+          </p>
           <p className="mt-4 text-sm leading-6 text-muted">
             <strong className="text-foreground">Research question:</strong> {study.research.researchQuestion}
           </p>
@@ -48,8 +51,8 @@ export function CaseStudyPanel({ study, index, compact = false }: CaseStudyPanel
             </ButtonLink>
           </div>
         </div>
-        <div className="grid gap-4">
-          <div className="overflow-hidden rounded-ui border border-line bg-white shadow-sm">
+        <div className={`grid gap-4 ${visualOrder}`}>
+          <div className="project-card-visual overflow-hidden rounded-ui border border-line bg-white shadow-[0_24px_70px_rgba(8,103,232,0.14)]">
             {project ? <ProjectArtwork project={project} compact={compact} /> : null}
           </div>
           {!compact ? (
@@ -57,11 +60,6 @@ export function CaseStudyPanel({ study, index, compact = false }: CaseStudyPanel
               <h3 className="mb-3 font-display text-lg font-bold">Architecture</h3>
               <ArchitectureFlow nodes={study.architecture.slice(0, 5)} />
             </div>
-          ) : null}
-          {compact ? (
-            <Link href={`/case-studies/${study.slug}`} className="text-sm font-extrabold text-electric hover:text-purple">
-              Problem, solution, architecture, challenges, and impact
-            </Link>
           ) : null}
         </div>
       </div>
