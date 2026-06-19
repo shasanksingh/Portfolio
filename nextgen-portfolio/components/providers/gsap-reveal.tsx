@@ -23,21 +23,16 @@ export function GsapReveal() {
 
       const context = gsap.context(() => {
         gsap.utils.toArray<HTMLElement>("[data-gsap]").forEach((element) => {
-          gsap.fromTo(
-            element,
-            { autoAlpha: 0, y: 18 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.55,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: element,
-                start: "top 90%",
-                once: true,
-              },
+          gsap.from(element, {
+            y: 16,
+            duration: 0.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: element,
+              start: "top 92%",
+              once: true,
             },
-          );
+          });
         });
       });
 

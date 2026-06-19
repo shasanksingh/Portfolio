@@ -732,6 +732,7 @@ export const experience: ExperienceItem[] = [
   {
     company: "TCS",
     role: "AI/ML Developer",
+    year: "2026",
     period: "Current",
     summary:
       "Building AI and automation workflows with a backend-first engineering mindset across model integration, APIs, and practical delivery.",
@@ -742,8 +743,22 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
+    company: "Soven Developer",
+    role: "Developer",
+    year: "2025",
+    period: "Developer Experience",
+    summary:
+      "Worked across application development, product implementation, and delivery-focused engineering before moving into larger AI/ML systems.",
+    highlights: [
+      "Built practical product features with attention to usability and implementation quality.",
+      "Handled debugging, interface improvements, and iterative delivery across development tasks.",
+      "Strengthened the engineering base that now supports AI product and backend system work.",
+    ],
+  },
+  {
     company: "Persistent Systems",
     role: "Frontend Internship",
+    year: "2024",
     period: "Internship",
     summary:
       "Built frontend foundations across responsive UI, component thinking, and product polish before moving deeper into AI systems.",

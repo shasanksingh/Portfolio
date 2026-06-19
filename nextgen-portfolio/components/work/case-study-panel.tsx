@@ -23,8 +23,12 @@ export function CaseStudyPanel({ study, index, compact = false }: CaseStudyPanel
       className="project-card rounded-ui border border-line bg-white/86 p-4 shadow-panel backdrop-blur transition hover:-translate-y-1 md:p-5"
       data-gsap
     >
-      <div className={`grid gap-6 lg:grid-cols-[1.02fr_0.98fr] ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}>
-        <div className={`flex flex-col rounded-ui border border-line bg-[#f7fbff] p-5 md:p-6 ${textOrder}`}>
+      <div
+        className={`grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start ${
+          reversed ? "lg:[&>*:first-child]:order-2" : ""
+        }`}
+      >
+        <div className={`self-start rounded-ui border border-line bg-[#f7fbff] p-5 md:p-6 ${textOrder}`}>
           <div>
             <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
               {study.eyebrow}
@@ -60,7 +64,7 @@ export function CaseStudyPanel({ study, index, compact = false }: CaseStudyPanel
             </div>
           ) : null}
 
-          <div className={`${compact ? "mt-7" : "mt-auto pt-7"} flex flex-col gap-3 sm:flex-row`}>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={`/case-studies/${study.slug}`} icon={ArrowRight}>
               Read Case Study
             </ButtonLink>
@@ -69,7 +73,7 @@ export function CaseStudyPanel({ study, index, compact = false }: CaseStudyPanel
             </ButtonLink>
           </div>
         </div>
-        <div className={`grid gap-4 ${visualOrder}`}>
+        <div className={`grid self-start gap-4 ${visualOrder}`}>
           <div className="project-card-visual overflow-hidden rounded-ui border border-line bg-white shadow-[0_24px_70px_rgba(8,103,232,0.14)]">
             {project ? <ProjectArtwork project={project} compact={compact} /> : null}
           </div>

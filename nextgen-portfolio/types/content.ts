@@ -70,6 +70,7 @@ export type SkillCluster = {
 export type ExperienceItem = {
   company: string;
   role: string;
+  year: string;
   period: string;
   summary: string;
   highlights: string[];

@@ -40,39 +40,39 @@ const iconMap = {
 
 const colorMap = {
   "AI Resume Intelligence": {
-    shell: "from-[#e94f37] via-[#167a7f] to-[#26364a]",
-    accent: "#7ed6d3",
+    shell: "from-electric via-cyan to-[#0f172a]",
+    accent: "#16d6d9",
     hot: "#7b3ff2",
   },
   "AI Copilot": {
-    shell: "from-[#315f9e] via-[#167a7f] to-[#e94f37]",
-    accent: "#7ed6d3",
-    hot: "#ffffff",
+    shell: "from-purple via-electric to-cyan",
+    accent: "#9d70ff",
+    hot: "#16d6d9",
   },
   "AI Automation": {
-    shell: "from-[#167a7f] via-[#315f9e] to-[#e94f37]",
-    accent: "#7ed6d3",
-    hot: "#ffffff",
+    shell: "from-cyan via-electric to-purple",
+    accent: "#16d6d9",
+    hot: "#7b3ff2",
   },
   "Frontend Systems": {
-    shell: "from-[#26364a] via-[#315f9e] to-[#167a7f]",
-    accent: "#7ed6d3",
-    hot: "#e94f37",
+    shell: "from-[#0f172a] via-electric to-cyan",
+    accent: "#1c7cff",
+    hot: "#16d6d9",
   },
   "AI Commerce": {
-    shell: "from-[#e94f37] via-[#315f9e] to-[#167a7f]",
-    accent: "#7ed6d3",
-    hot: "#ffffff",
+    shell: "from-purple via-violet to-cyan",
+    accent: "#ff7adf",
+    hot: "#16d6d9",
   },
   "RAG Research": {
-    shell: "from-[#315f9e] via-[#167a7f] to-[#26364a]",
-    accent: "#7ed6d3",
-    hot: "#e94f37",
+    shell: "from-electric via-[#0f766e] to-cyan",
+    accent: "#16d6d9",
+    hot: "#0867e8",
   },
   "Agent Workflow": {
-    shell: "from-[#111821] via-[#315f9e] to-[#e94f37]",
-    accent: "#7ed6d3",
-    hot: "#e94f37",
+    shell: "from-[#111827] via-purple to-electric",
+    accent: "#9d70ff",
+    hot: "#16d6d9",
   },
   SDK: {
     shell: "from-[#17213a] via-[#4f46e5] to-[#16d6d9]",
@@ -102,9 +102,9 @@ const colorMap = {
 };
 
 const fallbackPalette = {
-  shell: "from-[#e94f37] via-[#167a7f] to-[#315f9e]",
-  accent: "#7ed6d3",
-  hot: "#ffffff",
+  shell: "from-electric via-cyan to-purple",
+  accent: "#16d6d9",
+  hot: "#7b3ff2",
 };
 
 const toolLabels: Record<string, string[]> = {
@@ -186,6 +186,44 @@ function UseCaseSvg({
   );
 }
 
+function DepthLayerSvg({
+  accent,
+  hot,
+  compact,
+}: {
+  accent: string;
+  hot: string;
+  compact: boolean;
+}) {
+  const className = `pointer-events-none absolute ${
+    compact ? "bottom-20 right-1 h-28 w-44 md:bottom-24 md:h-36 md:w-56" : "bottom-20 right-4 h-44 w-64"
+  } opacity-95 transition duration-500 group-hover/art:-translate-y-2 group-hover/art:rotate-1`;
+
+  return (
+    <svg className={className} viewBox="0 0 360 240" aria-hidden="true">
+      <path
+        d="M62 160 170 104l126 58-109 58z"
+        fill="rgba(255,255,255,0.16)"
+        stroke="rgba(255,255,255,0.46)"
+        strokeWidth="2"
+      />
+      <path d="m62 160 125 60v-24L62 136z" fill="rgba(255,255,255,0.08)" />
+      <path d="m296 162-109 58v-24l109-58z" fill="rgba(0,0,0,0.15)" />
+      <path d="M100 132 174 94l86 40-75 39z" fill="rgba(255,255,255,0.18)" />
+      <path d="M100 132v32l85 39v-30z" fill="rgba(255,255,255,0.09)" />
+      <path d="M260 134v31l-75 38v-30z" fill="rgba(0,0,0,0.16)" />
+      <path d="M134 108 179 84l52 24-46 25z" fill="rgba(255,255,255,0.2)" />
+      <path d="M134 108v25l51 24v-24z" fill="rgba(255,255,255,0.1)" />
+      <path d="M231 108v24l-46 25v-24z" fill="rgba(0,0,0,0.18)" />
+      <path d="M120 166 184 134l70 32" fill="none" stroke={accent} strokeLinecap="round" strokeWidth="3" opacity="0.9" />
+      <circle cx="120" cy="166" r="8" fill={hot} />
+      <circle cx="184" cy="134" r="9" fill="white" opacity="0.92" />
+      <circle cx="254" cy="166" r="8" fill={accent} />
+      <path d="M112 193h102M139 207h54" stroke="rgba(255,255,255,0.58)" strokeLinecap="round" strokeWidth="5" />
+    </svg>
+  );
+}
+
 export function ProjectArtwork({ project, compact = false }: ProjectArtworkProps) {
   const Icon = iconMap[project.slug as keyof typeof iconMap] ?? Code2;
   const palette = colorMap[project.category as keyof typeof colorMap] ?? fallbackPalette;
@@ -204,6 +242,7 @@ export function ProjectArtwork({ project, compact = false }: ProjectArtworkProps
       <div className="absolute -right-20 top-10 h-36 w-72 rotate-12 border border-white/18 bg-white/8 shadow-[0_28px_70px_rgba(0,0,0,0.18)] backdrop-blur-sm transition duration-500 group-hover/art:translate-y-2 group-hover/art:rotate-6" />
       <div className="absolute -left-16 bottom-12 h-28 w-64 -rotate-12 border border-white/16 bg-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.16)] transition duration-500 group-hover/art:-translate-y-2 group-hover/art:-rotate-6" />
 
+      <DepthLayerSvg accent={palette.accent} hot={palette.hot} compact={compact} />
       <UseCaseSvg slug={project.slug} accent={palette.accent} hot={palette.hot} compact={compact} />
 
       <div className={`relative z-10 flex min-h-[inherit] flex-col justify-between text-white ${compact ? "p-4 md:p-6" : "p-6"}`}>

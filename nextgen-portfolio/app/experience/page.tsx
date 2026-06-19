@@ -5,7 +5,7 @@ import { PageIntro } from "@/components/layout/page-intro";
 
 export const metadata: Metadata = {
   title: "Experience",
-  description: "Experience timeline for Shashank Singh across AI/ML development and frontend internship work.",
+  description: "Experience timeline for Shashank Singh across AI/ML development, development work, and frontend internship experience.",
 };
 
 export default function ExperiencePage() {
@@ -14,7 +14,7 @@ export default function ExperiencePage() {
       <PageIntro
         eyebrow="Experience"
         title="A timeline from product UI foundations to AI/ML systems."
-        description="The experience story is intentionally focused: frontend product craft, then backend-first AI/ML delivery."
+        description="A year-based view of practical development work, frontend product craft, and backend-first AI/ML delivery."
       />
       <ExperienceTimeline />
     </main>

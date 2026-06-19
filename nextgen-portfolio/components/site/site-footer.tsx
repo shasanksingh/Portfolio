@@ -68,7 +68,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="container relative mt-8 border-t border-line pt-6 text-sm font-semibold text-muted">
-        © 2026 Shashank Singh. AI engineering portfolio for retrieval, agents, and intelligent automation.
+        Copyright 2026 Shashank Singh. AI engineering portfolio for retrieval, agents, and intelligent automation.
       </div>
     </footer>
   );
