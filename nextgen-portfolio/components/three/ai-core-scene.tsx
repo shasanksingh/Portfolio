@@ -8,8 +8,8 @@ import * as THREE from "three";
 function NeuralNetwork() {
   const group = useRef<THREE.Group>(null);
   const points = useMemo(() => {
-    return Array.from({ length: 26 }, (_, index) => {
-      const angle = (index / 26) * Math.PI * 2;
+    return Array.from({ length: 22 }, (_, index) => {
+      const angle = (index / 22) * Math.PI * 2;
       const radius = 1.45 + (index % 4) * 0.2;
       const y = ((index % 7) - 3) * 0.18;
       return new THREE.Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
@@ -38,7 +38,7 @@ function NeuralNetwork() {
           key={`${connection[0].x}-${index}`}
           points={connection}
           color={index % 3 === 0 ? "#16d6d9" : "#7b3ff2"}
-        lineWidth={0.85}
+          lineWidth={0.85}
           transparent
           opacity={0.22}
         />
@@ -60,7 +60,7 @@ function NeuralNetwork() {
 function ParticleCloud() {
   const group = useRef<THREE.Group>(null);
   const particles = useMemo(() => {
-    return Array.from({ length: 72 }, (_, index) => {
+    return Array.from({ length: 48 }, (_, index) => {
       const radius = 1.65 + Math.random() * 1.18;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
@@ -188,7 +188,7 @@ export function AiCoreScene() {
     <Canvas
       className="!h-[380px] !bg-transparent md:!h-[540px]"
       camera={{ position: [0, 0.35, 4.75], fov: 40 }}
-      dpr={[1, 1.65]}
+      dpr={[1, 1.35]}
       gl={{ alpha: true, antialias: true }}
     >
       <ambientLight intensity={1.4} />

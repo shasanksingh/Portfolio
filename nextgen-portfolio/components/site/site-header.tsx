@@ -3,8 +3,8 @@
 import { Github, Linkedin, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { ButtonLink } from "@/components/ui/button-link";
 import { navItems, profile } from "@/lib/content";
@@ -13,7 +13,25 @@ import { ThemeToggle } from "@/components/site/theme-toggle";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const prefetchRoutes = () => {
+      navItems.filter((item) => item.href !== "/").forEach((item) => router.prefetch(item.href));
+    };
+    const idle = window.requestIdleCallback?.(prefetchRoutes, { timeout: 1800 });
+    const timeout = idle ? undefined : window.setTimeout(prefetchRoutes, 900);
+
+    return () => {
+      if (idle) {
+        window.cancelIdleCallback?.(idle);
+      }
+      if (timeout) {
+        window.clearTimeout(timeout);
+      }
+    };
+  }, [router]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/82 backdrop-blur-xl">
@@ -31,6 +49,9 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch
+                onMouseEnter={() => router.prefetch(item.href)}
+                onFocus={() => router.prefetch(item.href)}
                 className={cn(
                   "rounded-ui px-3 py-2 text-sm font-bold text-muted transition hover:bg-surface-strong hover:text-foreground",
                   active && "bg-electric/10 text-electric",
@@ -90,6 +111,7 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "rounded-ui px-3 py-3 text-sm font-bold text-muted transition hover:bg-surface-strong",

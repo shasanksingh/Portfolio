@@ -40,39 +40,39 @@ const iconMap = {
 
 const colorMap = {
   "AI Resume Intelligence": {
-    shell: "from-[#0a7cff] via-[#16d6d9] to-[#14213d]",
-    accent: "#16d6d9",
+    shell: "from-[#e94f37] via-[#167a7f] to-[#26364a]",
+    accent: "#7ed6d3",
     hot: "#7b3ff2",
   },
   "AI Copilot": {
-    shell: "from-[#7b3ff2] via-[#0867e8] to-[#16d6d9]",
-    accent: "#9d70ff",
-    hot: "#16d6d9",
+    shell: "from-[#315f9e] via-[#167a7f] to-[#e94f37]",
+    accent: "#7ed6d3",
+    hot: "#ffffff",
   },
   "AI Automation": {
-    shell: "from-[#16d6d9] via-[#0867e8] to-[#6d28d9]",
-    accent: "#16d6d9",
-    hot: "#7b3ff2",
+    shell: "from-[#167a7f] via-[#315f9e] to-[#e94f37]",
+    accent: "#7ed6d3",
+    hot: "#ffffff",
   },
   "Frontend Systems": {
-    shell: "from-[#17213a] via-[#0867e8] to-[#16d6d9]",
-    accent: "#1c7cff",
-    hot: "#16d6d9",
+    shell: "from-[#26364a] via-[#315f9e] to-[#167a7f]",
+    accent: "#7ed6d3",
+    hot: "#e94f37",
   },
   "AI Commerce": {
-    shell: "from-[#7b3ff2] via-[#e458ff] to-[#16d6d9]",
-    accent: "#ff7adf",
-    hot: "#16d6d9",
+    shell: "from-[#e94f37] via-[#315f9e] to-[#167a7f]",
+    accent: "#7ed6d3",
+    hot: "#ffffff",
   },
   "RAG Research": {
-    shell: "from-[#0867e8] via-[#0f9f9a] to-[#16d6d9]",
-    accent: "#16d6d9",
-    hot: "#0867e8",
+    shell: "from-[#315f9e] via-[#167a7f] to-[#26364a]",
+    accent: "#7ed6d3",
+    hot: "#e94f37",
   },
   "Agent Workflow": {
-    shell: "from-[#111827] via-[#7b3ff2] to-[#0867e8]",
-    accent: "#9d70ff",
-    hot: "#16d6d9",
+    shell: "from-[#111821] via-[#315f9e] to-[#e94f37]",
+    accent: "#7ed6d3",
+    hot: "#e94f37",
   },
   SDK: {
     shell: "from-[#17213a] via-[#4f46e5] to-[#16d6d9]",
@@ -102,9 +102,9 @@ const colorMap = {
 };
 
 const fallbackPalette = {
-  shell: "from-[#0867e8] via-[#16d6d9] to-[#7b3ff2]",
-  accent: "#16d6d9",
-  hot: "#7b3ff2",
+  shell: "from-[#e94f37] via-[#167a7f] to-[#315f9e]",
+  accent: "#7ed6d3",
+  hot: "#ffffff",
 };
 
 const toolLabels: Record<string, string[]> = {

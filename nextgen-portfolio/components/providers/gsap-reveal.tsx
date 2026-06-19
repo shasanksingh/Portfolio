@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function GsapReveal() {
   useEffect(() => {
@@ -10,29 +8,48 @@ export function GsapReveal() {
       return undefined;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
+    let cleanup: (() => void) | undefined;
+    let cancelled = false;
 
-    const context = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-gsap]").forEach((element) => {
-        gsap.fromTo(
-          element,
-          { autoAlpha: 0, y: 24 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 88%",
-              once: true,
+    const load = async () => {
+      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]);
+
+      if (cancelled) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const context = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>("[data-gsap]").forEach((element) => {
+          gsap.fromTo(
+            element,
+            { autoAlpha: 0, y: 18 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.55,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                once: true,
+              },
             },
-          },
-        );
+          );
+        });
       });
-    });
 
-    return () => context.revert();
+      cleanup = () => context.revert();
+    };
+
+    void load();
+
+    return () => {
+      cancelled = true;
+      cleanup?.();
+    };
   }, []);
 
   return null;

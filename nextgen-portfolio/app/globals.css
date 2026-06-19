@@ -9,6 +9,10 @@
   --line: 215 31% 88%;
   --surface: 0 0% 100%;
   --surface-strong: 216 100% 96%;
+  --legacy-primary: #e94f37;
+  --legacy-teal: #167a7f;
+  --legacy-blue: #315f9e;
+  --legacy-navy: #26364a;
 }
 
 html.dark {
@@ -34,18 +38,18 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    linear-gradient(90deg, rgba(8, 103, 232, 0.05) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(rgba(22, 214, 217, 0.05) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(180deg, #f6fbff 0%, #ffffff 42%, #f9f7ff 100%);
+    linear-gradient(90deg, rgba(22, 122, 127, 0.055) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(rgba(49, 95, 158, 0.052) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(180deg, #f8fafc 0%, #fff7f0 22%, #eaf7f8 58%, #f8fafc 100%);
   color: hsl(var(--foreground));
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 html.dark body {
   background:
-    linear-gradient(90deg, rgba(22, 214, 217, 0.07) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(rgba(123, 63, 242, 0.08) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(180deg, #07111f 0%, #0b1020 46%, #111827 100%);
+    linear-gradient(90deg, rgba(22, 122, 127, 0.12) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(rgba(49, 95, 158, 0.09) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(180deg, #111821 0%, #182231 48%, #101722 100%);
   color: hsl(var(--foreground));
 }
 
@@ -56,18 +60,18 @@ body::before {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(118deg, rgba(8, 103, 232, 0.1), transparent 29%),
-    linear-gradient(242deg, rgba(22, 214, 217, 0.12), transparent 36%),
-    linear-gradient(168deg, transparent 18%, rgba(123, 63, 242, 0.08) 42%, transparent 67%),
-    repeating-linear-gradient(135deg, rgba(8, 103, 232, 0.035) 0 1px, transparent 1px 18px);
+    linear-gradient(118deg, rgba(233, 79, 55, 0.11), transparent 31%),
+    linear-gradient(242deg, rgba(22, 122, 127, 0.13), transparent 38%),
+    linear-gradient(168deg, transparent 18%, rgba(49, 95, 158, 0.09) 43%, transparent 68%),
+    repeating-linear-gradient(135deg, rgba(22, 122, 127, 0.035) 0 1px, transparent 1px 18px);
 }
 
 html.dark body::before {
   background:
-    linear-gradient(118deg, rgba(8, 103, 232, 0.22), transparent 31%),
-    linear-gradient(242deg, rgba(22, 214, 217, 0.18), transparent 38%),
-    linear-gradient(168deg, transparent 16%, rgba(123, 63, 242, 0.15) 44%, transparent 70%),
-    repeating-linear-gradient(135deg, rgba(22, 214, 217, 0.045) 0 1px, transparent 1px 18px);
+    linear-gradient(118deg, rgba(233, 79, 55, 0.16), transparent 32%),
+    linear-gradient(242deg, rgba(22, 122, 127, 0.2), transparent 40%),
+    linear-gradient(168deg, transparent 16%, rgba(49, 95, 158, 0.16) 44%, transparent 70%),
+    repeating-linear-gradient(135deg, rgba(126, 214, 211, 0.045) 0 1px, transparent 1px 18px);
 }
 
 html.dark .bg-white,
@@ -112,6 +116,12 @@ a {
   text-decoration: none;
 }
 
+main,
+section,
+.container {
+  min-width: 0;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -119,6 +129,17 @@ a {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.hero-title {
+  font-size: clamp(2.65rem, 11vw, 4.5rem);
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
 }
 
 .animated-border {
@@ -150,17 +171,26 @@ a {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(120deg, rgba(8, 103, 232, 0.12), transparent 38%),
-    linear-gradient(260deg, rgba(22, 214, 217, 0.18), transparent 42%),
-    repeating-linear-gradient(90deg, rgba(8, 103, 232, 0.04) 0 1px, transparent 1px 90px);
+    linear-gradient(120deg, rgba(233, 79, 55, 0.1), transparent 36%),
+    linear-gradient(260deg, rgba(22, 122, 127, 0.2), transparent 44%),
+    repeating-linear-gradient(90deg, rgba(49, 95, 158, 0.045) 0 1px, transparent 1px 90px);
 }
 
 .ai-core-halo {
   background:
-    radial-gradient(ellipse at 52% 45%, rgba(22, 214, 217, 0.24), transparent 38%),
-    radial-gradient(ellipse at 45% 56%, rgba(8, 103, 232, 0.18), transparent 48%),
-    linear-gradient(140deg, rgba(255, 255, 255, 0.24), transparent 56%);
+    linear-gradient(120deg, rgba(233, 79, 55, 0.12), transparent 42%),
+    linear-gradient(250deg, rgba(22, 122, 127, 0.18), transparent 54%),
+    linear-gradient(35deg, rgba(49, 95, 158, 0.12), transparent 46%);
   filter: blur(8px);
+}
+
+html.dark .ai-core-halo {
+  background:
+    linear-gradient(120deg, rgba(233, 79, 55, 0.1), transparent 46%),
+    linear-gradient(250deg, rgba(22, 122, 127, 0.2), transparent 58%),
+    linear-gradient(35deg, rgba(49, 95, 158, 0.14), transparent 50%);
+  filter: blur(3px);
+  opacity: 0.7;
 }
 
 .project-texture {

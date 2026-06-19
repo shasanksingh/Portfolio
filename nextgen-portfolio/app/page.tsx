@@ -13,26 +13,26 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero-section relative overflow-hidden">
-        <div className="container relative grid items-center gap-12 py-12 md:py-16 lg:min-h-[760px] lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="max-w-3xl">
+        <div className="container relative grid min-w-0 items-center gap-10 py-10 md:gap-12 md:py-16 lg:min-h-[760px] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="min-w-0 max-w-3xl">
             <p className="mb-5 border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
               AI Engineer | Research-backed product systems
             </p>
-            <h1 className="text-balance font-display text-5xl font-extrabold leading-[1.02] tracking-normal text-foreground md:text-6xl lg:text-7xl">
+            <h1 className="hero-title max-w-full text-balance font-display font-extrabold leading-[1.02] tracking-normal text-foreground">
               Building Production AI Systems
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-muted md:mt-6 md:text-xl md:leading-8">
               RAG pipelines, agent workflows, FastAPI backends, LLM applications, and automation platforms presented with
               implementation evidence, not empty buzzwords.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/projects" icon={ArrowRight}>
+              <ButtonLink href="/projects" icon={ArrowRight} className="w-full sm:w-auto">
                 View Projects
               </ButtonLink>
-              <ButtonLink href={profile.resume} icon={FileText} variant="secondary" target="_blank">
+              <ButtonLink href={profile.resume} icon={FileText} variant="secondary" target="_blank" className="w-full sm:w-auto">
                 Download Resume
               </ButtonLink>
-              <ButtonLink href="/contact" icon={Mail} variant="ghost">
+              <ButtonLink href="/contact" icon={Mail} variant="ghost" className="w-full sm:w-auto">
                 Contact Me
               </ButtonLink>
             </div>
@@ -40,10 +40,7 @@ export default function HomePage() {
               {homeSignals.slice(0, 3).map((signal) => {
                 const Icon = signal.icon;
                 return (
-                  <div
-                    key={signal.label}
-                    className="rounded-ui border border-line bg-white/78 p-4 shadow-sm backdrop-blur"
-                  >
+                  <div key={signal.label} className="min-w-0 rounded-ui border border-line bg-white/78 p-4 shadow-sm backdrop-blur">
                     <Icon className="h-5 w-5 text-electric" aria-hidden="true" />
                     <strong className="mt-3 block font-display text-lg">{signal.label}</strong>
                     <span className="text-sm text-muted">{signal.value}</span>
@@ -52,7 +49,7 @@ export default function HomePage() {
               })}
             </div>
           </div>
-          <div className="relative min-h-[380px] md:min-h-[520px] lg:-mr-8">
+          <div className="relative min-w-0 md:min-h-[520px] lg:-mr-8">
             <AiCore />
           </div>
         </div>

@@ -25,8 +25,8 @@ export function ButtonLink({
   const isExternal = href.startsWith("http") || target === "_blank";
   const content = (
     <>
-      {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
-      {children}
+      {Icon ? <Icon className="h-4 w-4 flex-none" aria-hidden="true" /> : null}
+      <span className="min-w-0 text-center">{children}</span>
     </>
   );
 
