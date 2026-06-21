@@ -68,11 +68,11 @@ npm run build
 
 ## Deploy On Netlify
 
-The checked-in `netlify.toml` configures Netlify's OpenNext runtime:
+The application uses Next.js static export because every route is prerendered. The checked-in `netlify.toml` configures Netlify to publish the generated site:
 
 - Base directory: repository root
 - Build command: `npm run build`
-- Publish directory: `.next`
+- Publish directory: `out`
 - Node.js: 20
 
 After migrating from the previous static HTML site, use **Clear cache and deploy site** once in Netlify. In **Build settings**, ensure the base directory is empty or `.`, rather than `nextgen-portfolio`.
