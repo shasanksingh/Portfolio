@@ -1,8 +1,6 @@
 # Nextgen Portfolio
 
-Premium AI Engineer portfolio for Shashank Singh, built as a standalone Next.js application inside `nextgen-portfolio/`.
-
-The original static portfolio at the repository root is intentionally untouched and remains fully functional.
+Premium AI Engineer portfolio for Shashank Singh, built as a standalone Next.js application. The release branch publishes this application at the GitHub repository root.
 
 ## Stack
 
@@ -34,7 +32,7 @@ The original static portfolio at the repository root is intentionally untouched 
 
 Recommended local runtime:
 
-- Node.js 22.13 or newer
+- Node.js 20 or newer
 - npm 10.5 or newer
 
 ```bash
@@ -68,13 +66,15 @@ npm run typecheck
 npm run build
 ```
 
-## Deploy
+## Deploy On Netlify
 
-Recommended deployment: Vercel.
+The checked-in `netlify.toml` configures Netlify's OpenNext runtime:
 
-1. Import this repository in Vercel.
-2. Set the project root to `nextgen-portfolio`.
-3. Use the default Next.js build settings.
-4. Deploy.
+- Base directory: repository root
+- Build command: `npm run build`
+- Publish directory: `.next`
+- Node.js: 20
 
-For other hosts, run `npm run build` from `nextgen-portfolio/` and serve the Next.js production app with `npm run start`.
+After migrating from the previous static HTML site, use **Clear cache and deploy site** once in Netlify. In **Build settings**, ensure the base directory is empty or `.`, rather than `nextgen-portfolio`.
+
+Vercel can also deploy the repository with its default Next.js settings and no custom root directory.
