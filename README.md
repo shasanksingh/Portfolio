@@ -1,55 +1,80 @@
-# Shashank Singh Portfolio
+# Nextgen Portfolio
 
-An AI-focused personal portfolio for showcasing AI engineering, backend development, RAG systems, LLM workflows, and selected projects.
+Premium AI Engineer portfolio for Shashank Singh, built as a standalone Next.js application inside `nextgen-portfolio/`.
 
-## Overview
+The original static portfolio at the repository root is intentionally untouched and remains fully functional.
 
-This is a static portfolio website built with HTML, CSS, and JavaScript. It includes:
+## Stack
 
-- AI-themed home page with animated bot visuals
-- Skills page with AI and backend engineering focus
-- Projects page with interactive project cards
-- About page with an immersive AI assistant visual
-- Dedicated AI page for LLM, RAG, and backend AI work
-- Dark mode toggle with saved preference
-- Responsive layout for desktop and mobile
+- Next.js 15 App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- GSAP
+- React Three Fiber
+- Three.js
+- Shadcn-style UI components
+- Lucide React
+- Lenis smooth scroll
 
-## Pages
+## Routes
 
-- `index.html` - Home page
-- `skills.html` - Skills overview
-- `project.html` - Projects showcase
-- `about.html` - About section
-- `ai.html` - AI engineering detail page
-- `home.html` - Redirects to `index.html`
+- `/` - Home
+- `/about` - About
+- `/experience` - Experience timeline
+- `/skills` - Interactive AI galaxy and skill graph
+- `/projects` - Product-style project presentations
+- `/ai-systems` - Animated AI architecture diagrams
+- `/case-studies` - Case-study index
+- `/case-studies/[slug]` - Premium project case-study pages
+- `/resume` - Resume and capability summary
+- `/contact` - Contact links
 
-## Assets
+## Install
 
-Key visual assets:
+Recommended local runtime:
 
-- `logo-mark.svg` - Navigation logo
-- `bot-3d.svg` - Home hero AI bot
-- `about-bot.svg` - About page AI bot
-- `mini-bot.svg` - Cursor-follow bot
-- `hero-ai.svg` - AI system illustration
+- Node.js 22.13 or newer
+- npm 10.5 or newer
+
+```bash
+npm install
+```
 
 ## Run Locally
 
-No build step is required. Open `index.html` directly in a browser.
-
-```text
-index.html
+```bash
+npm run dev
 ```
 
-## Tech Used
+Then open `http://localhost:3000`.
 
-- HTML5
-- CSS3
-- JavaScript
-- Boxicons
-- Custom SVG assets
+## Production Build
 
-## Contact
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run start
+```
 
-- GitHub: https://github.com/shasanksingh
-- LinkedIn: https://www.linkedin.com/in/shashank-singh2003/
+## Verification
+
+This project is designed to be checked with:
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+## Deploy
+
+Recommended deployment: Vercel.
+
+1. Import this repository in Vercel.
+2. Set the project root to `nextgen-portfolio`.
+3. Use the default Next.js build settings.
+4. Deploy.
+
+For other hosts, run `npm run build` from `nextgen-portfolio/` and serve the Next.js production app with `npm run start`.
