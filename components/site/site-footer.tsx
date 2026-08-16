@@ -2,6 +2,7 @@ import { ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Icon3D } from "@/components/ui/icon-3d";
 import { profile } from "@/lib/content";
 
 export function SiteFooter() {
@@ -34,7 +35,7 @@ export function SiteFooter() {
               href="/contact"
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-ui bg-electric px-5 text-sm font-extrabold text-white shadow-glow transition hover:-translate-y-0.5"
             >
-              <Mail className="h-4 w-4" aria-hidden="true" />
+              <Icon3D icon={Mail} action="contact" tone="cyan" size="sm" />
               Contact
             </Link>
             <a
@@ -44,7 +45,7 @@ export function SiteFooter() {
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-ui border border-line bg-white px-5 text-sm font-extrabold text-foreground transition hover:-translate-y-0.5 hover:border-electric/40"
             >
               GitHub
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              <Icon3D icon={ArrowUpRight} action="external" tone="blue" size="sm" />
             </a>
           </div>
           <div className="mt-5 flex items-center gap-3">
@@ -61,7 +62,7 @@ export function SiteFooter() {
                 className="inline-grid h-10 w-10 place-items-center rounded-ui border border-line bg-white transition hover:-translate-y-0.5 hover:border-electric/40"
                 aria-label={item.label}
               >
-                <item.Icon className="h-4 w-4" aria-hidden="true" />
+                <Icon3D icon={item.Icon} action={item.label === "GitHub" ? "github" : "external"} tone="blue" size="sm" />
               </a>
             ))}
           </div>

@@ -1,5 +1,7 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 
+import { Icon3D } from "@/components/ui/icon-3d";
+
 type ArchitectureFlowProps = {
   nodes: string[];
 };
@@ -14,8 +16,8 @@ export function ArchitectureFlow({ nodes }: ArchitectureFlowProps) {
           </div>
           {index < nodes.length - 1 ? (
             <>
-              <ArrowDown className="mx-auto h-4 w-4 text-electric md:hidden" aria-hidden="true" />
-              <ArrowRight className="mx-auto hidden h-4 w-4 rotate-90 text-electric md:block" aria-hidden="true" />
+              <Icon3D icon={ArrowDown} action="navigate" tone="cyan" size="sm" className="mx-auto md:hidden" />
+              <Icon3D icon={ArrowRight} action="navigate" tone="cyan" size="sm" className="mx-auto hidden md:inline-grid icon-flow-down" />
             </>
           ) : null}
         </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { BrainCircuit, DatabaseZap, Layers3, ServerCog } from "lucide-react";
 import { useState } from "react";
 
+import { Icon3D } from "@/components/ui/icon-3d";
 import { skillClusters } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -30,8 +31,8 @@ export function SkillGalaxy() {
           Skills organized by the systems they help ship.
         </h2>
         <p className="mt-4 leading-7 text-muted">
-          Recruiters should be able to see the work pattern quickly: retrieval, agents, backend contracts, and the
-          product interface that makes the AI usable.
+          The pattern is simple to scan: retrieval, agents, backend contracts, and product interfaces that make the
+          system easier to use.
         </p>
         <div className="mt-6 grid gap-3">
           {skillClusters.map((cluster, index) => {
@@ -47,9 +48,7 @@ export function SkillGalaxy() {
                 )}
               >
                 <div className="flex items-start gap-4">
-                  <span className="inline-grid h-11 w-11 place-items-center rounded-ui border border-line bg-white text-electric">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
+                  <Icon3D icon={Icon} action="build" tone={index % 2 === 0 ? "cyan" : "violet"} size="lg" />
                   <span>
                     <strong className="block font-display text-lg">{cluster.title}</strong>
                     <small className="mt-1 block leading-5 text-muted">{cluster.description}</small>

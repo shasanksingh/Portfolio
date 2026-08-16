@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail, Send } from "lucide-react";
 
 import { PageIntro } from "@/components/layout/page-intro";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Icon3D } from "@/components/ui/icon-3d";
 import { profile } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -46,19 +47,19 @@ export default function ContactPage() {
                 className="group rounded-ui border border-line bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-panel"
                 data-gsap
               >
-                <Icon className="h-7 w-7 text-electric transition group-hover:text-electric" aria-hidden="true" />
+                <Icon3D icon={Icon} action={route.label === "GitHub" ? "github" : "external"} tone="blue" size="lg" />
                 <h2 className="mt-5 font-display text-2xl font-bold">{route.label}</h2>
                 <p className="mt-3 text-sm leading-6 text-muted">{route.body}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-electric">
                   Open {route.label}
-                  <Send className="h-4 w-4" aria-hidden="true" />
+                  <Icon3D icon={Send} action="external" tone="cyan" size="sm" />
                 </span>
               </a>
             );
           })}
         </div>
         <div className="animated-border rounded-ui bg-white p-7 shadow-panel" data-gsap>
-          <Mail className="h-8 w-8 text-electric" aria-hidden="true" />
+          <Icon3D icon={Mail} action="contact" tone="cyan" size="lg" />
           <h2 className="mt-5 font-display text-3xl font-extrabold">Current focus</h2>
           <p className="mt-4 leading-7 text-muted">
             Production-ready RAG, agentic automation, LLM product workflows, FastAPI AI services, and polished

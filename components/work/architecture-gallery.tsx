@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
+import { Icon3D } from "@/components/ui/icon-3d";
 import { architectureDiagrams } from "@/lib/content";
 
 export function ArchitectureGallery() {
@@ -21,7 +22,7 @@ export function ArchitectureGallery() {
           >
             <div className="grid gap-7 lg:grid-cols-[0.42fr_1fr] lg:items-start">
               <div className="rounded-ui bg-foreground p-6 text-white">
-                <Icon className="h-8 w-8 text-cyan" aria-hidden="true" />
+                <Icon3D icon={Icon} action="build" tone="cyan" size="lg" />
                 <h2 className="mt-5 font-display text-3xl font-extrabold">{diagram.title}</h2>
                 <p className="mt-4 text-sm leading-6 text-white/72">{diagram.description}</p>
               </div>
@@ -40,7 +41,7 @@ export function ArchitectureGallery() {
                       <strong className="mt-2 block font-display text-base">{node}</strong>
                     </div>
                     {index < diagram.nodes.length - 1 ? (
-                      <ArrowDown className="mx-auto h-5 w-5 text-purple md:hidden" aria-hidden="true" />
+                      <Icon3D icon={ArrowDown} action="navigate" tone="violet" size="sm" className="mx-auto md:hidden" />
                     ) : null}
                   </motion.div>
                 ))}

@@ -15,6 +15,7 @@ import {
   Workflow,
 } from "lucide-react";
 
+import { Icon3D } from "@/components/ui/icon-3d";
 import type { Project } from "@/types/content";
 
 const iconMap = {
@@ -247,13 +248,7 @@ export function ProjectArtwork({ project, compact = false }: ProjectArtworkProps
 
       <div className={`relative z-10 flex min-h-[inherit] flex-col justify-between text-white ${compact ? "p-4 md:p-6" : "p-6"}`}>
         <div className="flex items-start justify-between gap-5">
-          <span
-            className={`inline-grid place-items-center rounded-ui border border-white/22 bg-white/16 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur ${
-              compact ? "h-11 w-11 md:h-14 md:w-14" : "h-14 w-14"
-            }`}
-          >
-            <Icon className={compact ? "h-5 w-5 md:h-7 md:w-7" : "h-7 w-7"} aria-hidden="true" />
-          </span>
+          <Icon3D icon={Icon} action="build" tone="cyan" size="lg" className="project-art-icon" />
           <div className="grid gap-2 text-right">
             <span className="rounded-full border border-white/24 bg-white/16 px-3 py-1 text-xs font-extrabold backdrop-blur">
               {project.language}

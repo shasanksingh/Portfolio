@@ -38,12 +38,13 @@ const config = {
         navy: "#17213a",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
-        display: ["var(--font-outfit)", "Outfit", "system-ui", "sans-serif"],
+        sans: ["Aptos", "Segoe UI Variable", "Segoe UI", "system-ui", "sans-serif"],
+        display: ["Bahnschrift", "Aptos Display", "Segoe UI Variable Display", "Segoe UI", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 32px rgba(8, 103, 232, 0.22)",
-        panel: "0 22px 70px rgba(16, 24, 40, 0.1)",
+        glow: "0 0 34px rgba(8, 103, 232, 0.24)",
+        panel: "0 24px 80px rgba(15, 23, 42, 0.11)",
+        lift: "0 18px 48px rgba(15, 23, 42, 0.12)",
       },
       borderRadius: {
         ui: "8px",

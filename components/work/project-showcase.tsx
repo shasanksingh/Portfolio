@@ -1,16 +1,44 @@
-import { ArrowRight, ExternalLink, Github, Star } from "lucide-react";
+"use client";
+
+import { ArrowRight, ExternalLink, Github, RadioTower, RefreshCcw, Star } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button-link";
-import { caseStudies, portfolioProjects } from "@/lib/content";
+import { Icon3D } from "@/components/ui/icon-3d";
+import { useGitHubProjects } from "@/hooks/use-github-projects";
+import { caseStudies } from "@/lib/content";
 import { ProjectArtwork } from "@/components/work/project-artwork";
+import { isAIFocusedProject } from "@/lib/github-projects";
 
 export function ProjectShowcase() {
+  const { projects, source, status, fetchedAt } = useGitHubProjects();
   const featuredSlugs = new Set(caseStudies.map((study) => study.slug));
-  const featuredProjects = portfolioProjects.filter((project) => featuredSlugs.has(project.slug));
-  const otherProjects = portfolioProjects.filter((project) => !featuredSlugs.has(project.slug));
+  const featuredProjects = projects.filter((project) => featuredSlugs.has(project.slug));
+  const otherProjects = projects.filter((project) => !featuredSlugs.has(project.slug));
+  const aiProjectCount = projects.filter(isAIFocusedProject).length;
+  const updatedLabel = fetchedAt ? new Date(fetchedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Syncing";
 
   return (
     <section className="container grid gap-14 pb-20">
+      <div className="grid gap-3 rounded-ui border border-line bg-white/82 p-4 shadow-sm backdrop-blur md:grid-cols-4">
+        {[
+          { label: "Repository feed", value: source === "github" ? "Live GitHub" : "Curated fallback", icon: RadioTower },
+          { label: "Public projects", value: projects.length, icon: Github },
+          { label: "AI focused", value: aiProjectCount, icon: Star },
+          { label: status === "loading" ? "Sync status" : "Last refresh", value: status === "loading" ? "Fetching" : updatedLabel, icon: RefreshCcw },
+        ].map((item) => {
+          const Icon = item.icon;
+          return (
+            <div key={item.label} className="flex min-w-0 items-center gap-3 rounded-ui bg-surface-strong p-3">
+              <Icon3D icon={Icon} action={item.label === "Repository feed" ? "data" : "build"} tone="blue" size="md" />
+              <span className="min-w-0">
+                <strong className="block truncate font-display text-lg">{item.value}</strong>
+                <small className="text-xs font-bold uppercase text-muted">{item.label}</small>
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
       <div className="grid gap-6">
         {featuredProjects.map((project) => (
           <article
@@ -70,12 +98,12 @@ export function ProjectShowcase() {
 
       <section className="grid gap-6">
         <div className="max-w-3xl">
-            <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
-              Selected repository index
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight">
-              Supporting builds, prototypes, and engineering history.
-            </h2>
+          <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">
+            GitHub repository index
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight">
+            Supporting builds, prototypes, and engineering history.
+          </h2>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((project) => (
@@ -94,7 +122,7 @@ export function ProjectShowcase() {
                 <div className="flex items-start justify-between gap-4">
                   <span className="text-xs font-extrabold uppercase text-electric">{project.category}</span>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-muted">
-                    <Star className="h-3.5 w-3.5" aria-hidden="true" />
+                    <Icon3D icon={Star} action="build" tone="violet" size="sm" />
                     {project.stars}
                   </span>
                 </div>

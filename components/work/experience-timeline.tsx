@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, CalendarDays } from "lucide-react";
 
+import { Icon3D } from "@/components/ui/icon-3d";
 import { experience } from "@/lib/content";
 
 export function ExperienceTimeline() {
@@ -20,13 +21,13 @@ export function ExperienceTimeline() {
                   {item.year}
                 </span>
                 <span className="mt-2 flex items-center gap-1.5 text-xs font-bold uppercase text-muted md:justify-end">
-                  <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
+                  <Icon3D icon={CalendarDays} action="data" tone="blue" size="sm" />
                   {item.period}
                 </span>
               </div>
 
-              <span className="absolute left-0 top-2 z-10 inline-grid h-10 w-10 place-items-center rounded-ui bg-electric text-white shadow-glow md:left-[8.5rem] md:-translate-x-1/2">
-                <BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />
+              <span className="absolute left-0 top-2 z-10 inline-grid h-10 w-10 place-items-center md:left-[8.5rem] md:-translate-x-1/2">
+                <Icon3D icon={BriefcaseBusiness} action="build" tone="cyan" size="md" />
               </span>
 
               <motion.div

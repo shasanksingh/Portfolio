@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArchitectureFlow } from "@/components/work/architecture-flow";
 import { ProjectArtwork } from "@/components/work/project-artwork";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Icon3D } from "@/components/ui/icon-3d";
 import { portfolioProjects } from "@/lib/content";
 import type { CaseStudy } from "@/types/content";
 
@@ -18,7 +19,7 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
     <>
       <section className="container py-16 md:py-20" data-gsap>
         <Link href="/case-studies" className="inline-flex items-center gap-2 text-sm font-bold text-muted hover:text-electric">
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          <Icon3D icon={ArrowLeft} action="navigate" tone="blue" size="sm" />
           Back to case studies
         </Link>
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_0.78fr] lg:items-end">

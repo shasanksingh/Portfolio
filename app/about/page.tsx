@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Brain, Database, Layers3, ServerCog } from "lucide-react";
 
 import { PageIntro } from "@/components/layout/page-intro";
+import { Icon3D } from "@/components/ui/icon-3d";
 import { profile } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -77,7 +78,7 @@ export default function AboutPage() {
                   className="rounded-ui border border-line bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-panel"
                   data-gsap
                 >
-                  <Icon className="h-7 w-7 text-electric" aria-hidden="true" />
+                  <Icon3D icon={Icon} action="build" tone="cyan" size="lg" />
                   <h3 className="mt-5 font-display text-xl font-bold">{pillar.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted">{pillar.body}</p>
                 </article>

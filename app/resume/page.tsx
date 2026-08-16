@@ -3,6 +3,7 @@ import { Bot, DatabaseZap, Download, FileText, ServerCog, Workflow } from "lucid
 
 import { PageIntro } from "@/components/layout/page-intro";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Icon3D } from "@/components/ui/icon-3d";
 import { profile } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -46,7 +47,7 @@ export default function ResumePage() {
         <div className="rounded-ui border border-line bg-white p-6 shadow-panel" data-gsap>
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
             <div>
-              <FileText className="h-8 w-8 text-electric" aria-hidden="true" />
+              <Icon3D icon={FileText} action="download" tone="cyan" size="lg" />
               <h2 className="mt-4 font-display text-3xl font-extrabold">Shashank Singh Resume</h2>
               <p className="mt-2 max-w-2xl leading-7 text-muted">
                 AI/ML Developer focused on production-ready RAG, agents, LLM applications, and FastAPI systems.
@@ -64,7 +65,7 @@ export default function ResumePage() {
           const Icon = section.icon;
           return (
             <article key={section.title} className="rounded-ui border border-line bg-white p-6 shadow-sm" data-gsap>
-              <Icon className="h-7 w-7 text-electric" aria-hidden="true" />
+              <Icon3D icon={Icon} action="build" tone="blue" size="lg" />
               <h3 className="mt-5 font-display text-2xl font-bold">{section.title}</h3>
               <ul className="mt-4 grid gap-2">
                 {section.points.map((point) => (

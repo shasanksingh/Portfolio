@@ -30,7 +30,7 @@ export const profile = {
   github: "https://github.com/shasanksingh",
   linkedin: "https://www.linkedin.com/in/shashank-singh2003/",
   instagram: "https://www.instagram.com/singh.shasank.1/",
-  resume: "/ShashankSingh_CV_TCS.pdf",
+  resume: "/ShashankSingh-Resume.pdf",
 };
 
 export const navItems: NavItem[] = [
@@ -58,7 +58,7 @@ export const skillClusters: SkillCluster[] = [
     description:
       "Building grounded answer layers with embeddings, vector stores, query rewriting, re-ranking, and context packaging.",
     skills: ["FAISS", "ChromaDB", "Vector Search", "Hybrid Search", "Embeddings", "Semantic Search"],
-    proof: "Retrieval decisions are explained in each research note instead of hidden behind buzzwords.",
+    proof: "Retrieval decisions are explained in each research note instead of hidden behind surface-level labels.",
     accent: "cyan",
   },
   {

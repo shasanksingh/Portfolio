@@ -9,10 +9,10 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-electric text-white shadow-glow hover:-translate-y-0.5 hover:bg-[#075dd2]",
+          "bg-gradient-to-r from-electric via-[#0a7dff] to-cyan text-white shadow-glow hover:-translate-y-0.5 hover:shadow-lift",
         secondary:
-          "border border-line bg-white text-foreground shadow-sm hover:-translate-y-0.5 hover:border-electric/40 hover:shadow-panel",
-        ghost: "border border-transparent bg-transparent text-foreground hover:bg-white hover:shadow-sm",
+          "border border-line bg-white/88 text-foreground shadow-sm backdrop-blur hover:-translate-y-0.5 hover:border-electric/40 hover:shadow-lift",
+        ghost: "border border-transparent bg-transparent text-foreground hover:bg-white/82 hover:shadow-sm",
       },
       size: {
         default: "min-h-11 px-5",

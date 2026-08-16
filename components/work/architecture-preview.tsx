@@ -1,3 +1,4 @@
+import { Icon3D } from "@/components/ui/icon-3d";
 import { architectureDiagrams } from "@/lib/content";
 
 export function ArchitecturePreview() {
@@ -6,8 +7,8 @@ export function ArchitecturePreview() {
       {architectureDiagrams.map((diagram) => {
         const Icon = diagram.icon;
         return (
-          <article key={diagram.title} className="rounded-ui border border-line bg-white p-6 shadow-sm" data-gsap>
-            <Icon className="h-7 w-7 text-electric" aria-hidden="true" />
+          <article key={diagram.title} className="build-step-card rounded-ui border border-line bg-white p-6 shadow-sm" data-gsap>
+            <Icon3D icon={Icon} action="build" tone="cyan" size="lg" />
             <h3 className="mt-5 font-display text-2xl font-bold">{diagram.title}</h3>
             <p className="mt-3 text-sm leading-6 text-muted">{diagram.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">

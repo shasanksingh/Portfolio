@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Outfit } from "next/font/google";
 
 import { GsapReveal } from "@/components/providers/gsap-reveal";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
@@ -8,18 +7,6 @@ import { SiteHeader } from "@/components/site/site-header";
 import { profile } from "@/lib/content";
 
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shashank-singh.ai"),
@@ -60,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <script
           dangerouslySetInnerHTML={{
             __html:
