@@ -51,23 +51,22 @@ export function PortfolioCommandCenter() {
               </div>
             </div>
 
-            <div className="ng-portrait-stage" aria-label="Cartoon miniature of Shashank Singh, an AI/ML engineer">
-              <div className="ng-portrait-orbit ng-portrait-orbit-one" aria-hidden="true" />
-              <div className="ng-portrait-orbit ng-portrait-orbit-two" aria-hidden="true" />
+            <div className="ng-portrait-stage" aria-label="Cartoon miniature of Shashank Singh, an AI and machine learning engineer">
               <div className="ng-portrait-frame">
                 <Image
-                  src="/shashank-ai-orbit-hero.png"
-                  alt="Cartoon miniature of Shashank Singh as an AI engineer working at a laptop, surrounded by AI systems"
+                  src="/shashank-ai-workbench-hero.png"
+                  alt="Editorial cartoon miniature of Shashank Singh at an AI engineering workbench"
                   width={1254}
                   height={1254}
                   priority
                   sizes="(max-width: 1020px) 92vw, 46vw"
                   className="ng-portrait-image"
                 />
-                <div className="ng-miniature-data" aria-hidden="true">
-                  <span className="ng-miniature-name">Shashank Singh</span>
-                  <span className="ng-miniature-role">AI / ML Engineer</span>
-                  <span className="ng-miniature-focus">RAG · Agents · FastAPI</span>
+                <div className="ng-miniature-type" aria-hidden="true">
+                  <span className="ng-miniature-type-name">Shashank Singh</span>
+                  <span className="ng-miniature-type-role">AI / ML Engineer</span>
+                  <span className="ng-miniature-type-stack">Retrieval Systems · Agent Workflows · FastAPI</span>
+                  <span className="ng-miniature-type-method">Design · Ground · Evaluate · Ship</span>
                 </div>
               </div>
             </div>
