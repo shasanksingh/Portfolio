@@ -1,0 +1,105 @@
+/* Interactive hero miniature: page typography sits behind the illustration, never over its face. */
+.portfolio-nextgen .ng-portrait-stage {
+  --hero-tilt-x: 0deg;
+  --hero-tilt-y: 0deg;
+  --hero-light-x: 50%;
+  --hero-light-y: 50%;
+  position: relative;
+  display: grid;
+  min-height: clamp(470px, 43vw, 620px);
+  place-items: center;
+  isolation: isolate;
+  overflow: visible;
+  perspective: 1300px;
+}
+
+.portfolio-nextgen .ng-portrait-stage::before {
+  display: block;
+  z-index: -3;
+  width: 86%;
+  background: radial-gradient(circle at var(--hero-light-x) var(--hero-light-y), rgba(123, 100, 255, .32), rgba(61, 213, 191, .11) 42%, transparent 69%);
+  filter: blur(14px);
+  transition: background .25s ease;
+}
+
+.ng-portrait-taxonomy {
+  position: absolute;
+  z-index: -1;
+  inset: 2% -7% 5%;
+  overflow: hidden;
+  pointer-events: none;
+  color: rgba(194, 180, 255, .2);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5.7rem);
+  font-weight: 900;
+  letter-spacing: -.09em;
+  line-height: .75;
+  text-transform: uppercase;
+}
+
+.ng-portrait-taxonomy span {
+  position: absolute;
+  display: block;
+  animation: ng-taxonomy-drift 11s ease-in-out infinite alternate;
+  text-shadow: 0 0 28px rgba(154, 133, 255, .12);
+}
+
+.ng-portrait-taxonomy span:nth-child(1) { top: 4%; left: 2%; color: rgba(223, 214, 255, .3); animation-delay: -1.2s; }
+.ng-portrait-taxonomy span:nth-child(2) { top: 18%; right: 0; color: rgba(114, 236, 210, .21); animation-delay: -4.1s; }
+.ng-portrait-taxonomy span:nth-child(3) { top: 44%; left: -2%; color: rgba(204, 189, 255, .17); animation-delay: -7s; }
+.ng-portrait-taxonomy span:nth-child(4) { top: 58%; right: 1%; color: rgba(102, 229, 204, .2); animation-delay: -2.5s; }
+.ng-portrait-taxonomy span:nth-child(5) { bottom: 11%; left: 5%; color: rgba(219, 210, 255, .2); animation-delay: -5.8s; }
+.ng-portrait-taxonomy span:nth-child(6) { right: 8%; bottom: 2%; color: rgba(141, 230, 208, .2); animation-delay: -8.2s; }
+
+.ng-portrait-axis { position: absolute; z-index: -2; width: 92%; height: 64%; border: 1px solid rgba(175, 154, 255, .28); border-radius: 50%; pointer-events: none; transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+.ng-portrait-axis-one { transform: rotate(-19deg) rotateY(var(--hero-tilt-y)); }
+.ng-portrait-axis-two { width: 59%; height: 104%; border-color: rgba(100, 229, 205, .22); transform: rotate(31deg) rotateX(var(--hero-tilt-x)); }
+
+.ng-portrait-card { position: relative; z-index: 2; width: min(100%, 35.5rem); cursor: pointer; outline: none; transform-style: preserve-3d; }
+.ng-portrait-card:focus-visible { border-radius: 2rem; box-shadow: 0 0 0 3px #fff, 0 0 0 6px #8b5cf6; }
+.ng-portrait-card-inner { position: relative; width: 100%; aspect-ratio: 1; transform-style: preserve-3d; transition: transform .82s cubic-bezier(.2,.72,.18,1), filter .4s ease; transform: rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y)); will-change: transform; }
+.ng-portrait-stage.is-flipped .ng-portrait-card-inner { transform: rotateX(calc(var(--hero-tilt-x) * -.55)) rotateY(calc(180deg + var(--hero-tilt-y))); }
+.ng-portrait-card:hover .ng-portrait-card-inner { filter: saturate(1.09) contrast(1.02); }
+
+.ng-portrait-face { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(230, 221, 255, .43); border-radius: 34% 34% 1.25rem 1.25rem / 27% 27% 1.25rem 1.25rem; backface-visibility: hidden; box-shadow: 0 36px 85px rgba(4, 3, 15, .42), 0 0 0 1rem rgba(167, 139, 250, .045); }
+.ng-portrait-face-front { background: #171326; }
+.ng-portrait-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ng-portrait-glint { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--hero-light-x) var(--hero-light-y), rgba(255, 255, 255, .25), transparent 27%), linear-gradient(128deg, rgba(255,255,255,.08), transparent 28%, transparent 74%, rgba(121,241,217,.1)); mix-blend-mode: screen; }
+
+.ng-portrait-face-back { display: grid; align-content: center; padding: clamp(2rem, 6vw, 4rem); background: linear-gradient(145deg, #272047, #151126 56%, #172e37); color: #f9f6ff; transform: rotateY(180deg); }
+.ng-portrait-face-back::before { position: absolute; inset: 0; content: ""; opacity: .45; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 2rem 2rem; mask-image: linear-gradient(135deg, black, transparent 76%); }
+.ng-portrait-face-back > * { position: relative; z-index: 1; }
+.ng-back-kicker { color: #88f0d9; font-size: .62rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.ng-portrait-face-back strong { max-width: 8ch; margin-top: 1rem; font-family: var(--font-inter-tight), sans-serif; font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 850; letter-spacing: -.08em; line-height: .84; }
+.ng-back-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin-top: 1.8rem; }
+.ng-back-grid span { display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(255,255,255,.16); border-radius: .55rem; padding: .65rem .72rem; background: rgba(255,255,255,.06); color: rgba(255,255,255,.82); font-size: .59rem; font-weight: 900; letter-spacing: .07em; }
+.ng-back-grid i { width: .4rem; height: .4rem; border-radius: 50%; background: #88f0d9; box-shadow: 0 0 0 .2rem rgba(136,240,217,.12); }
+.ng-portrait-face-back p { max-width: 27rem; margin: 1.25rem 0 0; color: rgba(255,255,255,.64); font-size: .78rem; font-weight: 650; line-height: 1.55; }
+
+.ng-portrait-control { position: absolute; z-index: 3; right: -1%; bottom: 7%; display: flex; align-items: center; gap: .55rem; border: 1px solid rgba(255,255,255,.18); border-radius: 99px; padding: .48rem .7rem; background: rgba(18, 13, 36, .71); box-shadow: 0 10px 24px rgba(0,0,0,.18); color: rgba(255,255,255,.8); font-size: .55rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(10px); pointer-events: none; }
+.ng-portrait-control i { width: .48rem; height: .48rem; border-radius: 50%; background: #8ef1d7; box-shadow: 0 0 0 .22rem rgba(142,241,215,.12); animation: ng-pulse 2.4s ease-in-out infinite; }
+.ng-portrait-hint { position: absolute; z-index: 2; bottom: -1.65rem; left: 50%; margin: 0; color: rgba(255,255,255,.47); font-size: .58rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; transform: translateX(-50%); white-space: nowrap; }
+.ng-portrait-hint span { margin-inline: .3rem; color: #8ef1d7; }
+
+/* The home project cards become animated dossiers, with different movement per system. */
+.ng-work-card { --ng-card-turn: -1.1deg; position: relative; display: flex; flex-direction: column; min-height: 39rem; padding: 1rem 1rem 1.15rem; border: 1px solid color-mix(in srgb, var(--ng-deck-accent) 45%, #d9d0c5); border-radius: 1.15rem .48rem 1.15rem .48rem; background: linear-gradient(135deg, #fffdf9, color-mix(in srgb, var(--ng-deck-accent) 7%, #f3ece2)); box-shadow: .45rem .45rem 0 color-mix(in srgb, var(--ng-deck-accent) 18%, transparent), 0 16px 38px rgba(45,35,61,.08); transform-origin: 50% 100%; transition: transform .5s cubic-bezier(.2,.75,.2,1), box-shadow .5s ease, border-color .35s ease; animation: ng-card-arrive .78s cubic-bezier(.2,.75,.2,1) both; }
+.ng-work-card:nth-child(2) { --ng-card-turn: 1.05deg; animation-delay: .12s; }.ng-work-card:nth-child(3) { --ng-card-turn: -.6deg; animation-delay: .24s; }
+.ng-work-card:hover { z-index: 3; border-color: var(--ng-deck-accent); box-shadow: .72rem .78rem 0 color-mix(in srgb, var(--ng-deck-accent) 24%, transparent), 0 32px 65px rgba(45,35,61,.17); transform: translateY(-13px) rotate(var(--ng-card-turn)); }
+.ng-work-card::before { height: .26rem; background: var(--ng-deck-accent); }.ng-work-card::after { display: none; }
+.ng-work-card-serial { display: flex; align-items: center; justify-content: space-between; margin-bottom: .4rem; color: color-mix(in srgb, var(--ng-deck-accent) 72%, #3d3246); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .54rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+.ng-work-card-serial span { font-family: var(--font-inter-tight), sans-serif; font-size: 1.8rem; letter-spacing: -.1em; line-height: .8; }.ng-work-card-serial i { font-style: normal; opacity: .65; }
+.ng-work-card-top { margin-bottom: .72rem; }.ng-work-card-top a { border-radius: .48rem; }.ng-work-card:hover .ng-work-card-top a { background: var(--ng-deck-accent); transform: rotate(0) scale(1.08); }
+.ng-work-art { position: relative; height: 14.8rem; border-radius: .75rem .25rem .75rem .25rem; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ng-deck-accent) 25%, transparent); transition: transform .5s cubic-bezier(.2,.75,.2,1), box-shadow .5s ease; }.ng-work-card:hover .ng-work-art { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ng-deck-accent) 60%, transparent), 0 16px 28px color-mix(in srgb, var(--ng-deck-accent) 19%, transparent); transform: translateY(-3px) rotate(calc(var(--ng-card-turn) * -.45)); }
+.ng-work-art::after { position: absolute; z-index: 3; inset: 0; pointer-events: none; content: ""; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.48) 49%, transparent 67%); transform: translateX(-140%); transition: transform .75s cubic-bezier(.2,.75,.2,1); }.ng-work-card:hover .ng-work-art::after { transform: translateX(135%); }
+.ng-work-art-scan { position: absolute; z-index: 4; top: 1rem; right: 1rem; width: .5rem; height: .5rem; border-radius: 50%; background: var(--ng-deck-accent); box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--ng-deck-accent) 18%, transparent); animation: ng-card-beacon 2.8s ease-in-out infinite; }
+.ng-work-card-rail { display: flex; align-items: center; gap: .38rem; margin-top: .8rem; color: color-mix(in srgb, var(--ng-deck-accent) 72%, #554c5a); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .47rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }.ng-work-card-rail i { width: .27rem; height: .27rem; border-radius: 50%; background: var(--ng-deck-accent); }.ng-work-card:hover .ng-work-card-rail { animation: ng-rail-jolt .7s ease both; }
+.ng-card-kicker { margin-top: 1rem; }.ng-card-summary { min-height: 4.35rem; }.ng-stack-list { margin-top: 1rem; }.ng-stack-list span { border-radius: .38rem; background: color-mix(in srgb, var(--ng-deck-accent) 12%, #f5efe7); transition: transform .25s ease, background .25s ease; }.ng-work-card:hover .ng-stack-list span { background: color-mix(in srgb, var(--ng-deck-accent) 18%, #f5efe7); }.ng-work-card:hover .ng-stack-list span:nth-child(odd) { transform: translateY(-2px); }.ng-card-link-row { position: static; margin-top: auto; padding-top: 1rem; }.ng-card-link-row a { color: var(--ng-ink); }.ng-card-link-row a::after { width: 1.4rem; height: 1px; margin-left: .15rem; content: ""; background: var(--ng-deck-accent); transition: width .3s ease; }.ng-work-card:hover .ng-card-link-row a::after { width: 2.8rem; }
+
+@keyframes ng-taxonomy-drift { from { transform: translate3d(-.18rem, -.2rem, 0) rotate(-2deg); } to { transform: translate3d(.34rem, .27rem, 0) rotate(2deg); } }
+@keyframes ng-card-arrive { from { opacity: 0; transform: translateY(1.8rem) rotate(0); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+@keyframes ng-card-beacon { 0%, 100% { transform: scale(.8); opacity: .5; } 52% { transform: scale(1.15); opacity: 1; } }
+@keyframes ng-rail-jolt { 35% { transform: translateX(.32rem); } 65% { transform: translateX(-.14rem); } }
+
+@media (max-width: 1020px) { .portfolio-nextgen .ng-portrait-stage { width: min(100%, 37rem); min-height: 540px; justify-self: center; }.ng-portrait-taxonomy { inset-inline: -2%; }.ng-work-card { min-height: 38rem; } }
+@media (max-width: 640px) { .portfolio-nextgen .ng-portrait-stage { min-height: 375px; }.ng-portrait-card { width: min(88vw, 27rem); }.ng-portrait-taxonomy { font-size: clamp(2.25rem, 13vw, 4rem); }.ng-portrait-taxonomy span:nth-child(2), .ng-portrait-taxonomy span:nth-child(4), .ng-portrait-taxonomy span:nth-child(6) { right: -5%; }.ng-portrait-face-back { padding: 1.6rem; }.ng-back-grid { margin-top: 1rem; }.ng-portrait-face-back strong { font-size: 2.25rem; }.ng-portrait-control { right: 0; bottom: 8%; }.ng-portrait-hint { bottom: -1.35rem; font-size: .48rem; }.ng-work-card { min-height: 37rem; }.ng-work-art { height: 13.5rem; } }
+@media (prefers-reduced-motion: reduce) { .ng-portrait-taxonomy span, .ng-work-card, .ng-work-art-scan { animation: none !important; }.ng-portrait-card-inner, .ng-work-card, .ng-work-art, .ng-work-art::after, .ng-work-card-rail { transition: none !important; }.ng-portrait-card-inner, .ng-portrait-stage.is-flipped .ng-portrait-card-inner { transform: none; }.ng-portrait-face-back { display: none; } }
