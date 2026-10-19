@@ -4,17 +4,128 @@ import type { Project } from "@/types/content";
 
 import styles from "./project-artwork.module.css";
 
-type ProjectArtworkProps = { project: Pick<Project, "title" | "slug" | "category" | "language" | "stack">; compact?: boolean };
-const palettes: Record<string, { accent: string; soft: string }> = { "ats-resume-ai": { accent: "#a78bfa", soft: "#71e9d0" }, "sql-copilot": { accent: "#61d7ff", soft: "#83f0c8" }, "semantic-rag-assessment": { accent: "#f38a79", soft: "#f6d371" } };
+type ProjectArtworkProps = {
+  project: Pick<Project, "title" | "slug" | "category" | "language" | "stack">;
+  compact?: boolean;
+};
 
-function ResumeVisual() { return <div className={styles.resumeLayout}><div className={styles.resumeSheet}><div className={styles.resumeSheetHeader}><strong>Candidate signal</strong><span>Grounded</span></div><div className={styles.resumeLines}><i /><i /><i /><i /></div><div className={styles.resumeChecks}><span><b /> Evidence mapped</span><span><b /> Skills matched</span></div></div><div className={styles.scoreCard}><strong>92</strong><span>fit signal</span></div></div>; }
-function SqlVisual() { return <div className={styles.sqlLayout}><div className={styles.terminal}><div className={styles.terminalTop}><i /><i /><i /></div><div className={styles.query}><span>SELECT revenue</span><b>FROM orders</b><span>WHERE region = ?</span><i /></div></div><div className={styles.schema}><div className={styles.schemaCard}><strong>Orders</strong><span>id · region · revenue</span></div><div className={styles.schemaLink} /><div className={styles.schemaCard}><strong>Users</strong><span>id · cohort · status</span></div></div></div>; }
-function RagVisual() { return <div className={styles.ragLayout}><div className={styles.searchBar}><span>How does retrieval stay grounded?</span><b>Query</b></div><div className={styles.retrievalGrid}><div className={styles.vectorField} /><div className={styles.contextStack}><div className={styles.contextCard}><strong>01 / Relevant context</strong><span /></div><div className={styles.contextCard}><strong>02 / Vector match</strong><span /></div><div className={styles.contextCard}><strong>03 / Answer evidence</strong><span /></div></div></div></div>; }
-function GenericVisual() { return <div className={styles.genericLayout}>{["Input", "Logic", "Review"].map((label) => <div className={styles.systemNode} key={label}><b /><strong>{label}</strong><span /></div>)}<div className={styles.systemRail} /></div>; }
+type ArtDirection = {
+  index: string;
+  label: string;
+  accent: string;
+  ink: string;
+};
+
+const directions: Record<string, ArtDirection> = {
+  "ats-resume-ai": {
+    index: "01",
+    label: "Candidate intelligence",
+    accent: "#c45478",
+    ink: "#3c1931",
+  },
+  "sql-copilot": {
+    index: "02",
+    label: "Query reasoning",
+    accent: "#20745f",
+    ink: "#0f382f",
+  },
+  "semantic-rag-assessment": {
+    index: "03",
+    label: "Evidence retrieval",
+    accent: "#a64d2d",
+    ink: "#4d211b",
+  },
+};
+
+function ResumeArtifact() {
+  return (
+    <div className={styles.resumeArtifact}>
+      <div className={styles.resumePaper}>
+        <div className={styles.paperMeta}><span>Profile scan</span><span>v.04</span></div>
+        <h3>Candidate<br />signal</h3>
+        <div className={styles.paperLines}><i /><i /><i /><i /></div>
+        <div className={styles.checkRows}><span><b>✓</b> Experience grounded</span><span><b>✓</b> Skills verified</span></div>
+      </div>
+      <div className={styles.scoreStamp}><strong>92%</strong><span>match<br />confidence</span></div>
+      <span className={styles.marginNote}>evidence<br />over guesswork</span>
+    </div>
+  );
+}
+
+function SqlArtifact() {
+  return (
+    <div className={styles.sqlArtifact}>
+      <div className={styles.querySheet}>
+        <div className={styles.sheetCode}><span>01 / intent</span><strong>SELECT revenue</strong><b>FROM sales</b><strong>WHERE region = ?</strong></div>
+        <div className={styles.queryUnderline} />
+      </div>
+      <div className={styles.schemaStrip}><span>orders</span><i /><span>users</span><i /><span>metrics</span></div>
+      <div className={styles.planSlip}><span>planner path</span><strong>schema → join → validate</strong></div>
+    </div>
+  );
+}
+
+function RagArtifact() {
+  return (
+    <div className={styles.ragArtifact}>
+      <div className={styles.queryMarker}><span>Question</span><strong>retrieve the evidence</strong></div>
+      <div className={styles.evidenceTrail} aria-hidden="true"><i /><i /><i /></div>
+      <div className={styles.evidenceStack}>
+        <article><span>01</span><strong>Source passage</strong><p>semantic match</p></article>
+        <article><span>02</span><strong>Relevant context</strong><p>retrieval ranked</p></article>
+        <article><span>03</span><strong>Grounded answer</strong><p>citations retained</p></article>
+      </div>
+    </div>
+  );
+}
+
+function GenericArtifact() {
+  return (
+    <div className={styles.genericArtifact}>
+      <div className={styles.ideaCard}><span>01 / Input</span><strong>Real workflow</strong><i /></div>
+      <div className={styles.ideaCard}><span>02 / Method</span><strong>Clear reasoning</strong><i /></div>
+      <div className={styles.ideaCard}><span>03 / Outcome</span><strong>Useful system</strong><i /></div>
+      <div className={styles.pinLine} />
+    </div>
+  );
+}
 
 export function ProjectArtwork({ project, compact = false }: ProjectArtworkProps) {
-  const palette = palettes[project.slug] ?? { accent: "#9d70ff", soft: "#65e6cf" };
-  const style = { "--art-accent": palette.accent, "--art-accent-soft": palette.soft } as CSSProperties;
-  const visual = project.slug === "ats-resume-ai" ? <ResumeVisual /> : project.slug === "sql-copilot" ? <SqlVisual /> : project.slug === "semantic-rag-assessment" ? <RagVisual /> : <GenericVisual />;
-  return <div className={`group/art ${styles.art} ${compact ? styles.compact : ""}`} style={style} role="img" aria-label={`${project.title} product-system visual`}><div className={styles.topbar}><span className={styles.eyebrow}>{project.category}</span><span className={styles.state}>Live signal</span></div>{visual}<div className={styles.liveTrace} aria-hidden="true"><i /><i /><i /></div><div className={styles.footer}><strong>{project.title}</strong><span>{project.language}<br />{project.stack.slice(0, 2).join(" / ")}</span></div></div>;
+  const direction = directions[project.slug] ?? {
+    index: "00",
+    label: "Engineering note",
+    accent: "#7756b8",
+    ink: "#2f1e52",
+  };
+  const style = {
+    "--art-accent": direction.accent,
+    "--art-ink": direction.ink,
+  } as CSSProperties;
+  const visual = project.slug === "ats-resume-ai"
+    ? <ResumeArtifact />
+    : project.slug === "sql-copilot"
+      ? <SqlArtifact />
+      : project.slug === "semantic-rag-assessment"
+        ? <RagArtifact />
+        : <GenericArtifact />;
+
+  return (
+    <div
+      className={`${styles.art} ${compact ? styles.compact : ""}`}
+      style={style}
+      role="img"
+      aria-label={`${project.title} editorial project artifact`}
+    >
+      <header className={styles.header}>
+        <span>Project file / {direction.index}</span>
+        <strong>{direction.label}</strong>
+      </header>
+      <div className={styles.canvas}>{visual}</div>
+      <footer className={styles.footer}>
+        <span className={styles.projectIndex}>{direction.index}</span>
+        <strong>{project.title}</strong>
+        <span className={styles.stack}>{project.language} · {project.stack.slice(0, 2).join(" / ")}</span>
+      </footer>
+    </div>
+  );
 }

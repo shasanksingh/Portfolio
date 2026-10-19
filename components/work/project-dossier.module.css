@@ -2,84 +2,52 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-color: rgba(167, 139, 250, .24);
+  border-color: rgba(255, 255, 255, .12);
   background:
-    radial-gradient(circle at 88% 8%, rgba(124, 92, 255, .16), transparent 29%),
-    linear-gradient(140deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .018) 44%, rgba(124, 92, 255, .06)),
-    hsl(var(--surface));
+    linear-gradient(rgba(255, 255, 255, .026) 1px, transparent 1px) 0 0 / 2rem 2rem,
+    linear-gradient(90deg, rgba(255, 255, 255, .026) 1px, transparent 1px) 0 0 / 2rem 2rem,
+    #121017;
 }
 
 .dossier::before {
   position: absolute;
   z-index: -1;
   top: 0;
-  right: 0;
   left: 0;
-  height: 3px;
+  width: .3rem;
+  height: 100%;
   content: "";
-  background: linear-gradient(90deg, #9d70ff, #16d6d9 54%, transparent 90%);
+  background: rgba(255, 255, 255, .16);
+  transition: background .25s ease, width .25s ease;
 }
 
 .dossier::after {
   position: absolute;
   z-index: -1;
-  top: 1.25rem;
-  right: 1.2rem;
+  right: 1.1rem;
+  top: .95rem;
+  color: rgba(255, 255, 255, .16);
   content: attr(data-dossier);
-  color: rgba(255, 255, 255, .07);
-  font-size: .62rem;
-  font-weight: 900;
-  letter-spacing: .16em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .53rem;
+  font-weight: 800;
+  letter-spacing: .09em;
   text-transform: uppercase;
-  transform: rotate(90deg) translateX(100%);
-  transform-origin: right top;
 }
 
-.dossier:nth-of-type(3n + 2) {
-  border-color: rgba(22, 214, 217, .25);
-  background:
-    radial-gradient(circle at 88% 8%, rgba(22, 214, 217, .13), transparent 30%),
-    linear-gradient(140deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .018) 44%, rgba(22, 214, 217, .05)),
-    hsl(var(--surface));
-}
-
-.dossier:nth-of-type(3n + 2)::before { background: linear-gradient(90deg, #16d6d9, #67e8b8 52%, transparent 90%); }
-.dossier:nth-of-type(3n) { border-color: rgba(255, 122, 223, .25); }
-.dossier:nth-of-type(3n)::before { background: linear-gradient(90deg, #ff7adf, #9d70ff 52%, transparent 90%); }
-
-.dossier:hover {
-  border-color: rgba(255, 255, 255, .26);
-  box-shadow: 0 34px 90px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255, 255, 255, .12);
-}
+.dossier:hover { border-color: rgba(255, 255, 255, .24); box-shadow: 0 30px 76px rgba(0, 0, 0, .34); }
+.dossier:hover::before { width: .44rem; background: var(--accent); }
 
 .visual {
   position: relative;
-  border-color: rgba(255, 255, 255, .12);
-}
-
-.visual::after {
-  position: absolute;
-  z-index: 2;
-  right: .75rem;
-  bottom: .7rem;
-  border: 1px solid rgba(255, 255, 255, .22);
-  border-radius: 999px;
-  padding: .3rem .5rem;
-  content: "Live system view";
-  background: rgba(12, 13, 22, .58);
-  color: rgba(255, 255, 255, .78);
-  font-size: .58rem;
-  font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  backdrop-filter: blur(10px);
+  padding: .3rem;
+  border-color: rgba(255, 255, 255, .11);
+  background: rgba(255, 255, 255, .045);
 }
 
 .body {
   border-color: rgba(255, 255, 255, .1);
-  background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+  background: rgba(255, 255, 255, .038);
 }
 
-@media (max-width: 640px) {
-  .dossier::after { display: none; }
-}
+@media (max-width: 640px) { .dossier::after { display: none; } }
