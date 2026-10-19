@@ -1,0 +1,130 @@
+.portfolio-nextgen .ng-hero {
+  min-height: min(780px, calc(100vh - 76px));
+}
+
+.portfolio-nextgen .ng-hero-grid {
+  grid-template-columns: minmax(0, .82fr) minmax(430px, 1.18fr);
+  align-items: center;
+  gap: clamp(2rem, 4.6vw, 5.8rem);
+  padding-block: clamp(3.25rem, 7vh, 5.2rem) 2.75rem;
+}
+
+.portfolio-nextgen .ng-hero-copy {
+  max-width: 33rem;
+  align-self: center;
+}
+
+.portfolio-nextgen .ng-hero-copy h1 {
+  max-width: none;
+  margin-top: 1.3rem;
+  font-size: clamp(3.55rem, 5.2vw, 5.45rem);
+  letter-spacing: -.07em;
+  line-height: .86;
+}
+
+.portfolio-nextgen .ng-hero-copy h1 span,
+.portfolio-nextgen .ng-hero-copy h1 em { display: block; }
+
+.portfolio-nextgen .ng-hero-copy h1 em {
+  margin-top: .08em;
+  font-size: 1.02em;
+  letter-spacing: -.08em;
+  line-height: .86;
+}
+
+.portfolio-nextgen .ng-hero-description {
+  max-width: 31rem;
+  margin-top: 1.7rem;
+  font-size: clamp(.98rem, 1.15vw, 1.07rem);
+  line-height: 1.65;
+}
+
+.portfolio-nextgen .ng-hero-actions { margin-top: 1.8rem; }
+.portfolio-nextgen .ng-social-proof { margin-top: 2.25rem; }
+
+.portfolio-nextgen .ng-button-primary {
+  background: linear-gradient(135deg, #8e6cf5, #6952d9);
+  color: #fff;
+  box-shadow: 0 16px 30px rgba(99, 78, 210, .3);
+}
+
+.portfolio-nextgen .ng-button-primary:hover {
+  background: linear-gradient(135deg, #9b7bff, #725be1);
+  box-shadow: 0 21px 38px rgba(99, 78, 210, .42);
+}
+
+.ng-portrait-stage {
+  min-height: clamp(440px, 38vw, 560px);
+  justify-self: stretch;
+}
+
+.ng-portrait-frame {
+  width: min(100%, 35rem);
+  border-radius: 44% 44% 38% 38% / 36% 36% 44% 44%;
+  transform: rotate(1.1deg);
+}
+
+.ng-portrait-image { position: relative; z-index: 1; }
+
+.ng-miniature-data {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  color: rgba(236, 232, 255, .78);
+  font-size: clamp(.53rem, .68vw, .67rem);
+  font-weight: 900;
+  letter-spacing: .12em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(15, 7, 38, .8);
+}
+
+.ng-miniature-data span { position: absolute; border: 1px solid rgba(223, 216, 255, .27); border-radius: 999px; background: rgba(18, 12, 37, .3); padding: .36rem .48rem; backdrop-filter: blur(5px); }
+.ng-miniature-name { top: 10%; left: 8%; }
+.ng-miniature-role { top: 17%; left: 8%; color: #9ff1e0; }
+.ng-miniature-focus { right: 8%; bottom: 12%; color: #d7c8ff; }
+
+.ng-work-card {
+  --ng-deck-accent: #a78bfa;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--ng-deck-accent) 37%, #d7cec1);
+  border-radius: 1.2rem 1.2rem .4rem 1.2rem;
+  background:
+    radial-gradient(circle at 92% 9%, color-mix(in srgb, var(--ng-deck-accent) 21%, transparent), transparent 28%),
+    rgba(255, 255, 255, .56);
+  box-shadow: 0 18px 42px rgba(45, 35, 61, .06);
+}
+
+.ng-work-card::before { position: absolute; z-index: 0; inset: 0 0 auto; height: 3px; content: ""; background: linear-gradient(90deg, var(--ng-deck-accent), transparent 78%); }
+.ng-work-card::after { position: absolute; top: 1.05rem; right: -2.8rem; content: "AI SYSTEM"; color: color-mix(in srgb, var(--ng-deck-accent) 20%, transparent); font-size: .58rem; font-weight: 900; letter-spacing: .14em; transform: rotate(90deg); }
+.ng-work-card > * { position: relative; z-index: 1; }
+.ng-work-card-violet { --ng-deck-accent: #8b5cf6; }
+.ng-work-card-mint { --ng-deck-accent: #17b897; }
+.ng-work-card-coral { --ng-deck-accent: #ee806a; }
+.ng-work-card:hover { border-color: var(--ng-deck-accent); background: radial-gradient(circle at 92% 9%, color-mix(in srgb, var(--ng-deck-accent) 25%, transparent), transparent 30%), #fffdf9; }
+.ng-work-card-top { padding-right: 2rem; }
+.ng-work-art { border: 1px solid color-mix(in srgb, var(--ng-deck-accent) 27%, transparent); border-radius: .88rem .88rem .35rem .88rem; }
+.ng-work-card h3 { max-width: 11ch; }
+
+@media (max-width: 1020px) {
+  .portfolio-nextgen .ng-hero-grid { grid-template-columns: 1fr; gap: 1.75rem; padding-top: 3.5rem; }
+  .portfolio-nextgen .ng-hero-copy { max-width: 39rem; }
+  .ng-portrait-stage { justify-self: center; width: min(100%, 36rem); min-height: 510px; }
+}
+
+@media (max-width: 640px) {
+  .portfolio-nextgen .ng-hero { min-height: 0; }
+  .portfolio-nextgen .ng-hero-grid { padding-block: 3.2rem 2.35rem; }
+  .portfolio-nextgen .ng-hero-copy h1 { font-size: clamp(3.25rem, 14vw, 4.55rem); }
+  .portfolio-nextgen .ng-hero-description { margin-top: 1.4rem; }
+  .portfolio-nextgen .ng-social-proof { margin-top: 1.9rem; }
+  .ng-portrait-stage { min-height: 355px; }
+  .ng-portrait-frame { width: min(88vw, 27rem); }
+  .ng-miniature-data { font-size: .48rem; letter-spacing: .08em; }
+  .ng-miniature-data span { padding: .28rem .38rem; }
+  .ng-miniature-name { top: 8%; left: 7%; }
+  .ng-miniature-role { top: 16%; left: 7%; }
+  .ng-miniature-focus { right: 7%; bottom: 10%; }
+  .ng-work-card::after { display: none; }
+}

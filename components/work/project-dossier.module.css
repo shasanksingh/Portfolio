@@ -1,0 +1,85 @@
+.dossier {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-color: rgba(167, 139, 250, .24);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(124, 92, 255, .16), transparent 29%),
+    linear-gradient(140deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .018) 44%, rgba(124, 92, 255, .06)),
+    hsl(var(--surface));
+}
+
+.dossier::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, #9d70ff, #16d6d9 54%, transparent 90%);
+}
+
+.dossier::after {
+  position: absolute;
+  z-index: -1;
+  top: 1.25rem;
+  right: 1.2rem;
+  content: attr(data-dossier);
+  color: rgba(255, 255, 255, .07);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transform: rotate(90deg) translateX(100%);
+  transform-origin: right top;
+}
+
+.dossier:nth-of-type(3n + 2) {
+  border-color: rgba(22, 214, 217, .25);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(22, 214, 217, .13), transparent 30%),
+    linear-gradient(140deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .018) 44%, rgba(22, 214, 217, .05)),
+    hsl(var(--surface));
+}
+
+.dossier:nth-of-type(3n + 2)::before { background: linear-gradient(90deg, #16d6d9, #67e8b8 52%, transparent 90%); }
+.dossier:nth-of-type(3n) { border-color: rgba(255, 122, 223, .25); }
+.dossier:nth-of-type(3n)::before { background: linear-gradient(90deg, #ff7adf, #9d70ff 52%, transparent 90%); }
+
+.dossier:hover {
+  border-color: rgba(255, 255, 255, .26);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+
+.visual {
+  position: relative;
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.visual::after {
+  position: absolute;
+  z-index: 2;
+  right: .75rem;
+  bottom: .7rem;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  padding: .3rem .5rem;
+  content: "Live system view";
+  background: rgba(12, 13, 22, .58);
+  color: rgba(255, 255, 255, .78);
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.body {
+  border-color: rgba(255, 255, 255, .1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+}
+
+@media (max-width: 640px) {
+  .dossier::after { display: none; }
+}

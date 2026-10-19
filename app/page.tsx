@@ -3,6 +3,7 @@ import { PortfolioCommandCenter } from "@/components/home/portfolio-command-cent
 import "./portfolio.css";
 import "./landing-refresh.css";
 import "./hero-polish.css";
+import "./landing-final-polish.css";
 
 export default function HomePage() {
   return <PortfolioCommandCenter />;
