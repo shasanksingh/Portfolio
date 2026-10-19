@@ -1,0 +1,59 @@
+.resume-document-header {
+  column-gap: clamp(2rem, 5vw, 5rem);
+  row-gap: 2rem;
+}
+
+.resume-document-header > div:first-child { max-width: 42rem; }
+
+.resume-contact-list {
+  align-self: end;
+  justify-items: start;
+  min-width: min(100%, 16rem);
+}
+
+.resume-section { scroll-margin-top: 6rem; }
+.resume-section > h2 { margin-bottom: 1.15rem; }
+
+.resume-project-grid > article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-height: 100%;
+}
+
+.resume-project-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.resume-project-heading h3 { max-width: 31rem; }
+
+.resume-project-github {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: .38rem;
+  border: 1px solid #d9d1c5;
+  border-radius: 999px;
+  padding: .52rem .68rem;
+  color: #373040;
+  font-size: .67rem;
+  font-weight: 850;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.resume-project-github svg { width: .78rem; height: .78rem; }
+.resume-project-github:hover { border-color: #8567e9; background: #f0ebff; color: #543ab6; transform: translateY(-2px); }
+
+.resume-project-grid ul { margin-top: 0; }
+
+@media (max-width: 680px) {
+  .resume-document-header { row-gap: 1.35rem; }
+  .resume-contact-list { min-width: 0; }
+  .resume-project-heading { flex-direction: column; }
+  .resume-project-github { width: fit-content; }
+}

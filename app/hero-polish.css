@@ -1,0 +1,58 @@
+.portfolio-nextgen .ng-hero-copy h1 {
+  max-width: 7.8ch;
+  line-height: .94;
+  letter-spacing: -.067em;
+}
+
+.portfolio-nextgen .ng-hero-copy h1 em {
+  margin-top: .07em;
+  line-height: .9;
+  letter-spacing: -.075em;
+}
+
+.portfolio-nextgen .ng-hero-description {
+  max-width: 34rem;
+  margin-top: 2.25rem;
+}
+
+.portfolio-nextgen .ng-hero-actions { margin-top: 2.45rem; }
+.portfolio-nextgen .ng-social-proof { margin-top: 3.25rem; }
+
+.ng-portrait-copy {
+  position: absolute;
+  z-index: 0;
+  inset: 7% -4% 4%;
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
+  pointer-events: none;
+  color: rgba(197, 186, 255, .33);
+  font-size: clamp(.66rem, 1.15vw, .92rem);
+  font-weight: 900;
+  letter-spacing: .18em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-13deg);
+}
+
+.ng-portrait-copy span:nth-child(even) {
+  color: rgba(121, 241, 217, .3);
+  transform: translateX(14%);
+}
+
+.ng-portrait-copy span:nth-child(odd) { transform: translateX(-14%); }
+.ng-portrait-frame { z-index: 2; }
+.ng-portrait-label { z-index: 3; }
+
+@media (max-width: 1020px) {
+  .portfolio-nextgen .ng-hero-copy h1 { max-width: 8.4ch; }
+  .ng-portrait-copy { inset-inline: 4%; }
+}
+
+@media (max-width: 640px) {
+  .portfolio-nextgen .ng-hero-copy h1 { max-width: 7.2ch; line-height: .96; }
+  .portfolio-nextgen .ng-hero-description { margin-top: 1.85rem; }
+  .portfolio-nextgen .ng-hero-actions { margin-top: 2rem; }
+  .ng-portrait-copy { font-size: .6rem; letter-spacing: .12em; }
+}
