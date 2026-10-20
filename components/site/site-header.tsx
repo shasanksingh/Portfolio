@@ -32,18 +32,28 @@ export function SiteHeader() {
   return (
     <header className="site-header sticky top-0 z-50 border-b border-line bg-background/86 backdrop-blur-xl">
       <nav className="container flex min-h-[76px] items-center justify-between gap-4" aria-label="Main navigation">
-        <Link href="/" className="focus-ring group relative inline-grid h-12 w-12 shrink-0 place-items-center overflow-hidden border border-violet-300/35 bg-[#111121] [clip-path:polygon(50%_0%,86%_11%,100%_42%,91%_76%,62%_100%,30%_94%,5%_68%,0%_32%,19%_8%)] shadow-[0_15px_34px_rgba(0,0,0,.28)] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/70 hover:shadow-[0_18px_44px_rgba(103,86,235,.32)]" onClick={() => setIsOpen(false)} aria-label="Shashank Singh home">
-          <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(122,99,255,.38),transparent_52%),linear-gradient(145deg,rgba(124,92,255,.27),rgba(52,211,153,.14))] transition duration-500 group-hover:scale-110" aria-hidden="true" />
-          <svg viewBox="0 0 56 56" className="relative z-10 h-10 w-10 overflow-visible transition duration-500 group-hover:rotate-[12deg] group-hover:scale-105" fill="none" aria-hidden="true">
+        <Link
+          href="/"
+          className="focus-ring group relative inline-grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[16px] border border-violet-300/45 bg-[#111121] shadow-[0_15px_34px_rgba(0,0,0,.28)] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/75 hover:shadow-[0_18px_44px_rgba(103,86,235,.36)]"
+          onClick={() => setIsOpen(false)}
+          aria-label="Shashank Singh home"
+        >
+          <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_16%,rgba(126,97,255,.52),transparent_37%),radial-gradient(circle_at_82%_85%,rgba(73,226,200,.28),transparent_42%),linear-gradient(145deg,#211940,#10121f)] transition duration-500 group-hover:scale-110" aria-hidden="true" />
+          <span className="absolute inset-[3px] rounded-[13px] border border-white/10" aria-hidden="true" />
+          <svg viewBox="0 0 56 56" className="relative z-10 h-10 w-10 overflow-visible transition duration-500 group-hover:rotate-[7deg] group-hover:scale-105" fill="none" aria-hidden="true">
             <defs>
-              <linearGradient id="agent-lattice-flow" x1="10" y1="8" x2="47" y2="48" gradientUnits="userSpaceOnUse"><stop stopColor="#F4F0FF" /><stop offset=".46" stopColor="#AA91FF" /><stop offset="1" stopColor="#6CF0D1" /></linearGradient>
-              <filter id="agent-lattice-glow" x="-45%" y="-45%" width="190%" height="190%"><feGaussianBlur stdDeviation="1.15" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+              <linearGradient id="ss-monogram-violet" x1="9" y1="10" x2="33" y2="43" gradientUnits="userSpaceOnUse"><stop stopColor="#FFF9FF" /><stop offset=".44" stopColor="#C0A8FF" /><stop offset="1" stopColor="#8E70FF" /></linearGradient>
+              <linearGradient id="ss-monogram-cyan" x1="45" y1="15" x2="23" y2="46" gradientUnits="userSpaceOnUse"><stop stopColor="#ECFFFF" /><stop offset=".45" stopColor="#87F3DF" /><stop offset="1" stopColor="#69BFFF" /></linearGradient>
+              <linearGradient id="ss-monogram-orbit" x1="10" y1="46" x2="46" y2="10" gradientUnits="userSpaceOnUse"><stop stopColor="#6CF0D1" stopOpacity=".28" /><stop offset=".5" stopColor="#AD92FF" stopOpacity=".94" /><stop offset="1" stopColor="#F7F2FF" stopOpacity=".36" /></linearGradient>
+              <filter id="ss-monogram-glow" x="-45%" y="-45%" width="190%" height="190%"><feGaussianBlur stdDeviation="1.2" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
             </defs>
-            <path d="M28 5.5L40.7 12.8L48.1 27.2L41.2 42.1L28 50.1L14.7 42.1L7.9 27.2L15.3 12.8L28 5.5Z" stroke="url(#agent-lattice-flow)" strokeOpacity=".56" strokeWidth="1.25" />
-            <path d="M15.4 18.1L28 11.3L40.6 18.1M12.7 31.7L28 39.9L43.3 31.7M28 11.3V39.9M15.4 18.1L43.3 31.7M40.6 18.1L12.7 31.7" stroke="url(#agent-lattice-flow)" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" filter="url(#agent-lattice-glow)" />
-            <path d="M20.1 28L25.2 20.2L30.4 28L35.8 20.2" stroke="#FBF9FF" strokeWidth="2.55" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="28" cy="28" r="4.25" fill="#181329" stroke="url(#agent-lattice-flow)" strokeWidth="1.65" />
-            <circle cx="15.4" cy="18.1" r="2.35" fill="#B79FFF" /><circle cx="40.6" cy="18.1" r="2.35" fill="#82F0D8" /><circle cx="12.7" cy="31.7" r="2.15" fill="#8E75F5" /><circle cx="43.3" cy="31.7" r="2.15" fill="#6CF0D1" /><circle cx="28" cy="11.3" r="2.05" fill="#EEE9FF" /><circle cx="28" cy="39.9" r="2.05" fill="#A6FAE8" />
+            <path d="M10.1 15.4C13.7 9.4 23.4 8.7 28.1 13.1C32.7 17.4 29.1 21.7 21.4 23.2C14.3 24.6 12.7 29.2 16.3 33.4C19.6 37.4 26.9 38.3 31.3 34.8" stroke="url(#ss-monogram-orbit)" strokeWidth="1.25" strokeLinecap="round" strokeDasharray="2 3" opacity=".86" />
+            <path d="M25.8 11.8C21.9 9.1 13.6 10.2 11.7 15.7C9.8 21.4 15.8 24.1 21.2 25.6C27.2 27.3 28.1 32.2 24 36.5C20 40.8 12.8 40.7 9.8 37.2" stroke="url(#ss-monogram-violet)" strokeWidth="4.45" strokeLinecap="round" strokeLinejoin="round" filter="url(#ss-monogram-glow)" />
+            <path d="M46.1 18.5C42.7 14.7 35.2 14.4 31.9 18.8C28.5 23.1 33 26.2 37.6 27.6C42.8 29.2 43.6 33.8 40.1 37.4C36.5 41.2 30.2 40.8 27.4 37.7" stroke="url(#ss-monogram-cyan)" strokeWidth="4.1" strokeLinecap="round" strokeLinejoin="round" filter="url(#ss-monogram-glow)" />
+            <path d="M23.6 18.2L32.4 37.7" stroke="#F9F7FF" strokeOpacity=".72" strokeWidth="1.35" strokeLinecap="round" />
+            <circle cx="28" cy="27.9" r="3.45" fill="#171429" stroke="#F6F2FF" strokeOpacity=".72" strokeWidth="1.05" />
+            <path d="M26.45 27.9H29.55M28 26.35V29.45" stroke="#8DF5DF" strokeWidth="1.15" strokeLinecap="round" />
+            <circle cx="10" cy="37.2" r="1.45" fill="#BDA8FF" /><circle cx="46.1" cy="18.5" r="1.35" fill="#8BF3DD" /><circle cx="25.8" cy="11.8" r="1.3" fill="#F4EFFF" />
           </svg>
         </Link>
 
