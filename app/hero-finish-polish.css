@@ -1,0 +1,100 @@
+/* Final miniature treatment: let the AI taxonomy live behind the illustration. */
+.portfolio-nextgen .ng-portrait-stage {
+  min-height: clamp(438px, 41vw, 580px);
+}
+
+.portfolio-nextgen .ng-portrait-taxonomy {
+  z-index: 0;
+  inset: 3% -5% 7%;
+  color: rgba(204, 193, 255, .26);
+  opacity: .96;
+}
+
+.portfolio-nextgen .ng-portrait-taxonomy span {
+  text-shadow: 0 0 32px rgba(139, 115, 255, .28);
+}
+
+.portfolio-nextgen .ng-portrait-card {
+  animation: ng-portrait-breathe 7.4s ease-in-out infinite;
+}
+
+.portfolio-nextgen .ng-portrait-card::after {
+  position: absolute;
+  inset: -1.15rem;
+  z-index: -1;
+  border-radius: 40% 40% 1.8rem 1.8rem / 29% 29% 1.8rem 1.8rem;
+  content: "";
+  background: conic-gradient(from 200deg, transparent 0 18%, rgba(133, 109, 255, .38) 28%, transparent 40% 61%, rgba(87, 231, 206, .28) 74%, transparent 85%);
+  filter: blur(12px);
+  opacity: .72;
+  animation: ng-portrait-aura 8s linear infinite;
+}
+
+.portfolio-nextgen .ng-portrait-face-front {
+  background:
+    linear-gradient(138deg, rgba(18, 13, 42, .4), rgba(37, 24, 72, .12) 46%, rgba(10, 57, 64, .2)),
+    #171326;
+}
+
+.portfolio-nextgen .ng-portrait-image {
+  opacity: .84;
+  filter: saturate(.95) contrast(1.05) brightness(.96);
+  transition: opacity .45s ease, filter .45s ease, transform .7s cubic-bezier(.2,.75,.2,1);
+}
+
+.portfolio-nextgen .ng-portrait-card:hover .ng-portrait-image {
+  opacity: .9;
+  filter: saturate(1.05) contrast(1.08) brightness(1.01);
+  transform: scale(1.018);
+}
+
+.portfolio-nextgen .ng-portrait-face-front::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 18% 22%, rgba(163, 142, 255, .22), transparent 26%),
+    linear-gradient(112deg, rgba(255,255,255,.08), transparent 28%, transparent 67%, rgba(95, 238, 207, .13));
+  mix-blend-mode: screen;
+}
+
+.portfolio-nextgen .ng-portrait-glint { z-index: 2; }
+
+@keyframes ng-portrait-breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes ng-portrait-aura {
+  to { transform: rotate(1turn); }
+}
+
+@media (max-width: 1020px) {
+  .portfolio-nextgen .ng-portrait-stage { min-height: 460px; }
+}
+
+@media (max-width: 640px) {
+  .portfolio-nextgen .ng-portrait-stage {
+    min-height: 337px;
+    margin-inline: auto;
+  }
+
+  .portfolio-nextgen .ng-portrait-card { width: min(76vw, 22rem); }
+  .portfolio-nextgen .ng-portrait-taxonomy { inset: 6% -2% 8%; font-size: clamp(2rem, 11vw, 3.25rem); }
+  .portfolio-nextgen .ng-portrait-card::after { inset: -.7rem; filter: blur(9px); }
+  .portfolio-nextgen .ng-portrait-control { right: -1%; bottom: 6%; transform: scale(.9); transform-origin: right bottom; }
+  .portfolio-nextgen .ng-portrait-hint { bottom: -1.15rem; }
+}
+
+@media (max-width: 390px) {
+  .portfolio-nextgen .ng-portrait-stage { min-height: 305px; }
+  .portfolio-nextgen .ng-portrait-card { width: min(72vw, 19.5rem); }
+  .portfolio-nextgen .ng-portrait-control { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-nextgen .ng-portrait-card,
+  .portfolio-nextgen .ng-portrait-card::after { animation: none; }
+}
