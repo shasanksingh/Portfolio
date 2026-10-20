@@ -34,26 +34,24 @@ export function SiteHeader() {
       <nav className="container flex min-h-[76px] items-center justify-between gap-4" aria-label="Main navigation">
         <Link
           href="/"
-          className="focus-ring group relative inline-grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[16px] border border-violet-300/45 bg-[#111121] shadow-[0_15px_34px_rgba(0,0,0,.28)] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/75 hover:shadow-[0_18px_44px_rgba(103,86,235,.36)]"
+          className="focus-ring group relative inline-grid h-12 w-12 shrink-0 place-items-center rounded-[18px] transition duration-300 hover:-translate-y-0.5"
           onClick={() => setIsOpen(false)}
           aria-label="Shashank Singh home"
         >
-          <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_16%,rgba(126,97,255,.52),transparent_37%),radial-gradient(circle_at_82%_85%,rgba(73,226,200,.28),transparent_42%),linear-gradient(145deg,#211940,#10121f)] transition duration-500 group-hover:scale-110" aria-hidden="true" />
-          <span className="absolute inset-[3px] rounded-[13px] border border-white/10" aria-hidden="true" />
-          <svg viewBox="0 0 56 56" className="relative z-10 h-10 w-10 overflow-visible transition duration-500 group-hover:rotate-[7deg] group-hover:scale-105" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 56 56" className="h-11 w-11 overflow-visible transition duration-500 group-hover:rotate-[-6deg] group-hover:scale-110" fill="none" aria-hidden="true">
             <defs>
-              <linearGradient id="ss-monogram-violet" x1="9" y1="10" x2="33" y2="43" gradientUnits="userSpaceOnUse"><stop stopColor="#FFF9FF" /><stop offset=".44" stopColor="#C0A8FF" /><stop offset="1" stopColor="#8E70FF" /></linearGradient>
-              <linearGradient id="ss-monogram-cyan" x1="45" y1="15" x2="23" y2="46" gradientUnits="userSpaceOnUse"><stop stopColor="#ECFFFF" /><stop offset=".45" stopColor="#87F3DF" /><stop offset="1" stopColor="#69BFFF" /></linearGradient>
-              <linearGradient id="ss-monogram-orbit" x1="10" y1="46" x2="46" y2="10" gradientUnits="userSpaceOnUse"><stop stopColor="#6CF0D1" stopOpacity=".28" /><stop offset=".5" stopColor="#AD92FF" stopOpacity=".94" /><stop offset="1" stopColor="#F7F2FF" stopOpacity=".36" /></linearGradient>
-              <filter id="ss-monogram-glow" x="-45%" y="-45%" width="190%" height="190%"><feGaussianBlur stdDeviation="1.2" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+              <linearGradient id="cutout-s-spectrum" x1="10" y1="10" x2="43" y2="45" gradientUnits="userSpaceOnUse"><stop stopColor="#FF745A" /><stop offset=".43" stopColor="#FFD06A" /><stop offset=".77" stopColor="#B894FF" /><stop offset="1" stopColor="#76D7FF" /></linearGradient>
+              <linearGradient id="cutout-s-trace" x1="12" y1="43" x2="43" y2="13" gradientUnits="userSpaceOnUse"><stop stopColor="#FF9D78" /><stop offset=".56" stopColor="#FFD985" /><stop offset="1" stopColor="#8DEBFF" /></linearGradient>
+              <filter id="cutout-s-glow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="1.3" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+              <mask id="cutout-s-ribbon-mask">
+                <rect width="56" height="56" fill="white" />
+                <path d="M41.1 13.1C35.8 9.2 25.9 9.4 19.8 13.1C13.7 16.8 15.2 23.3 22.1 25.7L34 29.9C40.7 32.2 41.2 38.8 35.2 42.3C29.1 45.9 19.2 44.2 13.8 39.4" stroke="black" strokeWidth="1.5" strokeLinecap="round" />
+              </mask>
             </defs>
-            <path d="M10.1 15.4C13.7 9.4 23.4 8.7 28.1 13.1C32.7 17.4 29.1 21.7 21.4 23.2C14.3 24.6 12.7 29.2 16.3 33.4C19.6 37.4 26.9 38.3 31.3 34.8" stroke="url(#ss-monogram-orbit)" strokeWidth="1.25" strokeLinecap="round" strokeDasharray="2 3" opacity=".86" />
-            <path d="M25.8 11.8C21.9 9.1 13.6 10.2 11.7 15.7C9.8 21.4 15.8 24.1 21.2 25.6C27.2 27.3 28.1 32.2 24 36.5C20 40.8 12.8 40.7 9.8 37.2" stroke="url(#ss-monogram-violet)" strokeWidth="4.45" strokeLinecap="round" strokeLinejoin="round" filter="url(#ss-monogram-glow)" />
-            <path d="M46.1 18.5C42.7 14.7 35.2 14.4 31.9 18.8C28.5 23.1 33 26.2 37.6 27.6C42.8 29.2 43.6 33.8 40.1 37.4C36.5 41.2 30.2 40.8 27.4 37.7" stroke="url(#ss-monogram-cyan)" strokeWidth="4.1" strokeLinecap="round" strokeLinejoin="round" filter="url(#ss-monogram-glow)" />
-            <path d="M23.6 18.2L32.4 37.7" stroke="#F9F7FF" strokeOpacity=".72" strokeWidth="1.35" strokeLinecap="round" />
-            <circle cx="28" cy="27.9" r="3.45" fill="#171429" stroke="#F6F2FF" strokeOpacity=".72" strokeWidth="1.05" />
-            <path d="M26.45 27.9H29.55M28 26.35V29.45" stroke="#8DF5DF" strokeWidth="1.15" strokeLinecap="round" />
-            <circle cx="10" cy="37.2" r="1.45" fill="#BDA8FF" /><circle cx="46.1" cy="18.5" r="1.35" fill="#8BF3DD" /><circle cx="25.8" cy="11.8" r="1.3" fill="#F4EFFF" />
+            <path d="M41.1 13.1C35.8 9.2 25.9 9.4 19.8 13.1C13.7 16.8 15.2 23.3 22.1 25.7L34 29.9C40.7 32.2 41.2 38.8 35.2 42.3C29.1 45.9 19.2 44.2 13.8 39.4" stroke="url(#cutout-s-spectrum)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" mask="url(#cutout-s-ribbon-mask)" filter="url(#cutout-s-glow)" />
+            <path d="M41.1 13.1C35.8 9.2 25.9 9.4 19.8 13.1C13.7 16.8 15.2 23.3 22.1 25.7L34 29.9C40.7 32.2 41.2 38.8 35.2 42.3C29.1 45.9 19.2 44.2 13.8 39.4" stroke="url(#cutout-s-trace)" strokeWidth=".72" strokeLinecap="round" strokeDasharray="2 3" opacity=".9" />
+            <path d="M44.2 12.4L47.4 12.4M45.8 10.8V14" stroke="#FF8E6E" strokeWidth="1.4" strokeLinecap="round" />
+            <circle cx="11.5" cy="39.7" r="1.45" fill="#78DFFF" /><circle cx="33.2" cy="28.9" r="1.35" fill="#FFF2B9" /><circle cx="42" cy="13.2" r="1.25" fill="#FFA17E" />
           </svg>
         </Link>
 
