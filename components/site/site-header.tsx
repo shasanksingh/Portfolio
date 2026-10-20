@@ -32,19 +32,18 @@ export function SiteHeader() {
   return (
     <header className="site-header sticky top-0 z-50 border-b border-line bg-background/86 backdrop-blur-xl">
       <nav className="container flex min-h-[76px] items-center justify-between gap-4" aria-label="Main navigation">
-        <Link href="/" className="focus-ring group relative inline-grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-[14px] border border-violet-300/45 bg-[#151326] shadow-[0_14px_36px_rgba(0,0,0,.27),inset_0_1px_0_rgba(255,255,255,.18)] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/80 hover:shadow-[0_18px_44px_rgba(104,82,232,.28),inset_0_1px_0_rgba(255,255,255,.25)]" onClick={() => setIsOpen(false)} aria-label="Shashank Singh home">
-          <span className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(200,185,255,.42),transparent_26%),linear-gradient(145deg,rgba(125,92,255,.42),rgba(52,211,153,.13))] opacity-90 transition duration-300 group-hover:opacity-100" aria-hidden="true" />
-          <span className="absolute inset-[5px] rounded-[10px] border border-white/15 bg-[#131120]/70" aria-hidden="true" />
-          <svg viewBox="0 0 48 48" className="relative z-10 h-9 w-9 overflow-visible" fill="none" aria-hidden="true">
+        <Link href="/" className="focus-ring group relative inline-grid h-12 w-12 shrink-0 place-items-center overflow-hidden border border-violet-300/35 bg-[#111121] [clip-path:polygon(50%_0%,86%_11%,100%_42%,91%_76%,62%_100%,30%_94%,5%_68%,0%_32%,19%_8%)] shadow-[0_15px_34px_rgba(0,0,0,.28)] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/70 hover:shadow-[0_18px_44px_rgba(103,86,235,.32)]" onClick={() => setIsOpen(false)} aria-label="Shashank Singh home">
+          <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(122,99,255,.38),transparent_52%),linear-gradient(145deg,rgba(124,92,255,.27),rgba(52,211,153,.14))] transition duration-500 group-hover:scale-110" aria-hidden="true" />
+          <svg viewBox="0 0 56 56" className="relative z-10 h-10 w-10 overflow-visible transition duration-500 group-hover:rotate-[12deg] group-hover:scale-105" fill="none" aria-hidden="true">
             <defs>
-              <linearGradient id="shashank-mark-gradient" x1="8" y1="7" x2="41" y2="41" gradientUnits="userSpaceOnUse"><stop stopColor="#F4F0FF" /><stop offset=".48" stopColor="#BCA7FF" /><stop offset="1" stopColor="#75F3D4" /></linearGradient>
-              <filter id="shashank-mark-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.4" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+              <linearGradient id="agent-lattice-flow" x1="10" y1="8" x2="47" y2="48" gradientUnits="userSpaceOnUse"><stop stopColor="#F4F0FF" /><stop offset=".46" stopColor="#AA91FF" /><stop offset="1" stopColor="#6CF0D1" /></linearGradient>
+              <filter id="agent-lattice-glow" x="-45%" y="-45%" width="190%" height="190%"><feGaussianBlur stdDeviation="1.15" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
             </defs>
-            <circle cx="24" cy="24" r="16.5" stroke="url(#shashank-mark-gradient)" strokeOpacity=".3" />
-            <path d="M13.5 16.25C16.2 10.8 25.6 10.1 30.5 14.55C35.3 18.9 31.8 23.2 25.15 24.1C18.75 24.95 15.45 28.55 18.7 32.9C21.8 37.05 30.5 37.2 34.55 31.25" stroke="url(#shashank-mark-gradient)" strokeWidth="3.2" strokeLinecap="round" filter="url(#shashank-mark-glow)" />
-            <circle cx="13.5" cy="16.25" r="2.45" fill="#C8BAFF" /><circle cx="34.55" cy="31.25" r="2.45" fill="#73F0D4" />
-            <path d="M30.4 12.45L35.5 9.8M17.7 35.85L12.75 38.2" stroke="url(#shashank-mark-gradient)" strokeWidth="1.35" strokeLinecap="round" opacity=".85" />
-            <circle cx="36.8" cy="9.1" r="1.45" fill="#A98CFF" /><circle cx="11.15" cy="38.9" r="1.45" fill="#73F0D4" />
+            <path d="M28 5.5L40.7 12.8L48.1 27.2L41.2 42.1L28 50.1L14.7 42.1L7.9 27.2L15.3 12.8L28 5.5Z" stroke="url(#agent-lattice-flow)" strokeOpacity=".56" strokeWidth="1.25" />
+            <path d="M15.4 18.1L28 11.3L40.6 18.1M12.7 31.7L28 39.9L43.3 31.7M28 11.3V39.9M15.4 18.1L43.3 31.7M40.6 18.1L12.7 31.7" stroke="url(#agent-lattice-flow)" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" filter="url(#agent-lattice-glow)" />
+            <path d="M20.1 28L25.2 20.2L30.4 28L35.8 20.2" stroke="#FBF9FF" strokeWidth="2.55" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="28" cy="28" r="4.25" fill="#181329" stroke="url(#agent-lattice-flow)" strokeWidth="1.65" />
+            <circle cx="15.4" cy="18.1" r="2.35" fill="#B79FFF" /><circle cx="40.6" cy="18.1" r="2.35" fill="#82F0D8" /><circle cx="12.7" cy="31.7" r="2.15" fill="#8E75F5" /><circle cx="43.3" cy="31.7" r="2.15" fill="#6CF0D1" /><circle cx="28" cy="11.3" r="2.05" fill="#EEE9FF" /><circle cx="28" cy="39.9" r="2.05" fill="#A6FAE8" />
           </svg>
         </Link>
 

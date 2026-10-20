@@ -7,6 +7,7 @@ import "./landing-final-polish.css";
 import "./miniature-refinement.css";
 import "./hero-interactions.css";
 import "./hero-finish-polish.css";
+import "./hero-cutout.css";
 
 export default function HomePage() {
   return <PortfolioCommandCenter />;
