@@ -26,6 +26,7 @@ const excludedProjectSlugs = new Set(["portfolio", "myportfolio-main", "nextgen-
 const prioritySlugs = [
   "ats-resume-ai",
   "sql-copilot",
+  "memoraeai",
   "semantic-rag-assessment",
   "paypilot-ai",
   "growify-virtual-tryon",
@@ -50,6 +51,7 @@ const languageLabels: Record<string, string> = {
 const categoryStacks: Record<string, string[]> = {
   "AI Resume Intelligence": ["RAG", "NLP", "Resume Parsing", "Scoring"],
   "AI Copilot": ["LLM", "Planning", "Validation", "Assistant UX"],
+  "AI Memory OS": ["GraphRAG", "Knowledge Graph", "Evidence", "Memory System"],
   "AI Automation": ["Automation", "Workflow", "Guardrails", "Backend"],
   "AI Commerce": ["AI UX", "Commerce", "Product UI", "Visual AI"],
   "RAG Research": ["RAG", "Embeddings", "Vector Search", "Retrieval"],
@@ -170,7 +172,7 @@ function repoToProject(repo: GitHubRepo): Project {
   const curated = curatedProjectMap.get(slug);
   const category = curated?.category ?? inferCategory(repo);
   const language = repo.language ? normalizeLabel(repo.language) : curated?.language ?? "Repository";
-  const live = cleanHomepage(repo.homepage) ?? curated?.links.live;
+  const live = curated?.links.live ?? cleanHomepage(repo.homepage);
 
   return {
     title: curated?.title ?? humanize(repo.name),

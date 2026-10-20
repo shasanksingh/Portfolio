@@ -100,6 +100,24 @@ export const projects: Project[] = [
     },
   },
   {
+  {
+    title: "Memorae AI",
+    slug: "memoraeai",
+    subtitle: "Evidence-first personal intelligence OS",
+    summary:
+      "A personal intelligence platform that turns messages, notes, tasks, meetings, and project history into an evidence-linked memory graph with traceable answers.",
+    category: "AI Memory OS",
+    language: "Python",
+    updatedAt: "2026-08-14",
+    imageUrl: ogImage("MemoraeAI"),
+    sizeKb: 0,
+    stars: 0,
+    forks: 0,
+    stack: ["Python", "FastAPI", "GraphRAG", "Knowledge Graph", "Next.js"],
+    links: {
+      github: "https://github.com/shasanksingh/MemoraeAI",
+    },
+  },
     title: "SQL Copilot",
     slug: "sql-copilot",
     subtitle: "Natural language database copilot",
@@ -112,10 +130,10 @@ export const projects: Project[] = [
     sizeKb: 1187,
     stars: 0,
     forks: 0,
-    stack: ["Python", "SQL", "LLM", "Validation", "Vercel"],
+    stack: ["Python", "SQL", "LLM", "Validation", "Cloudflare Workers"],
     links: {
       github: "https://github.com/shasanksingh/sql-copilot",
-      live: "https://sql-copilot-puce.vercel.app",
+      live: "https://sql-copilot-frontend.singhshasank50.workers.dev/",
     },
   },
   {
@@ -434,14 +452,14 @@ const allCaseStudies: CaseStudy[] = [
     summary:
       "A database copilot that frames natural-language analytics as a guarded planning, SQL generation, validation, and explanation loop.",
     repositoryUrl: "https://github.com/shasanksingh/sql-copilot",
-    liveUrl: "https://sql-copilot-puce.vercel.app",
+    liveUrl: "https://sql-copilot-frontend.singhshasank50.workers.dev/",
     imageUrl: ogImage("sql-copilot"),
     problem:
       "Natural-language database tools can be risky when they generate SQL without schema awareness, validation, or a clear explanation of assumptions.",
     solution:
       "The project models the assistant as a copilot: interpret the request, reason over schema context, generate candidate SQL, validate the query, then explain the result in business language.",
     architecture: ["User Question", "Intent Planner", "Schema Context", "SQL Draft", "Validation", "Result Explanation"],
-    stack: ["Python", "SQL", "LLM", "Prompt Engineering", "Validation", "Vercel"],
+    stack: ["Python", "SQL", "LLM", "Prompt Engineering", "Validation", "Cloudflare Workers"],
     challenges: [
       "Handling ambiguous analytical questions.",
       "Preventing malformed or risky SQL from becoming the final answer.",
@@ -454,7 +472,7 @@ const allCaseStudies: CaseStudy[] = [
     ],
     metrics: [
       { label: "Repository", value: "sql-copilot" },
-      { label: "Live App", value: "Vercel" },
+      { label: "Live App", value: "Cloudflare Workers" },
       { label: "Primary Stack", value: "Python + SQL" },
     ],
     githubUrl: "https://github.com/shasanksingh/sql-copilot",
@@ -488,6 +506,65 @@ const allCaseStudies: CaseStudy[] = [
     },
   },
   {
+  {
+    title: "Memorae AI",
+    slug: "memoraeai",
+    eyebrow: "Flagship System",
+    summary:
+      "An evidence-first personal intelligence OS that builds a queryable memory graph from messages, notes, meetings, tasks, and project history.",
+    repositoryUrl: "https://github.com/shasanksingh/MemoraeAI",
+    imageUrl: ogImage("MemoraeAI"),
+    problem:
+      "Work and life context is scattered across messages, notes, calendars, tasks, recordings, and documents, making accurate recall difficult and easy to overstate.",
+    solution:
+      "Memorae AI preserves raw observations, derives linked memory projections, expands retrieval through graph and temporal paths, and returns only evidence-supported answers with provenance and trace validation.",
+    architecture: ["Event Ingestion", "Immutable Observations", "Memory Projections", "Evidence Graph", "GraphRAG Retrieval", "Traceable Answers"],
+    stack: ["Python", "FastAPI", "Next.js", "GraphRAG", "Knowledge Graph", "Evidence Validation"],
+    challenges: [
+      "Keeping raw observations immutable while allowing corrected information to remain discoverable.",
+      "Balancing broad recall with graph, temporal, and dependency expansion without losing evidence quality.",
+      "Making answer provenance and validation visible instead of treating fluent output as sufficient.",
+    ],
+    impact: [
+      "Creates a durable intelligence layer across fragmented personal and project data.",
+      "Treats evidence, lineage, and context quality as product features rather than hidden implementation details.",
+      "Demonstrates an end-to-end AI system spanning data engineering, GraphRAG, evaluation, and product UI.",
+    ],
+    metrics: [
+      { label: "Repository", value: "MemoraeAI" },
+      { label: "Memory model", value: "Evidence graph" },
+      { label: "Primary stack", value: "Python + GraphRAG" },
+    ],
+    githubUrl: "https://github.com/shasanksingh/MemoraeAI",
+    research: {
+      abstract:
+        "Memorae AI investigates how a personal intelligence system can keep context useful without flattening it into an opaque chat history. It combines immutable events, memory projections, graph retrieval, and claim-level validation to make answers inspectable.",
+      researchQuestion:
+        "How can a personal AI system retrieve evolving context across messages, tasks, meetings, and projects while keeping each answer grounded in traceable evidence?",
+      methodology: [
+        "Normalize source data into timestamped, append-only observations.",
+        "Derive episodic, semantic, relationship, temporal, task, and decision memory projections.",
+        "Use broad retrieval followed by graph, temporal, project, and dependency expansion.",
+        "Validate answer claims against selected evidence and surface provenance to the user.",
+      ],
+      systemModel: ["Sources", "Event log", "Memory projections", "Evidence graph", "Retrieval planner", "Validated answer"],
+      evaluation: [
+        "Measure evidence coverage, trace validity, and stale-as-current errors.",
+        "Evaluate entity and relationship extraction precision and provenance.",
+        "Test retrieval quality across changing project, task, and temporal contexts.",
+      ],
+      limitations: [
+        "Connector breadth and hosted media workflows determine the usable source coverage.",
+        "Complex personal context still needs careful ambiguity handling and privacy-aware controls.",
+      ],
+      futureWork: [
+        "Add live calendar, email, note, and task connectors with deletion propagation.",
+        "Introduce incremental communities and learned reranking for larger memory graphs.",
+        "Expand labeled evaluation cases for long-running personal-memory scenarios.",
+      ],
+      keywords: ["personal intelligence", "GraphRAG", "evidence graph", "memory systems", "provenance"],
+    },
+  },
     title: "Semantic RAG Assessment",
     slug: "semantic-rag-assessment",
     eyebrow: "Research Note 03",
@@ -726,7 +803,7 @@ const allCaseStudies: CaseStudy[] = [
   },
 ];
 
-export const caseStudies = allCaseStudies.filter((study) => ["ats-resume-ai", "sql-copilot"].includes(study.slug));
+export const caseStudies = allCaseStudies.filter((study) => ["ats-resume-ai", "sql-copilot", "memoraeai"].includes(study.slug));
 
 export const experience: ExperienceItem[] = [
   {

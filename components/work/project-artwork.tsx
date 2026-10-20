@@ -29,8 +29,14 @@ const directions: Record<string, ArtDirection> = {
     accent: "#20745f",
     ink: "#0f382f",
   },
-  "semantic-rag-assessment": {
+  memoraeai: {
     index: "03",
+    label: "Evidence memory",
+    accent: "#2879bb",
+    ink: "#18345f",
+  },
+  "semantic-rag-assessment": {
+    index: "04",
     label: "Evidence retrieval",
     accent: "#a64d2d",
     ink: "#4d211b",
@@ -61,6 +67,20 @@ function SqlArtifact() {
       </div>
       <div className={styles.schemaStrip}><span>orders</span><i /><span>users</span><i /><span>metrics</span></div>
       <div className={styles.planSlip}><span>planner path</span><strong>schema → join → validate</strong></div>
+    </div>
+  );
+}
+
+function MemoryArtifact() {
+  return (
+    <div className={styles.memoryArtifact}>
+      <article className={styles.memoryLedger}>
+        <span>evidence log</span>
+        <strong>memory stays<br />linked to source</strong>
+        <div className={styles.memoryRows}><i /><i /><i /><i /></div>
+      </article>
+      <div className={styles.memoryGraph} aria-hidden="true"><b /><i /><i /><i /><i /><i /></div>
+      <div className={styles.memoryTrace}><span>GraphRAG</span><strong>traceable context</strong></div>
     </div>
   );
 }
@@ -105,8 +125,10 @@ export function ProjectArtwork({ project, compact = false }: ProjectArtworkProps
     ? <ResumeArtifact />
     : project.slug === "sql-copilot"
       ? <SqlArtifact />
-      : project.slug === "semantic-rag-assessment"
-        ? <RagArtifact />
+      : project.slug === "memoraeai"
+        ? <MemoryArtifact />
+        : project.slug === "semantic-rag-assessment"
+          ? <RagArtifact />
         : <GenericArtifact />;
 
   return (

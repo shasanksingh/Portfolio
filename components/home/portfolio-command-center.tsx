@@ -12,7 +12,7 @@ const bySlug = (slug: string) => projects.find((project) => project.slug === slu
 const spotlightProjects: SpotlightProject[] = [
   { project: bySlug("ats-resume-ai"), index: "01", tone: "violet" },
   { project: bySlug("sql-copilot"), index: "02", tone: "mint" },
-  { project: bySlug("semantic-rag-assessment"), index: "03", tone: "coral" },
+  { project: bySlug("memoraeai"), index: "03", tone: "coral" },
 ];
 const principles = [
   ["01", "Make the system legible", "Interfaces should expose the decisions that matter - not hide them behind a chat box."],
