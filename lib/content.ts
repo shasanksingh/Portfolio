@@ -117,6 +117,7 @@ export const projects: Project[] = [
       github: "https://github.com/shasanksingh/MemoraeAI",
     },
   },
+  {
     title: "SQL Copilot",
     slug: "sql-copilot",
     subtitle: "Natural language database copilot",
@@ -563,6 +564,7 @@ const allCaseStudies: CaseStudy[] = [
       keywords: ["personal intelligence", "GraphRAG", "evidence graph", "memory systems", "provenance"],
     },
   },
+  {
     title: "Semantic RAG Assessment",
     slug: "semantic-rag-assessment",
     eyebrow: "Research Note 03",
