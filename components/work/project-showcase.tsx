@@ -5,6 +5,7 @@ import { ArrowRight, ExternalLink, Github, RadioTower, RefreshCcw, Star } from "
 import { ButtonLink } from "@/components/ui/button-link";
 import { Icon3D } from "@/components/ui/icon-3d";
 import { ProjectArtwork } from "@/components/work/project-artwork";
+import { ProjectUsecaseIcon, ProjectUsecaseLabel } from "@/components/work/project-usecase-icon";
 import { useGitHubProjects } from "@/hooks/use-github-projects";
 import { caseStudies } from "@/lib/content";
 import { isAIFocusedProject } from "@/lib/github-projects";
@@ -43,7 +44,7 @@ export function ProjectShowcase() {
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
               <div className={`${styles.visual} project-card-visual overflow-hidden rounded-ui border bg-surface-strong shadow-[0_24px_70px_rgba(8,103,232,0.16)]`}><ProjectArtwork project={project} /></div>
               <div className={`${styles.body} flex flex-col rounded-ui border p-6 backdrop-blur`}>
-                <p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">{project.category}</p>
+                <div className="flex items-center gap-3"><ProjectUsecaseIcon project={project} size="md" /><p className="border-l-2 border-electric pl-3 text-xs font-extrabold uppercase tracking-normal text-electric">{ProjectUsecaseLabel({ project })}</p></div>
                 <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight md:text-4xl">{project.title}</h2>
                 <p className="mt-4 leading-7 text-muted">{project.summary}</p>
                 <div className="mt-5 flex flex-wrap gap-2">{project.stack.map((tech) => <span key={tech} className="rounded-full border border-line bg-surface px-3 py-1 text-xs font-bold text-muted">{tech}</span>)}</div>
@@ -60,7 +61,7 @@ export function ProjectShowcase() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {otherProjects.map((project) => <a key={project.slug} data-dossier={`Repository / ${project.language}`} href={project.links.github} target="_blank" rel="noreferrer" className={`${styles.dossier} project-card group overflow-hidden rounded-ui border shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-panel`}>
             <div className={`${styles.visual} project-card-visual`}><ProjectArtwork project={project} compact /></div>
-            <div className="p-5"><div className="flex items-start justify-between gap-4"><span className="text-xs font-extrabold uppercase text-electric">{project.category}</span><span className="inline-flex items-center gap-1 text-xs font-bold text-muted"><Icon3D icon={Star} action="build" tone="violet" size="sm" />{project.stars}</span></div><strong className="mt-3 block font-display text-xl">{project.title}</strong><p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{project.summary}</p><div className="mt-4 flex items-center justify-between text-xs font-bold text-muted"><span>{project.language}</span><span>{project.updatedAt}</span></div></div>
+            <div className="p-5"><div className="flex items-start justify-between gap-4"><span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase text-electric"><ProjectUsecaseIcon project={project} size="sm" />{ProjectUsecaseLabel({ project })}</span><span className="inline-flex items-center gap-1 text-xs font-bold text-muted"><Icon3D icon={Star} action="build" tone="violet" size="sm" />{project.stars}</span></div><strong className="mt-3 block font-display text-xl">{project.title}</strong><p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{project.summary}</p><div className="mt-4 flex items-center justify-between text-xs font-bold text-muted"><span>{project.language}</span><span>{project.updatedAt}</span></div></div>
           </a>)}
         </div>
       </section>

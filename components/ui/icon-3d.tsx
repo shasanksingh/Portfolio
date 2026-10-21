@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import styles from "./icon-3d.module.css";
 
 export type Icon3DTone = "blue" | "cyan" | "violet" | "green" | "slate";
 export type Icon3DAction = "navigate" | "download" | "contact" | "github" | "external" | "data" | "shield" | "build";
@@ -15,7 +16,17 @@ type Icon3DProps = {
 
 export function Icon3D({ icon: Icon, action = "build", tone = "blue", size = "md", className }: Icon3DProps) {
   return (
-    <span className={cn("icon-3d", `icon-3d-${tone}`, `icon-action-${action}`, `icon-3d-${size}`, className)}>
+    <span
+      className={cn(
+        "icon-3d",
+        `icon-3d-${tone}`,
+        `icon-action-${action}`,
+        `icon-3d-${size}`,
+        styles.contrast,
+        styles[tone],
+        className,
+      )}
+    >
       <Icon className="icon-3d-svg" aria-hidden="true" />
     </span>
   );

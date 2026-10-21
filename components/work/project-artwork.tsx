@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import type { Project } from "@/types/content";
+import { ProjectUsecaseIcon } from "@/components/work/project-usecase-icon";
 
 import styles from "./project-artwork.module.css";
 
@@ -140,7 +141,10 @@ export function ProjectArtwork({ project, compact = false }: ProjectArtworkProps
     >
       <header className={styles.header}>
         <span>Project file / {direction.index}</span>
-        <strong>{direction.label}</strong>
+        <div className={styles.headerIdentity}>
+          <ProjectUsecaseIcon project={project} size="sm" />
+          <strong>{direction.label}</strong>
+        </div>
       </header>
       <div className={styles.canvas}>{visual}</div>
       <footer className={styles.footer}>
