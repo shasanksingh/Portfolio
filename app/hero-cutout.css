@@ -1,4 +1,4 @@
-.portfolio-nextgen .ng-hero-grid-portrait { grid-template-columns: minmax(0, .93fr) minmax(22rem, .8fr); gap: clamp(1.8rem, 5.5vw, 7rem); }
++.portfolio-nextgen .ng-hero-grid-portrait { grid-template-columns: minmax(0, .93fr) minmax(22rem, .8fr); gap: clamp(1.8rem, 5.5vw, 7rem); }
 .ng-cutout-stage { --hero-tilt-x: 0deg; --hero-tilt-y: 0deg; position: relative; display: grid; min-height: clamp(410px, 38vw, 545px); place-items: center; isolation: isolate; overflow: visible; }
 .ng-cutout-taxonomy { position: absolute; inset: 4% -8% 7%; z-index: -1; overflow: hidden; pointer-events: none; color: rgba(194,180,255,.24); font-family: var(--font-inter-tight), sans-serif; font-size: clamp(3rem,6.5vw,6.4rem); font-weight: 900; letter-spacing: -.09em; line-height: .74; user-select: none; }
 .ng-cutout-taxonomy span { position: absolute; display: block; text-shadow: 0 0 34px rgba(147,123,255,.3); animation: ng-cutout-taxonomy-drift 11s ease-in-out infinite alternate; }.ng-cutout-taxonomy span:nth-child(1) { top: 3%; left: 0; color: rgba(223,214,255,.31); animation-delay: -1.2s; }.ng-cutout-taxonomy span:nth-child(2) { top: 22%; right: -2%; color: rgba(114,236,210,.25); animation-delay: -4.1s; }.ng-cutout-taxonomy span:nth-child(3) { top: 44%; left: -4%; color: rgba(204,189,255,.2); animation-delay: -7s; }.ng-cutout-taxonomy span:nth-child(4) { top: 60%; right: -1%; color: rgba(102,229,204,.24); animation-delay: -2.5s; }.ng-cutout-taxonomy span:nth-child(5) { bottom: 10%; left: 5%; color: rgba(219,210,255,.24); animation-delay: -5.8s; }.ng-cutout-taxonomy span:nth-child(6) { right: 8%; bottom: 0; color: rgba(141,230,208,.22); animation-delay: -8.2s; }
@@ -13,247 +13,428 @@
 @media (max-width: 390px) { .portfolio-nextgen .ng-hero-grid-portrait { grid-template-columns: minmax(0,1fr) minmax(5.85rem,.58fr); column-gap: .2rem; }.portfolio-nextgen .ng-hero-copy h1 { font-size: clamp(2rem,9.7vw,2.55rem); }.portfolio-nextgen .ng-hero-description { font-size: .69rem; }.portfolio-nextgen .ng-hero-actions { flex-direction: column; align-items: flex-start; }.ng-cutout-stage { min-height: 10.7rem; }.ng-cutout-shell { width: 13.2rem; margin-left: -48%; }.ng-cutout-taxonomy { font-size: 1.28rem; } }
 @media (prefers-reduced-motion: reduce) { .ng-cutout-taxonomy span, .ng-cutout-image, .ng-cutout-light::before { animation: none; }.ng-cutout-shell { transition: none; transform: none; } }
 
-/* Interactive cutout: image-led front, capability detail on flip. */
-.ng-cutout-card {
+/* Replayable cutout sequence: AI ideas appear around the miniature, then resolve into a personal invite. */
+.ng-cutout-reel {
   position: relative;
   z-index: 1;
   width: min(122%, 45rem);
   cursor: pointer;
-  perspective: 1300px;
   outline: none;
 }
-.ng-cutout-card-inner {
-  position: relative;
+
+.ng-cutout-reel .ng-cutout-shell {
   width: 100%;
-  aspect-ratio: 1.5;
-  transform: rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y));
-  transform-style: preserve-3d;
-  transform-origin: 53% 56%;
-  transition: transform .72s cubic-bezier(.2,.72,.18,1);
-  will-change: transform;
 }
-.ng-cutout-stage.is-flipped .ng-cutout-card-inner {
-  transform: rotateX(var(--hero-tilt-x)) rotateY(calc(180deg + var(--hero-tilt-y)));
+
+.ng-cutout-reel .ng-cutout-image {
+  mix-blend-mode: screen;
+  opacity: 0.96;
+  transform-origin: 52% 54%;
 }
-.ng-cutout-face {
+
+.ng-cutout-reel:focus-visible {
+  border-radius: 2rem;
+  box-shadow: 0 0 0 3px rgba(139, 119, 255, 0.72), 0 0 0 7px rgba(111, 239, 212, 0.16);
+}
+
+.ng-cutout-thumbs {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  z-index: 5;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 3%, 0) scale(0.87);
+  filter: drop-shadow(0 25px 30px rgba(3, 2, 13, 0.5)) drop-shadow(0 0 30px rgba(111, 239, 214, 0.3));
 }
-.ng-cutout-face-front { transform: translateZ(.2px); }
-.ng-cutout-face-back {
-  overflow: hidden;
-  padding: clamp(1.35rem, 3.2vw, 2.7rem);
-  border: 1px solid rgba(167, 151, 255, .44);
-  border-radius: clamp(1.1rem, 2vw, 2rem);
-  background:
-    linear-gradient(125deg, rgba(24, 19, 51, .94), rgba(34, 27, 75, .91)),
-    repeating-linear-gradient(90deg, rgba(124, 105, 238, .1) 0 1px, transparent 1px 4.25rem);
-  box-shadow: 0 28px 54px rgba(0, 0, 0, .27), inset 0 1px 0 rgba(255, 255, 255, .09);
-  color: #f9f7ff;
-  text-align: left;
-  transform: rotateY(180deg) translateZ(.2px);
-}
-.ng-cutout-face-back::before,
-.ng-cutout-face-back::after {
+
+.ng-cutout-topic-trail {
   position: absolute;
-  z-index: -1;
-  content: "";
+  inset: 0;
+  z-index: 4;
   pointer-events: none;
 }
-.ng-cutout-face-back::before {
-  width: 54%;
-  aspect-ratio: 1;
-  top: -37%;
-  right: -7%;
-  border: 1px solid rgba(126, 245, 217, .34);
-  border-radius: 50%;
-  box-shadow: 0 0 70px rgba(129, 112, 255, .28);
+
+.ng-cutout-topic {
+  position: absolute;
+  display: grid;
+  gap: 0.18rem;
+  width: max-content;
+  max-width: 10.5rem;
+  color: #fbfaff;
+  opacity: 0;
+  transform: translateY(0.7rem) scale(0.94);
+  text-shadow: 0 2px 16px rgba(8, 4, 26, 0.9);
 }
-.ng-cutout-face-back::after {
-  inset: auto -7% 10% 14%;
+
+.ng-cutout-topic::before {
+  position: absolute;
+  top: 52%;
+  width: clamp(1.4rem, 3vw, 2.8rem);
   height: 1px;
-  background: linear-gradient(90deg, transparent, #8e74f5, #76efd6, transparent);
-  box-shadow: 0 0 19px rgba(118, 239, 214, .54);
-  transform: rotate(-4deg);
+  content: "";
+  background: linear-gradient(90deg, #8e74f5, #76efd6);
+  box-shadow: 0 0 9px rgba(118, 239, 214, 0.72);
 }
-.ng-cutout-face-back > * { position: relative; z-index: 1; }
-.ng-cutout-back-kicker {
-  margin: 0 0 .75rem;
-  color: #8df1d6;
-  font-size: clamp(.48rem, .72vw, .64rem);
+
+.ng-cutout-topic b {
+  color: #8ff1d8;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: clamp(0.5rem, 0.72vw, 0.65rem);
   font-weight: 900;
-  letter-spacing: .15em;
+  letter-spacing: 0.13em;
 }
-.ng-cutout-face-back strong {
-  display: block;
-  max-width: 17ch;
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1.25rem, 2.5vw, 2.4rem);
-  line-height: .94;
-  letter-spacing: -.06em;
-}
-.ng-cutout-focus-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .5rem;
-  width: min(100%, 31rem);
-  margin-top: clamp(1rem, 2.1vw, 1.8rem);
-}
-.ng-cutout-focus-grid > div {
-  display: grid;
-  gap: .18rem;
-  min-height: 4.2rem;
-  padding: .65rem .72rem;
-  border: 1px solid rgba(197, 185, 255, .22);
-  border-radius: .75rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, .09), rgba(117, 242, 215, .05));
-}
-.ng-cutout-focus-grid span {
-  color: #b9abff;
-  font-size: clamp(.55rem, .9vw, .73rem);
-  font-weight: 900;
-  letter-spacing: .09em;
-}
-.ng-cutout-focus-grid small {
-  color: rgba(255, 255, 255, .78);
-  font-size: clamp(.56rem, .86vw, .73rem);
-  font-weight: 700;
+
+.ng-cutout-topic small {
+  font-size: clamp(0.54rem, 0.78vw, 0.7rem);
+  font-weight: 800;
   line-height: 1.2;
 }
-.ng-cutout-back-note {
-  display: flex;
-  align-items: center;
-  gap: .4rem;
-  margin: 1rem 0 0;
-  color: rgba(255, 255, 255, .6);
-  font-size: clamp(.49rem, .72vw, .64rem);
-  font-weight: 850;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.ng-cutout-back-note svg { width: .82rem; height: .82rem; color: #7deed4; }
 
-.ng-cutout-card .ng-cutout-shell {
-  width: 100%;
-  transform: none;
-  transition: filter .42s ease;
+.ng-cutout-topic-rag {
+  top: 19%;
+  left: 6%;
 }
-.ng-cutout-card:hover .ng-cutout-shell { filter: saturate(1.08) brightness(1.05); }
-.ng-cutout-card:focus-visible {
-  border-radius: clamp(1.1rem, 2vw, 2rem);
-  box-shadow: 0 0 0 3px rgba(131, 112, 255, .72), 0 0 0 6px rgba(112, 240, 211, .18);
+
+.ng-cutout-topic-rag::before {
+  right: calc(-1 * clamp(1.4rem, 3vw, 2.8rem) - 0.45rem);
 }
-.ng-cutout-floaters {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
+
+.ng-cutout-topic-nlp {
+  top: 12%;
+  right: 7%;
+  text-align: right;
 }
-.ng-cutout-floater {
-  position: absolute;
-  display: grid;
-  width: clamp(1.55rem, 3.1vw, 2.6rem);
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(183, 174, 255, .48);
-  border-radius: .7rem;
-  background: linear-gradient(145deg, rgba(35, 28, 77, .83), rgba(14, 25, 54, .74));
-  box-shadow: 0 8px 23px rgba(3, 3, 21, .3), inset 0 1px 0 rgba(255, 255, 255, .12);
-  color: #8ff1d8;
-  transform: translateZ(5px);
+
+.ng-cutout-topic-nlp::before {
+  left: calc(-1 * clamp(1.4rem, 3vw, 2.8rem) - 0.45rem);
 }
-.ng-cutout-floater svg { width: 52%; height: 52%; filter: drop-shadow(0 0 6px currentColor); }
-.ng-cutout-floater-brain { top: 14%; left: 16%; color: #b7a5ff; animation: ng-cutout-floater-a 4.8s ease-in-out infinite; }
-.ng-cutout-floater-flow { top: 13%; right: 12%; color: #75efd7; animation: ng-cutout-floater-b 5.4s ease-in-out -.8s infinite; }
-.ng-cutout-floater-data { right: 13%; bottom: 30%; color: #84c7ff; animation: ng-cutout-floater-c 5.1s ease-in-out -2.1s infinite; }
-.ng-cutout-floater-spark { left: 12%; bottom: 25%; color: #ceabff; animation: ng-cutout-floater-a 5.8s ease-in-out -1.7s infinite; }
+
+.ng-cutout-topic-agents {
+  right: 3%;
+  bottom: 27%;
+  text-align: right;
+}
+
+.ng-cutout-topic-agents::before {
+  left: calc(-1 * clamp(1.4rem, 3vw, 2.8rem) - 0.45rem);
+}
+
+.ng-cutout-topic-eval {
+  bottom: 16%;
+  left: 7%;
+}
+
+.ng-cutout-topic-eval::before {
+  right: calc(-1 * clamp(1.4rem, 3vw, 2.8rem) - 0.45rem);
+}
+
 .ng-cutout-connect {
   position: absolute;
-  right: 8%;
-  bottom: 11%;
-  z-index: 4;
+  right: 3%;
+  bottom: 9%;
+  z-index: 8;
   display: flex;
   align-items: center;
-  gap: .42rem;
-  padding: .46rem .65rem;
-  border: 1px solid rgba(120, 239, 211, .5);
+  gap: 0.55rem;
+  max-width: 13.5rem;
+  padding: 0.62rem 0.78rem;
+  border: 1px solid rgba(128, 246, 217, 0.55);
   border-radius: 999px;
-  background: rgba(20, 23, 48, .78);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
-  color: #9bf1dc;
-  font-size: clamp(.46rem, .75vw, .63rem);
-  font-weight: 900;
-  letter-spacing: .08em;
-  opacity: 0;
-  text-transform: uppercase;
-  transform: translateY(.45rem) scale(.9);
-  animation: ng-cutout-connect 12s ease-in-out 1.5s infinite;
-}
-.ng-cutout-connect svg { width: .88rem; height: .88rem; }
-.ng-cutout-hint {
-  bottom: -1.35rem;
-  display: block;
+  color: #fcfbff;
+  background: rgba(21, 16, 48, 0.56);
+  box-shadow: 0 12px 34px rgba(3, 2, 16, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(11px);
   pointer-events: none;
   opacity: 0;
-  transition: opacity .25s ease, transform .25s ease;
-  transform: translate(-50%, .3rem);
+  transform: translate3d(0, 0.85rem, 0) scale(0.92);
 }
-.ng-cutout-hint span { margin-left: 0; }
+
+.ng-cutout-connect svg {
+  width: 1rem;
+  height: 1rem;
+  color: #78f0d4;
+}
+
+.ng-cutout-connect span {
+  display: grid;
+  gap: 0.03rem;
+  font-size: clamp(0.58rem, 0.8vw, 0.73rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.ng-cutout-connect i {
+  color: rgba(238, 235, 255, 0.72);
+  font-size: 0.84em;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.ng-cutout-replay {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(230, 226, 255, 0.8);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, 0.55rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.ng-cutout-replay svg {
+  width: 0.76rem;
+  height: 0.76rem;
+  color: #77efd5;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-base-image {
+  animation: ng-cutout-ai-reel 9.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-topic-rag {
+  animation: ng-cutout-topic-beat 2.35s ease both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-topic-nlp {
+  animation: ng-cutout-topic-beat 2.35s 1.13s ease both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-topic-agents {
+  animation: ng-cutout-topic-beat 2.35s 2.26s ease both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-topic-eval {
+  animation: ng-cutout-topic-beat 2.35s 3.39s ease both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-thumbs {
+  animation: ng-cutout-thumbs-up 9.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-connect {
+  animation: ng-cutout-connect-in 9.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ng-cutout-stage.is-playing .ng-cutout-replay {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition-delay: 8.3s;
+}
+
 .ng-cutout-stage:hover .ng-cutout-hint,
-.ng-cutout-card:focus-visible ~ .ng-cutout-hint {
+.ng-cutout-stage:focus-within .ng-cutout-hint,
+.ng-cutout-stage.show-mobile-hint .ng-cutout-hint {
   opacity: 1;
   transform: translate(-50%, 0);
 }
 
-@keyframes ng-cutout-floater-a {
-  0%, 100% { transform: translate3d(0, 0, 5px) rotate(-4deg); }
-  50% { transform: translate3d(-.2rem, -.6rem, 5px) rotate(6deg); }
+.ng-cutout-hint {
+  position: absolute;
+  right: 4%;
+  bottom: -1.35rem;
+  z-index: 6;
+  display: block;
+  margin: 0;
+  color: rgba(242, 239, 255, 0.78);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition: opacity 180ms ease, transform 180ms ease;
 }
-@keyframes ng-cutout-floater-b {
-  0%, 100% { transform: translate3d(0, 0, 5px) rotate(5deg); }
-  50% { transform: translate3d(.32rem, -.48rem, 5px) rotate(-5deg); }
+
+.ng-cutout-hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
-@keyframes ng-cutout-floater-c {
-  0%, 100% { transform: translate3d(0, 0, 5px) rotate(-3deg); }
-  50% { transform: translate3d(.4rem, .32rem, 5px) rotate(4deg); }
+
+.ng-cutout-hint span::before {
+  width: 1.9rem;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, #7aefd6);
 }
-@keyframes ng-cutout-connect {
-  0%, 56% { opacity: 0; transform: translateY(.45rem) scale(.9); }
-  63%, 89% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-.28rem) scale(.96); }
+
+@keyframes ng-cutout-ai-reel {
+  0% {
+    opacity: 0.96;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  17% {
+    transform: translate3d(-1.8%, -1%, 0) rotate(-0.75deg) scale(1.015);
+  }
+  35% {
+    transform: translate3d(1.6%, 0.8%, 0) rotate(0.65deg) scale(1.01);
+  }
+  55% {
+    transform: translate3d(-1.1%, -0.7%, 0) rotate(-0.45deg) scale(1.02);
+  }
+  72% {
+    opacity: 0.9;
+    transform: translate3d(0.6%, 0, 0) rotate(0.25deg) scale(1.02);
+  }
+  84%,
+  100% {
+    opacity: 0;
+    transform: translate3d(-1.5%, 2%, 0) rotate(-0.65deg) scale(0.94);
+  }
+}
+
+@keyframes ng-cutout-topic-beat {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateY(0.7rem) scale(0.94);
+  }
+  25%,
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-0.45rem) scale(0.97);
+  }
+}
+
+@keyframes ng-cutout-thumbs-up {
+  0%,
+  71% {
+    opacity: 0;
+    transform: translate3d(0, 3%, 0) scale(0.87);
+  }
+  83% {
+    opacity: 1;
+    transform: translate3d(0, -1%, 0) scale(1.025);
+  }
+  92%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ng-cutout-connect-in {
+  0%,
+  82% {
+    opacity: 0;
+    transform: translate3d(0, 0.85rem, 0) scale(0.92);
+  }
+  91%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 @media (max-width: 1020px) {
-  .ng-cutout-card { width: min(128%, 39rem); }
+  .ng-cutout-reel {
+    width: min(126%, 38rem);
+  }
+
+  .ng-cutout-topic-rag {
+    left: 4%;
+  }
+
+  .ng-cutout-topic-nlp {
+    right: 4%;
+  }
+
+  .ng-cutout-topic-agents {
+    right: 0;
+  }
 }
+
 @media (max-width: 640px) {
-  .ng-cutout-card { width: clamp(13rem, 55vw, 24rem); max-width: none; margin-left: -39%; }
-  .ng-cutout-card-inner { aspect-ratio: 1.33; }
-  .ng-cutout-face-back { padding: .82rem; border-radius: .85rem; }
-  .ng-cutout-back-kicker { margin-bottom: .35rem; font-size: .39rem; }
-  .ng-cutout-face-back strong { font-size: clamp(.78rem, 4.05vw, 1.1rem); }
-  .ng-cutout-focus-grid { gap: .28rem; margin-top: .55rem; }
-  .ng-cutout-focus-grid > div { min-height: 2.38rem; padding: .32rem .36rem; border-radius: .42rem; }
-  .ng-cutout-focus-grid span { font-size: .36rem; }
-  .ng-cutout-focus-grid small { font-size: .37rem; }
-  .ng-cutout-back-note { gap: .22rem; margin-top: .45rem; font-size: .34rem; }
-  .ng-cutout-back-note svg { width: .52rem; height: .52rem; }
-  .ng-cutout-floater { width: clamp(.9rem, 4.5vw, 1.28rem); border-radius: .36rem; }
-  .ng-cutout-connect { right: 3%; bottom: 11%; gap: .22rem; padding: .22rem .34rem; font-size: .34rem; }
-  .ng-cutout-connect svg { width: .5rem; height: .5rem; }
-  .ng-cutout-hint { bottom: -1.05rem; font-size: .43rem; }
-  .ng-cutout-stage.show-mobile-hint .ng-cutout-hint { opacity: 1; transform: translate(-50%, 0); }
+  .ng-cutout-reel {
+    width: min(138%, 23rem);
+  }
+
+  .ng-cutout-topic {
+    max-width: 7.4rem;
+  }
+
+  .ng-cutout-topic small {
+    font-size: 0.47rem;
+  }
+
+  .ng-cutout-topic-rag {
+    top: 15%;
+    left: 1%;
+  }
+
+  .ng-cutout-topic-nlp {
+    top: 9%;
+    right: 0;
+  }
+
+  .ng-cutout-topic-agents {
+    right: -2%;
+    bottom: 25%;
+  }
+
+  .ng-cutout-topic-eval {
+    bottom: 15%;
+    left: 2%;
+  }
+
+  .ng-cutout-connect {
+    right: 0;
+    bottom: 7%;
+    max-width: 10rem;
+    padding: 0.45rem 0.55rem;
+  }
+
+  .ng-cutout-connect span {
+    font-size: 0.55rem;
+  }
+
+  .ng-cutout-replay {
+    display: none;
+  }
+
+  .ng-cutout-hint {
+    right: 0;
+    bottom: -1.12rem;
+    font-size: 0.48rem;
+  }
 }
-@media (max-width: 390px) {
-  .ng-cutout-card { width: 13.2rem; margin-left: -48%; }
-  .ng-cutout-card-inner { aspect-ratio: 1.28; }
-}
+
 @media (prefers-reduced-motion: reduce) {
-  .ng-cutout-card-inner { transition: none; }
-  .ng-cutout-floater, .ng-cutout-connect { animation: none; }
-  .ng-cutout-connect { opacity: 1; transform: none; }
+  .ng-cutout-stage.is-playing .ng-cutout-base-image {
+    animation: none;
+    opacity: 0;
+  }
+
+  .ng-cutout-stage.is-playing .ng-cutout-thumbs {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ng-cutout-stage.is-playing .ng-cutout-connect {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ng-cutout-stage.is-playing .ng-cutout-topic {
+    animation: none;
+    opacity: 0;
+  }
 }

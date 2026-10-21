@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Icon3D } from "@/components/ui/icon-3d";
+import { ShashankMark } from "@/components/branding/shashank-mark";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 import { navItems, profile } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -38,21 +39,7 @@ export function SiteHeader() {
           onClick={() => setIsOpen(false)}
           aria-label="Shashank Singh home"
         >
-          <svg viewBox="0 0 56 56" className="h-11 w-11 overflow-visible transition duration-500 group-hover:rotate-[-6deg] group-hover:scale-110" fill="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="cutout-s-spectrum" x1="10" y1="10" x2="43" y2="45" gradientUnits="userSpaceOnUse"><stop stopColor="#FF745A" /><stop offset=".43" stopColor="#FFD06A" /><stop offset=".77" stopColor="#B894FF" /><stop offset="1" stopColor="#76D7FF" /></linearGradient>
-              <linearGradient id="cutout-s-trace" x1="12" y1="43" x2="43" y2="13" gradientUnits="userSpaceOnUse"><stop stopColor="#FF9D78" /><stop offset=".56" stopColor="#FFD985" /><stop offset="1" stopColor="#8DEBFF" /></linearGradient>
-              <filter id="cutout-s-glow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="1.3" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
-              <mask id="cutout-s-ribbon-mask">
-                <rect width="56" height="56" fill="white" />
-                <path d="M41.1 13.1C35.8 9.2 25.9 9.4 19.8 13.1C13.7 16.8 15.2 23.3 22.1 25.7L34 29.9C40.7 32.2 41.2 38.8 35.2 42.3C29.1 45.9 19.2 44.2 13.8 39.4" stroke="black" strokeWidth="1.5" strokeLinecap="round" />
-              </mask>
-            </defs>
-            <path d="M41.1 13.1C35.8 9.2 25.9 9.4 19.8 13.1C13.7 16.8 15.2 23.3 22.1 25.7L34 29.9C40.7 32.2 41.2 38.8 35.2 42.3C29.1 45.9 19.2 44.2 13.8 39.4" stroke="url(#cutout-s-spectrum)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" mask="url(#cutout-s-ribbon-mask)" filter="url(#cutout-s-glow)" />
-            <path d="M41.1 13.1C35.8 9.2 25.9 9.4 19.8 13.1C13.7 16.8 15.2 23.3 22.1 25.7L34 29.9C40.7 32.2 41.2 38.8 35.2 42.3C29.1 45.9 19.2 44.2 13.8 39.4" stroke="url(#cutout-s-trace)" strokeWidth=".72" strokeLinecap="round" strokeDasharray="2 3" opacity=".9" />
-            <path d="M44.2 12.4L47.4 12.4M45.8 10.8V14" stroke="#FF8E6E" strokeWidth="1.4" strokeLinecap="round" />
-            <circle cx="11.5" cy="39.7" r="1.45" fill="#78DFFF" /><circle cx="33.2" cy="28.9" r="1.35" fill="#FFF2B9" /><circle cx="42" cy="13.2" r="1.25" fill="#FFA17E" />
-          </svg>
+          <ShashankMark className="h-11 w-11 transition duration-500 group-hover:-rotate-6 group-hover:scale-110" />
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
