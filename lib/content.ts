@@ -100,7 +100,6 @@ export const projects: Project[] = [
     },
   },
   {
-  {
     title: "Memorae AI",
     slug: "memoraeai",
     subtitle: "Evidence-first personal intelligence OS",
@@ -505,7 +504,6 @@ const allCaseStudies: CaseStudy[] = [
       keywords: ["text-to-SQL", "copilot", "schema grounding", "validation", "explainability"],
     },
   },
-  {
   {
     title: "Memorae AI",
     slug: "memoraeai",
