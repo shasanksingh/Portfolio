@@ -32,17 +32,17 @@ export function SiteHeader() {
 
   return (
     <header className="site-header sticky top-0 z-50 border-b border-line bg-background/86 backdrop-blur-xl">
-      <nav className="container flex min-h-[76px] items-center justify-between gap-4" aria-label="Main navigation">
+      <nav className="container flex min-h-[66px] max-w-[1240px] items-center justify-between gap-3" aria-label="Main navigation">
         <Link
           href="/"
-          className="focus-ring group relative inline-grid h-12 w-12 shrink-0 place-items-center rounded-[18px] transition duration-300 hover:-translate-y-0.5"
+          className="focus-ring group relative inline-grid h-10 w-10 shrink-0 place-items-center rounded-[15px] transition duration-300 hover:-translate-y-0.5"
           onClick={() => setIsOpen(false)}
           aria-label="Shashank Singh home"
         >
-          <ShashankMark className="h-11 w-11 transition duration-500 group-hover:-rotate-6 group-hover:scale-110" />
+          <ShashankMark className="h-9 w-9 transition duration-500 group-hover:-rotate-6 group-hover:scale-110" />
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-0.5 lg:flex">
           {navigationItems.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
@@ -52,7 +52,7 @@ export function SiteHeader() {
                 prefetch
                 onMouseEnter={() => router.prefetch(item.href)}
                 onFocus={() => router.prefetch(item.href)}
-                className={cn("nav-link rounded-ui px-3 py-2 text-sm font-bold text-muted transition hover:text-foreground", active && "active text-foreground")}
+                className={cn("nav-link rounded-ui px-2.5 py-1.5 text-[0.8125rem] font-bold text-muted transition hover:text-foreground", active && "active text-foreground")}
               >
                 {item.label}
               </Link>
@@ -60,15 +60,15 @@ export function SiteHeader() {
           })}
         </div>
 
-        <div className="hidden items-center gap-2 xl:flex">
+        <div className="hidden items-center gap-1.5 xl:flex">
           <ThemeToggle />
-          <a href={profile.github} target="_blank" rel="noreferrer" className="site-action-button inline-grid h-10 w-10 place-items-center rounded-ui border border-line bg-surface text-foreground transition hover:-translate-y-0.5 hover:border-electric/50" aria-label="GitHub">
+          <a href={profile.github} target="_blank" rel="noreferrer" className="site-action-button inline-grid h-9 w-9 place-items-center rounded-ui border border-line bg-surface text-foreground transition hover:-translate-y-0.5 hover:border-electric/50" aria-label="GitHub">
             <Icon3D icon={Github} action="github" tone="slate" size="sm" />
           </a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="site-action-button inline-grid h-10 w-10 place-items-center rounded-ui border border-line bg-surface text-foreground transition hover:-translate-y-0.5 hover:border-electric/50" aria-label="LinkedIn">
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="site-action-button inline-grid h-9 w-9 place-items-center rounded-ui border border-line bg-surface text-foreground transition hover:-translate-y-0.5 hover:border-electric/50" aria-label="LinkedIn">
             <Icon3D icon={Linkedin} action="external" tone="blue" size="sm" />
           </a>
-          <Link href="/resume" className={cn("site-action-button inline-grid h-10 w-10 place-items-center rounded-ui border border-line bg-surface text-foreground transition hover:-translate-y-0.5 hover:border-electric/50", pathname === "/resume" && "border-electric/70 bg-electric/10")} aria-label="Open resume">
+          <Link href="/resume" className={cn("site-action-button inline-grid h-9 w-9 place-items-center rounded-ui border border-line bg-surface text-foreground transition hover:-translate-y-0.5 hover:border-electric/50", pathname === "/resume" && "border-electric/70 bg-electric/10")} aria-label="Open resume">
             <Icon3D icon={FileText} action="download" tone="violet" size="sm" />
           </Link>
         </div>

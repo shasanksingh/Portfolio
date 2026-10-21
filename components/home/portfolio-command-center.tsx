@@ -34,7 +34,7 @@ export function PortfolioCommandCenter() {
               <h1><span>AI products</span><span>that</span><em>think clearly.</em></h1>
               <p className="ng-hero-description">I&apos;m Shashank Singh - an AI/ML Engineer working across retrieval, agent workflows, and product interfaces to turn complex systems into useful experiences.</p>
               <div className="ng-hero-actions"><a className="ng-button ng-button-primary" href="#work">Explore selected work <ArrowDownRight aria-hidden="true" /></a><Link className="ng-button ng-button-quiet" href="/contact">Let&apos;s work together <MoveRight aria-hidden="true" /></Link></div>
-              <div className="ng-social-proof" aria-label="Professional links"><a href={profile.github} target="_blank" rel="noreferrer"><Github aria-hidden="true" /> GitHub</a><a href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin aria-hidden="true" /> LinkedIn</a><span>Scroll to inspect</span></div>
+              <div className="ng-social-proof" aria-label="Professional links"><a href={profile.github} target="_blank" rel="noreferrer"><Github aria-hidden="true" /> GitHub</a><a href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin aria-hidden="true" /> LinkedIn</a></div>
             </div>
 
             <HeroMiniature />

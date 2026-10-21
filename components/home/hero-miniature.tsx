@@ -1,20 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import {
-  BrainCircuit,
-  DatabaseZap,
-  RotateCcw,
-  Sparkles,
-  ThumbsUp,
-  Workflow,
-} from "lucide-react";
+import { ThumbsUp } from "lucide-react";
 import {
   useCallback,
   useEffect,
   useRef,
   useState,
-  type KeyboardEvent,
   type PointerEvent,
 } from "react";
 
@@ -27,10 +19,11 @@ const topicBeats = [
   { label: "EVAL", description: "Measure what matters", position: "eval" },
 ] as const;
 
+const graphNodes = Array.from({ length: 8 }, (_, index) => index + 1);
+
 export function HeroMiniature() {
   const stageRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showMobileHint, setShowMobileHint] = useState(false);
 
   const setTilt = useCallback((event: PointerEvent<HTMLDivElement>) => {
     if (event.pointerType === "touch") return;
@@ -51,36 +44,14 @@ export function HeroMiniature() {
   }, []);
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 640px)");
-    const revealHint = () => {
-      if (mobile.matches && window.scrollY > 12) setShowMobileHint(true);
-    };
-
-    revealHint();
-    window.addEventListener("scroll", revealHint, { passive: true });
-    return () => window.removeEventListener("scroll", revealHint);
+    const animationFrame = window.requestAnimationFrame(() => setIsPlaying(true));
+    return () => window.cancelAnimationFrame(animationFrame);
   }, []);
-
-  const playReel = useCallback(() => {
-    setIsPlaying(false);
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => setIsPlaying(true));
-    });
-  }, []);
-
-  const onKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key !== "Enter" && event.key !== " ") return;
-      event.preventDefault();
-      playReel();
-    },
-    [playReel],
-  );
 
   return (
     <div
       ref={stageRef}
-      className={`ng-cutout-stage${isPlaying ? " is-playing" : ""}${showMobileHint ? " show-mobile-hint" : ""}`}
+      className={`ng-cutout-stage${isPlaying ? " is-playing" : ""}`}
       onPointerMove={setTilt}
       onPointerLeave={resetTilt}
     >
@@ -89,16 +60,15 @@ export function HeroMiniature() {
       </div>
       <div className="ng-cutout-grid" aria-hidden="true" />
 
-      <div
-        className="ng-cutout-reel"
-        role="button"
-        tabIndex={0}
-        aria-pressed={isPlaying}
-        aria-label={isPlaying ? "Replay the AI ideas cutout sequence" : "Play the AI ideas cutout sequence"}
-        onClick={playReel}
-        onKeyDown={onKeyDown}
-      >
+      <div className="ng-cutout-reel" role="img" aria-label="Animated AI engineer cutout with a GraphRAG knowledge network">
         <div className="ng-cutout-shell">
+          <div className="ng-cutout-graphrag" aria-hidden="true">
+            <span className="ng-cutout-graph-link ng-cutout-graph-link-one" />
+            <span className="ng-cutout-graph-link ng-cutout-graph-link-two" />
+            <span className="ng-cutout-graph-link ng-cutout-graph-link-three" />
+            <span className="ng-cutout-graph-link ng-cutout-graph-link-four" />
+            {graphNodes.map((node) => <span className={`ng-cutout-graph-node ng-cutout-graph-node-${node}`} key={node} />)}
+          </div>
           <Image
             src="/shashank-ai-cutout.png"
             alt=""
@@ -118,12 +88,6 @@ export function HeroMiniature() {
             className="ng-cutout-thumbs"
           />
           <span className="ng-cutout-light" aria-hidden="true" />
-          <div className="ng-cutout-floaters" aria-hidden="true">
-            <span className="ng-cutout-floater ng-cutout-floater-brain"><BrainCircuit /></span>
-            <span className="ng-cutout-floater ng-cutout-floater-flow"><Workflow /></span>
-            <span className="ng-cutout-floater ng-cutout-floater-data"><DatabaseZap /></span>
-            <span className="ng-cutout-floater ng-cutout-floater-spark"><Sparkles /></span>
-          </div>
           <div className="ng-cutout-topic-trail" aria-hidden="true">
             {topicBeats.map((topic) => (
               <span className={`ng-cutout-topic ng-cutout-topic-${topic.position}`} key={topic.label}>
@@ -136,13 +100,8 @@ export function HeroMiniature() {
             <ThumbsUp />
             <span>Let&apos;s connect <i>for AI ideas</i></span>
           </div>
-          <div className="ng-cutout-replay" aria-hidden="true">
-            <RotateCcw />
-            <span>Play AI ideas</span>
-          </div>
         </div>
       </div>
-      <p className="ng-cutout-hint"><span>{isPlaying ? "Click to replay" : "Click to play"}</span></p>
     </div>
   );
 }
